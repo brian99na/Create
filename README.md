@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Links
 
-## Available Scripts
+- [Frontend Repo](https://github.com/brian99na/project-2)
+- [Backend Repo](https://github.com/brian99na/create-django-backend)
 
-In the project directory, you can run:
+## Project Description
 
-### `npm start`
+This project is a social media website that allows users to upload short snippets that features their work in the form of a short video or image.
+It will be built using React for the frontend and Django on the backend.
+For file storage, I will be using AWS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Wire-frames
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Wire-frames](https://www.figma.com/file/eXg9KbZjNAU4Skm2P8qfwB/Create-Wireframes?node-id=0%3A1)
 
-### `npm test`
+### MVP/PostMVP
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### MVP
+- Build out the backend with user and post models and test sign-up/in/out and create/edit/delete posts
+- Build essential components for frontend (homepage, user profile, tag page, post page,sign-in/up page)
+- CSS Styling
 
-### `npm run build`
+#### PostMVP
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Add an option to turn off or on autoplay on all videos
+- Add a way to compress uploaded files before storing in aws
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Component | Description | 
+| --- | :---: |  
+| App | Sets up app with React Router | 
+| Header | Nav burger, Homepage Icon | 
+| Main | Contains Switch/Routes for profiles, homepage, tag pages |
+| Homepage | Contains your homepage for randomized images/videos | 
+| Tag Page | Sorts images/videos based on tags |
+| Profile Page | Individual Page |
+| Create Post Page | Modal or individual page |
+| SignIn/SignUp Page | Individual Page |
 
-### `npm run eject`
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Create React app and files for all components | H | 0.5hrs |
+| Basic Navbar | H | 1hr |
+| Create 'Homepage' (fetch data, display images randomized) | H | 4hrs |
+| Create 'Tag' Pages with Homepage Template (display images filtered w/ tags)| H | 1hrs |
+| Create 'Profile' Page Template | H | 4hrs |
+| Create 'Post' Page Template | H | 4hrs |
+| Create 'Create' Page Template | H | 4hrs |
+| Create 'Sign Up/Sign In' Page Template | H | 2hrs |
+| Styling | H | 3hrs |
+| Total | H | 23.5hrs |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Additional Libraries
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Code Snippet
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  Code snippet should not be greater than 10 lines of code.
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

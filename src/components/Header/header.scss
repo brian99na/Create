@@ -29,6 +29,10 @@ nav {
         @include flexCenter(row);
         transition: 0.3s ease;
 
+        h1 {
+            cursor: pointer;
+        }
+
         .create-1, .create-2 {
             position: absolute;
             height: 80%;
@@ -92,6 +96,7 @@ nav {
             gap: 6px;
             width: 30px;
             aspect-ratio: 1;
+            cursor: pointer;
 
             .ham-1, .ham-2, .ham-3 {
                 height: 2px;

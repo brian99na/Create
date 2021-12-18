@@ -49,6 +49,10 @@ nav .create-btn {
   transition: 0.3s ease;
 }
 
+nav .create-btn h1 {
+  cursor: pointer;
+}
+
 nav .create-btn .create-1, nav .create-btn .create-2 {
   position: absolute;
   height: 80%;
@@ -148,6 +152,7 @@ nav .search-ham .ham-main {
   gap: 6px;
   width: 30px;
   aspect-ratio: 1;
+  cursor: pointer;
 }
 
 nav .search-ham .ham-main .ham-1, nav .search-ham .ham-main .ham-2, nav .search-ham .ham-main .ham-3 {

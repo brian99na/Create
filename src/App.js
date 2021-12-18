@@ -11,10 +11,12 @@ function App() {
       <Routes>
         <Route path='/' exact element={() => {<Homepage />}}/>
       </Routes>
-      <div className='create-icon-1'>
-        <div className=''></div>
-        <AiOutlinePlus />
-        <div className='create-icon-2'></div>
+      <div className='create-icon'>
+        <div className='create-icon-main'>
+          <div className='create-icon-1'></div>
+          <AiOutlinePlus className='create-icon-2'/>
+          <div className='create-icon-2'></div>
+        </div>
       </div>
     </div>
   );

@@ -23,36 +23,38 @@ function Header(props) {
         }, 500)
     }
 
+    console.log(searchActive)
+    
     return (
         <header>
             <nav>
-                <div className='create-btn' onClick={handleDelayClick}>
+                <div className={`create-btn ${searchActive ? 'create-active' : '' }`}onClick={handleDelayClick}>
                     <div className='create-1'></div>
-                    <h1>CREATE</h1>
+                    <h1>create</h1>
                     <div className='create-2'></div>
                 </div>
-                <div className={`search-box ${searchActive ? 'search-active' : ''}`}>
-                    <input placeholder='[search]'/>
-                </div>
+                <input className={`search-box ${searchActive ? 'search-active' : ''}`} placeholder='[search]'/>
                 <div className='search-ham'>
                     <RiSearch2Line className='search-icon' onClick={handleSearchClick}/>
                     <div className='ham-main' onClick={handleNavClick}>
-                        <div className='ham-1'></div>
-                        <div className='ham-2'></div>
-                        <div className='ham-3'></div>
+                        <div className={`ham-1 ${navActive ? 'ham-active-1' : ''}`}></div>
+                        <div className={`ham-2 ${navActive ? 'ham-active-2' : ''}`}></div>
+                        <div className={`ham-3 ${navActive ? 'ham-active-3' : ''}`}></div>
                     </div>
                 </div>
             </nav>
             <div className={`nav-links ${navActive ? 'nav-links-active' : ''}`}>
-                <Link to='/sign-in'>
-                    <h1>[Sign In]</h1>
-                </Link>
-                <Link to='/'>
-                    <h1>[Home]</h1>
-                </Link>
-                <Link to={`/${props.username}`}>
-                    <h1>[Profile]</h1>
-                </Link>
+                <div className='nav-links-main'>
+                    <Link to='/sign-in' onClick={handleNavClick}>
+                        <h1>[Sign In]</h1>
+                    </Link>
+                    <Link to='/' onClick={handleNavClick}>
+                        <h1>[Home]</h1>
+                    </Link>
+                    <Link to={`/${props.username}`} onClick={handleNavClick}>
+                        <h1>[Profile]</h1>
+                    </Link>
+                </div>
             </div>
         </header>
     )

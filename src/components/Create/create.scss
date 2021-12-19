@@ -1,0 +1,47 @@
+@import '../../sass/flex.scss';
+@import '../Header/header.scss';
+
+.create-modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: -1;
+    
+    .create-form {
+        @include flexCenter(column);
+    }
+
+    .create-icon {
+        @include flexCenter(row);
+        position: absolute;
+        width: 40px;
+        aspect-ratio: 1;
+        bottom: 20px;
+        right: 20px;
+      
+        .create-icon-1, .create-icon-3 {
+            position: absolute;
+            height: 90%;
+            width: 20%;
+        }
+      
+        .create-icon-1 {
+            @include bracketBorder($border, none);
+            left: 0;
+        }
+      
+        .create-icon-2 {
+            font-size: 30px;
+            cursor: pointer;
+        }
+      
+        .create-icon-3 {
+            @include bracketBorder(none, $border);
+            right: 0;
+        }
+    }  
+}

@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
 import { Link, useNavigate } from 'react-router-dom'
 import './header.css'
 
 function Header(props) {
 
+    const navigate = useNavigate()
+
+
     const [navActive, setNavActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
-    const navigate = useNavigate()
 
     const handleNavClick = () => {
         setNavActive(!navActive)
@@ -18,12 +20,15 @@ function Header(props) {
     }
 
     const handleDelayClick = () => {
+        props.setPageLeave(true)
         setTimeout(() => {
             navigate('/')
         }, 500)
     }
 
-    console.log(searchActive)
+    useEffect(() => {
+        props.setPageLeave(false)
+    }, [])
     
     return (
         <header>

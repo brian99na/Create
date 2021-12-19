@@ -2,31 +2,26 @@ import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Homepage from './components/Homepage/Homepage';
-import { AiOutlinePlus } from 'react-icons/ai'
+import { useEffect, useState } from 'react';
+import Create from './components/Create/Create';
 
 function App() {
+  const [pageLeave, setPageLeave] = useState(false)
 
   const navigate = useNavigate()
 
-  const handleCreateClick = () => {
-    setTimeout(() => {
-      navigate('/create')
-    }, 500)
-  }
+
+  useEffect(() => {
+    setPageLeave(true)
+  }, [])
 
   return (
     <div className="App">
-      <Header />
+      <Header setPageLeave={setPageLeave} pageLeave={pageLeave}/>
       <Routes>
-        <Route path='/' exact element={() => {<Homepage />}}/>
+        <Route path='/' exact element={() => {<Homepage setPageLeave={setPageLeave} pageLeave={pageLeave}/>}}/>
       </Routes>
-      <div className='create-icon'>
-        <div className='create-icon-main'>
-          <div className='create-icon-1'></div>
-          <AiOutlinePlus className='create-icon-2' onClick={handleCreateClick}/>
-          <div className='create-icon-3'></div>
-        </div>
-      </div>
+      <Create setPageLeave={setPageLeave} pageLeave={pageLeave}/>
     </div>
   );
 }

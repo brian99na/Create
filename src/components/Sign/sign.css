@@ -1,0 +1,154 @@
+.sign-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  overflow: hidden;
+  position: relative;
+}
+
+.sign-page input, .sign-page button {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #dddddd;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.sign-page .sign-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  height: 70%;
+  width: 200vw;
+  left: 0;
+  overflow: hidden;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.sign-page .sign-container .sign-in, .sign-page .sign-container .sign-up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  aspect-ratio: 1;
+}
+
+.sign-page .sign-container .sign-in form, .sign-page .sign-container .sign-up form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 100%;
+  width: 70%;
+  gap: 2%;
+}
+
+.sign-page .sign-container .sign-in form .error, .sign-page .sign-container .sign-up form .error {
+  color: red;
+  -webkit-animation: error 1s infinite ease;
+          animation: error 1s infinite ease;
+}
+
+.sign-page .sign-container .sign-in form p, .sign-page .sign-container .sign-up form p {
+  font-weight: 300;
+  color: #4aa5f0;
+  cursor: hover;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.sign-page .sign-container .sign-in form h3, .sign-page .sign-container .sign-up form h3 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.sign-page .sign-container .sign-up {
+  opacity: 0;
+  -webkit-transform: translateY(-60px);
+          transform: translateY(-60px);
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.sign-page .sign-container .sign-up-anim {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.sign-page .sign-up-page {
+  left: -100vw;
+}
+
+@-webkit-keyframes error {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes error {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=sign.css.map */

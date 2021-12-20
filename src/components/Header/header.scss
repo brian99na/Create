@@ -1,14 +1,5 @@
 @import '../../sass/flex.scss';
 
-$border: 2px solid black;
-
-@mixin bracketBorder($left, $right) {
-    border-top: $border;
-    border-bottom: $border;
-    border-left: $left;
-    border-right: $right;
-}
-
 header {
     width: 100vw;
     overflow: hidden;
@@ -19,7 +10,7 @@ nav {
     width: 100%;
     @include flexCenter(row);
     justify-content: space-between;
-    position: relative;
+    position: absolute;
 
     .create-btn {
         width: fit-content;
@@ -28,27 +19,10 @@ nav {
         padding: 0 15px;
         @include flexCenter(row);
         transition: 0.3s ease;
+        z-index: 3;
 
         h1 {
             cursor: pointer;
-        }
-
-        .create-1, .create-2 {
-            position: absolute;
-            height: 80%;
-            width: 5px;
-        }
-
-        .create-1 {
-            @include bracketBorder($border, none );
-            top: 0;
-            left: 10px;
-        }
-
-        .create-2 {
-            @include bracketBorder(none, $border );
-            top: 0;
-            right: 10px;
         }
     }
 
@@ -74,7 +48,7 @@ nav {
 
     .search-active {
         opacity: 1;
-        z-index: 1;
+        z-index: 4;
         transform: translateY(0px);
     }
 
@@ -88,7 +62,7 @@ nav {
         .search-icon {
             font-size: 20px;
             cursor: pointer;
-            z-index: 2;
+            z-index: 4;
         }
 
         .ham-main {
@@ -97,6 +71,7 @@ nav {
             width: 30px;
             aspect-ratio: 1;
             cursor: pointer;
+            z-index: 5;
 
             .ham-1, .ham-2, .ham-3 {
                 height: 2px;
@@ -166,5 +141,5 @@ nav {
 .nav-links-active {
     opacity: 1;
     pointer-events: all;
-    z-index: 3;
+    z-index: 5;
 }

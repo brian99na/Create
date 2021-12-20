@@ -22,7 +22,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: relative;
+  position: absolute;
 }
 
 nav .create-btn {
@@ -47,34 +47,11 @@ nav .create-btn {
           flex-direction: row;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  z-index: 3;
 }
 
 nav .create-btn h1 {
   cursor: pointer;
-}
-
-nav .create-btn .create-1, nav .create-btn .create-2 {
-  position: absolute;
-  height: 80%;
-  width: 5px;
-}
-
-nav .create-btn .create-1 {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
-  border-right: none;
-  top: 0;
-  left: 10px;
-}
-
-nav .create-btn .create-2 {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: none;
-  border-right: 2px solid black;
-  top: 0;
-  right: 10px;
 }
 
 nav .create-active {
@@ -102,7 +79,7 @@ nav .search-box {
 
 nav .search-active {
   opacity: 1;
-  z-index: 1;
+  z-index: 4;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
 }
@@ -132,7 +109,7 @@ nav .search-ham {
 nav .search-ham .search-icon {
   font-size: 20px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 4;
 }
 
 nav .search-ham .ham-main {
@@ -153,6 +130,7 @@ nav .search-ham .ham-main {
   width: 30px;
   aspect-ratio: 1;
   cursor: pointer;
+  z-index: 5;
 }
 
 nav .search-ham .ham-main .ham-1, nav .search-ham .ham-main .ham-2, nav .search-ham .ham-main .ham-3 {
@@ -250,6 +228,6 @@ nav .search-ham .ham-main .ham-active-3 {
 .nav-links-active {
   opacity: 1;
   pointer-events: all;
-  z-index: 3;
+  z-index: 5;
 }
 /*# sourceMappingURL=header.css.map */

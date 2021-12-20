@@ -109,9 +109,7 @@ function Create(props) {
                 </div>
             </div>
             <div className='create-icon'>
-                <div className='create-icon-1'></div>
-                <AiOutlinePlus className='create-icon-2' onClick={handleCreateClick}/>
-                <div className='create-icon-3'></div>
+                <AiOutlinePlus className={`create-icon-2 ${createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>
             </div>
         </div>
     )

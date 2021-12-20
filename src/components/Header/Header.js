@@ -34,9 +34,7 @@ function Header(props) {
         <header>
             <nav>
                 <div className={`create-btn ${searchActive ? 'create-active' : '' }`}onClick={handleDelayClick}>
-                    <div className='create-1'></div>
                     <h1>create</h1>
-                    <div className='create-2'></div>
                 </div>
                 <input className={`search-box ${searchActive ? 'search-active' : ''}`} placeholder='[search]'/>
                 <div className='search-ham'>

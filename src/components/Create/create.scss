@@ -2,6 +2,17 @@
 @import '../Header/header.scss';
 
 .create-modal {
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.2s ease;
+}
+
+.modal-active {
+    opacity: 1;
+    transform: scale(1)
+}
+
+.create-modal, .modal-upper {
     @include flexCenter(column);
     width: 100vw;
     height: 100vh;
@@ -66,17 +77,31 @@
             .upload-container {
                 @include flexCenter(column);
                 width: 90%;
+                height: 10%;
 
-                input {
-                    border: none;
+                button {
+                    padding: 0;
+                    height: 100%;
                 }
             }
     
             .skeleton-load {
+                @include flexCenter(column);
                 width: 88%;
-                aspect-ratio: 1;
+                height: 90%;
                 border: 2px dashed rgb(184, 184, 184);
                 animation: skeleton 3.5s infinite ease-in-out;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            .skeleton-invis {
+                animation: none;
+                border: none;
+                width: 90%;
             }
         }
 
@@ -88,6 +113,7 @@
             .title-desc {
                 @include flexCenter(column);
                 width: 90%;
+                height: 100%;
                 aspect-ratio: 1;
                 gap: 2%;
 
@@ -121,7 +147,6 @@
                 aspect-ratio: 1;
                 overflow-y: scroll;
                 gap: 2%;
-
 
                 .tag-container {
                     @include flexCenter(row);
@@ -201,46 +226,48 @@
         }
 
     }
-
-    .create-icon {
-        @include flexCenter(row);
-        position: absolute;
-        width: 40px;
-        aspect-ratio: 1;
-        bottom: 20px;
-        right: 20px;
-      
-        .create-icon-1, .create-icon-3 {
-            position: absolute;
-            height: 90%;
-            width: 20%;
-        }
-      
-        .create-icon-1 {
-            @include bracketBorder($border, none);
-            left: 0;
-        }
-      
-        .create-icon-2 {
-            font-size: 30px;
-            cursor: pointer;
-        }
-      
-        .create-icon-3 {
-            @include bracketBorder(none, $border);
-            right: 0;
-        }
-    }  
 }
+
+.create-icon {
+    @include flexCenter(row);
+    position: absolute;
+    width: 40px;
+    aspect-ratio: 1;
+    bottom: 20px;
+    right: 20px;
+  
+    .create-icon-1, .create-icon-3 {
+        position: absolute;
+        height: 90%;
+        width: 20%;
+    }
+  
+    .create-icon-1 {
+        @include bracketBorder($border, none);
+        left: 0;
+    }
+  
+    .create-icon-2 {
+        font-size: 30px;
+        cursor: pointer;
+    }
+  
+    .create-icon-3 {
+        @include bracketBorder(none, $border);
+        right: 0;
+    }
+}  
 
 @keyframes skeleton {
     100%, 0% {
-        opacity: 0.3;
+        opacity: 0.2;
     }
     50% {
         opacity: 1;
     }
 }
+
+.modal-active {}
 
 @keyframes popIndicator {
     100%, 0% {

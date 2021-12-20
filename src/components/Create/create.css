@@ -278,6 +278,41 @@ nav .search-ham .ham-main .ham-active-3 {
   overflow: hidden;
 }
 
+.create-modal .slide-indicators {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  top: 15vh;
+  width: 100%;
+  gap: 5%;
+}
+
+.create-modal .slide-indicators .circle {
+  height: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid gray;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.create-modal .slide-indicators .dot {
+  background-color: gray;
+  -webkit-animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
+          animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
+}
+
 .create-modal .create-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -349,6 +384,10 @@ nav .search-ham .ham-main .ham-active-3 {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 90%;
+}
+
+.create-modal .create-form .upload-slide .upload-container input {
+  border: none;
 }
 
 .create-modal .create-form .upload-slide .skeleton-load {
@@ -610,6 +649,28 @@ nav .search-ham .ham-main .ham-active-3 {
   }
   50% {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes popIndicator {
+  100%, 0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+@keyframes popIndicator {
+  100%, 0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
   }
 }
 /*# sourceMappingURL=create.css.map */

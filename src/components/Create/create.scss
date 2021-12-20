@@ -13,6 +13,27 @@
     z-index: -1;
     overflow: hidden;
     
+    .slide-indicators {
+        position: absolute;
+        @include flexCenter(row);
+        top: 15vh;
+        width: 100%;
+        gap: 5%;
+
+        .circle {
+            height: 10px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid gray;
+            transition: 0.3s ease;
+        }
+
+        .dot {
+            background-color: gray;
+            animation: popIndicator 0.75s cubic-bezier(.35,0,.03,1.57);
+        }
+    }
+
     .create-form {
         @include flexCenter(row);
         position: absolute;
@@ -45,6 +66,10 @@
             .upload-container {
                 @include flexCenter(column);
                 width: 90%;
+
+                input {
+                    border: none;
+                }
             }
     
             .skeleton-load {
@@ -214,5 +239,14 @@
     }
     50% {
         opacity: 1;
+    }
+}
+
+@keyframes popIndicator {
+    100%, 0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
     }
 }

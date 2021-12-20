@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CgRemove } from 'react-icons/cg'
 import { useNavigate } from 'react-router'
@@ -11,6 +11,7 @@ function Create(props) {
     const [tagValue, setTagValue] = useState('')
     const [slideActive, setSlideActive] = useState(1)
     const navigate = useNavigate()
+    const fileRef = useRef()
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -21,6 +22,16 @@ function Create(props) {
         setTimeout(() => {
           navigate('/create')
         }, 500)
+    }
+
+    const handleFileUpload = () => {
+        fileRef.current.click()
+    }
+
+    const handleFileChange = () => {
+        console.log(fileRef.current.files[0])
+        setFormData({...formData, file: {title: fileRef.current.files[0].name, file: fileRef.current.files[0]}})
+
     }
 
     const handleTagSubmit = (e) => {
@@ -60,12 +71,17 @@ function Create(props) {
 
     return (
         <div className='create-modal'>
+            <div className='slide-indicators'>
+                <div className={`circle ${slideActive === 1 ? 'dot' : ''}`}></div>
+                <div className={`circle ${slideActive === 2 ? 'dot' : ''}`}></div>
+                <div className={`circle ${slideActive === 3 ? 'dot' : ''}`}></div>
+            </div>
             <div className={`create-form ${slideActive === 1 ? 'form-left' : slideActive === 2 ? 'form-mid' : slideActive === 3 ? 'form-right' : ''}`}>
                 <div className='upload-slide'>
                     <div className='skeleton-load'></div>
                     <div className='upload-container'>
-                        <input type='file' hidden/>
-                        <button>[upload]</button>
+                        <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
+                        <button onClick={handleFileUpload}>[upload]</button>
                     </div>
                 </div>
                 <div className='title-desc-slide'>

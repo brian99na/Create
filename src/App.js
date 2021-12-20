@@ -8,6 +8,7 @@ import Create from './components/Create/Create';
 
 function App() {
   const [pageLeave, setPageLeave] = useState(false)
+  const [login, setLogin] = useState(false)
 
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function App() {
       <Header setPageLeave={setPageLeave} pageLeave={pageLeave}/>
       <Routes>
         <Route path='/' exact element={<Homepage setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
-        <Route path='/sign-in' exact element={<Sign setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
+        <Route path='/sign-in' exact element={<Sign setPageLeave={setPageLeave} pageLeave={pageLeave} login={login} setLogin={setLogin}/>}/>
       </Routes>
       <Create setPageLeave={setPageLeave} pageLeave={pageLeave}/>
     </div>

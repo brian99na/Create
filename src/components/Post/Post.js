@@ -1,14 +1,11 @@
 import React from 'react'
 
-function Homepage() {
-
-
-
+function Post() {
     return (
         <div>
-            <h1></h1>
+            
         </div>
     )
 }
 
-export default Homepage
+export default Post

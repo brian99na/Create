@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
 import './sign.css'
 
 function Sign() {
@@ -6,6 +7,7 @@ function Sign() {
     const [signUp, setSignUp] = useState({email: '', password: '', passwordCheck: '', username: ''})
     const [error, setError] = useState({signIn: '', signUp: ''})
     const [signUpActive, setSignUpActive] = useState(false)
+    const navigate = useNavigate()
 
     const handlePageChange = () => {
         setSignUpActive(!signUpActive)
@@ -22,12 +24,14 @@ function Sign() {
     const handleSignInSubmit = (e) => {
         e.preventDefault();
         //axios call to verify and sign in or receive error
+        navigate('/')
     }
 
     const handleSignUpSubmit = (e) => {
         e.preventDefault();
         if (signUp.password === signUp.passwordCheck) {
             setError({signIn: '', signUp: ''})
+            navigate('/')
         } else {
             setError({...error, signUp: 'Passwords do not match'})
         }

@@ -92,7 +92,7 @@ function Create(props) {
                     <div className='title-desc-slide'>
                         <div className='title-desc'>
                             <input placeholder='title' maxLength='24' name='title' value={formData.title} onChange={handleChange}/>
-                            <textarea placeholder='description' name='desc' value={formData.desc} onChange={handleChange}/>
+                            <textarea placeholder='description' maxLength='500' name='desc' value={formData.desc} onChange={handleChange}/>
                         </div>
                     </div>
                     <form className='tags-slide' onSubmit={handleTagSubmit}>

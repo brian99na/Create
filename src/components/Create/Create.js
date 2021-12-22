@@ -2,12 +2,12 @@ import React, { useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CgRemove } from 'react-icons/cg'
 import './create.css'
-
+import axios from 'axios'
 
 
 function Create(props) {
     const [createActive, setCreateActive] = useState(false)
-    const [formData, setFormData] = useState({file: {title: '[upload]', file: ''}, title: '', desc: '', tags: ['art']})
+    const [formData, setFormData] = useState({file: '', title: '', desc: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
@@ -26,7 +26,7 @@ function Create(props) {
 
     const handleFileChange = () => {
         console.log(fileRef.current.files[0])
-        setFormData({...formData, file: {title: fileRef.current.files[0].name, file: URL.createObjectURL(fileRef.current.files[0])}})
+        setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
     }
 
     const handleTagSubmit = (e) => {
@@ -59,7 +59,8 @@ function Create(props) {
         setCreateActive(false)
         setSlideActive(1)
         // Axios call - upload files then do this \/
-        setFormData({file: {title: '[upload]', file: ''}, title: '', desc: '', tags: []})
+        axios.post('https://create-art.herokuapp.com/posts/', )
+        setFormData({file: '', title: '', desc: '', tags: []})
     }
 
     const tagsJsx = formData.tags && formData.tags.map((tag, index) => {
@@ -70,6 +71,8 @@ function Create(props) {
             </div>
         )
     })
+
+    console.log(formData)
 
     return (
         <div className='modal-upper'>
@@ -82,11 +85,11 @@ function Create(props) {
                 <div className={`create-form ${slideActive === 1 ? 'form-left' : slideActive === 2 ? 'form-mid' : slideActive === 3 ? 'form-right' : ''}`}>
                     <div className='upload-slide'>
                         <div className={`skeleton-load ${formData.file.file ? 'skeleton-invis' : ''}`}>
-                            <img src={formData.file.file} alt=''/>
+                            <img src={formData.file} alt=''/>
                         </div>
                         <div className='upload-container'>
                             <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
-                            <button onClick={handleFileUpload}>{formData.file.title}</button>
+                            <button onClick={handleFileUpload}>{formData.file.file ? formData.file.title : '[upload]'}</button>
                         </div>
                     </div>
                     <div className='title-desc-slide'>

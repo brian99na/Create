@@ -130,7 +130,8 @@ nav .search-ham .ham-main {
   width: 30px;
   aspect-ratio: 1;
   cursor: pointer;
-  z-index: 5;
+  background-color: none;
+  z-index: 6;
 }
 
 nav .search-ham .ham-main .ham-1, nav .search-ham .ham-main .ham-2, nav .search-ham .ham-main .ham-3 {

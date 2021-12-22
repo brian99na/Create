@@ -71,7 +71,8 @@ nav {
             width: 30px;
             aspect-ratio: 1;
             cursor: pointer;
-            z-index: 5;
+            background-color: none;
+            z-index: 6;
 
             .ham-1, .ham-2, .ham-3 {
                 height: 2px;

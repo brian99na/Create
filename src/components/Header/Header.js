@@ -10,6 +10,7 @@ function Header(props) {
 
     const [navActive, setNavActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
+    const [userActive, setUserActive] = useState(false)
 
     const handleNavClick = () => {
         setNavActive(!navActive)
@@ -26,10 +27,27 @@ function Header(props) {
         }, 500)
     }
 
+    const handleSignOutClick = () => {
+        localStorage.setItem('create-app', '[]')
+        setNavActive(!navActive)
+        setTimeout(() => {
+            props.setUserInfo('[]')
+            setUserActive(false)
+        }, 500);
+    }
+
     useEffect(() => {
         props.setPageLeave(false)
     }, [])
-    
+
+    useEffect(() => {
+        if (props.userInfo === '[]') {
+            setUserActive(false)
+        } else {
+            setUserActive(true)
+        }
+    }, [props.userInfo])
+
     return (
         <header>
             <nav>
@@ -48,15 +66,20 @@ function Header(props) {
             </nav>
             <div className={`nav-links ${navActive ? 'nav-links-active' : ''}`}>
                 <div className='nav-links-main'>
+                    {!userActive ? 
                     <Link to='/sign-in' onClick={handleNavClick}>
                         <h1>[Sign In]</h1>
-                    </Link>
+                    </Link> :
+                    <Link to={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>
+                        <h1>[Profile]</h1>
+                    </Link>}
                     <Link to='/' onClick={handleNavClick}>
                         <h1>[Home]</h1>
                     </Link>
-                    <Link to={`/${props.username}`} onClick={handleNavClick}>
-                        <h1>[Profile]</h1>
-                    </Link>
+                    {userActive && 
+                    <Link to='/' onClick={handleSignOutClick}>
+                        <h1>[Sign Out]</h1>
+                    </Link>}
                 </div>
             </div>
         </header>

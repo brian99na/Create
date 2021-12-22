@@ -6,7 +6,7 @@ import axios from 'axios'
 function Sign(props) {
     const [signIn, setSignIn] = useState({user: {email: '', password: ''}})
     const [signUp, setSignUp] = useState({email: '', password: '', passwordCheck: '', username: ''})
-    const [error, setError] = useState({signIn: false, signUp: false})
+    const [error, setError] = useState({signIn: false, signUp: false, msg: ''})
     const [signUpActive, setSignUpActive] = useState(false)
     const navigate = useNavigate()
 
@@ -27,32 +27,53 @@ function Sign(props) {
 
     const localStore = (res) => {
         let oldToken = JSON.parse(localStorage.getItem('create-app'));
+        oldToken.pop()
         oldToken.push(res.data.user)
         localStorage.setItem('create-app', JSON.stringify(oldToken));
+    }
+
+    const signInFunction = (details) => {
+        axios.post('https://create-art.herokuapp.com/sign-in/', details)
+            .then((res) => {
+                setError({...error, signIn: false, msg: ''});
+                props.setUserInfo(res.data.user);
+                localStore(res)
+                navigate(`/users/${res.data.user.id}`)
+            })
+            .catch((err) => {
+                setError({...error, signIn: true, msg: 'sign-in failed'})
+            })
     }
 
     const handleSignInSubmit = (e) => {
         e.preventDefault();
         //axios call to verify and sign in or receive error
-        axios.post('https://create-art.herokuapp.com/sign-in/', signIn)
-            .then((res) => {
-                setError(false);
-                props.setUserInfo(res.data.user);
-                localStore(res)
-                navigate(`/users/${props.userInfo.user_name}`)
-            })
-            .catch((err) => {
-                setError(true)
-            })
+        signInFunction(signIn)
     }
 
     const handleSignUpSubmit = (e) => {
         e.preventDefault();
         if (signUp.password === signUp.passwordCheck) {
-            setError({signIn: '', signUp: ''})
-            navigate('/')
+            setError({...error, signUp: false, msg: ''})
+            axios.post('https://create-art.herokuapp.com/sign-up/', {user: {
+                email: signUp.email,
+                password: signUp.password,
+                user_name: signUp.username
+            }})
+                .then((res) => {
+                    let signInDetails = {
+                        user: {
+                            email: signUp.email,
+                            password: signUp.password
+                        }
+                    }
+                    signInFunction(signInDetails)
+                })
+                .catch((err) => {
+                    setError({...error, signUp: true, msg: 'sign-up failed'})
+                })
         } else {
-            setError({...error, signUp: 'Passwords do not match'})
+            setError({...error, signUp: true, msg: 'passwords do not match'})
         }
     }
     
@@ -78,7 +99,7 @@ function Sign(props) {
                         <input placeholder='[create username]' name='username' onChange={handleUpChange} value={signUp.username}/>
                         <button type='submit'>[sign up]</button>
                         <p onClick={handlePageChange}>back to sign in</p>
-                        <p className='error'>{error.signUp ? 'Error, try again' : null}</p>
+                        <p className='error'>{error.signUp ? `error: ${error.msg}` : ''}</p>
                     </form>
                 </section>
             </div>

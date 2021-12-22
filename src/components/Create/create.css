@@ -33,7 +33,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: -1;
+  z-index: -5;
   overflow: hidden;
 }
 
@@ -392,6 +392,7 @@
   aspect-ratio: 1;
   bottom: 20px;
   right: 20px;
+  z-index: 100;
 }
 
 .create-icon .create-icon-2 {

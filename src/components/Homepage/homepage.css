@@ -1,1 +1,79 @@
-/* No CSS *//*# sourceMappingURL=homepage.css.map */
+.homepage {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.homepage .tag-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow-x: scroll;
+  margin: 5vh 0 0 0;
+  height: 5vh;
+  gap: 20px;
+}
+
+.homepage .posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 90%;
+  gap: 3%;
+}
+
+.homepage .posts .post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+}
+
+.homepage .posts .post-container p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.homepage .posts .post-container .file-container {
+  width: 100%;
+}
+
+.homepage .posts .post-container .file-container video, .homepage .posts .post-container .file-container img {
+  width: 100%;
+}
+/*# sourceMappingURL=homepage.css.map */

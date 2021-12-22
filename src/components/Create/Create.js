@@ -7,7 +7,7 @@ import axios from 'axios'
 
 function Create(props) {
     const [createActive, setCreateActive] = useState(false)
-    const [formData, setFormData] = useState({file: '', title: '', desc: '', tags: ['art']})
+    const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
@@ -24,8 +24,10 @@ function Create(props) {
         fileRef.current.click()
     }
 
-    const handleFileChange = () => {
+    const handleFileChange = (e) => {
         console.log(fileRef.current.files[0])
+        console.log(e.target.files[0])
+
         setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
     }
 
@@ -58,9 +60,18 @@ function Create(props) {
     const handleCreate = () => {
         setCreateActive(false)
         setSlideActive(1)
-        // Axios call - upload files then do this \/
-        axios.post('https://create-art.herokuapp.com/posts/', )
-        setFormData({file: '', title: '', desc: '', tags: []})
+        let config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization': `Token ${props.userInfo.token}`
+            }
+        }
+        console.log(config)
+        axios.post('http://localhost:8000/posts/', formData, config)
+            .then(() => {
+                setFormData({file: '', title: '', desc: '', tags: []})
+            })
     }
 
     const tagsJsx = formData.tags && formData.tags.map((tag, index) => {
@@ -73,6 +84,7 @@ function Create(props) {
     })
 
     console.log(formData)
+    console.log(props.userInfo)
 
     return (
         <div className='modal-upper'>

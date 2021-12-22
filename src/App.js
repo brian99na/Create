@@ -10,13 +10,13 @@ import Create from './components/Create/Create';
 function App() {
   const [pageLeave, setPageLeave] = useState(false)
   const [login, setLogin] = useState(false)
-  const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState([])
 
   const localStorageLoad = () => {
     if (localStorage.getItem('create-app') == null) {
       localStorage.setItem('create-app', '[]')
     } else {
-      let localToken = localStorage.getItem('create-app')
+      let localToken = JSON.parse(localStorage.getItem('create-app'))
       setUserInfo(localToken)
     }
   }
@@ -32,11 +32,11 @@ function App() {
     <div className="App">
       <Header userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>
       <Routes>
-        <Route path='/' exact element={<Homepage setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
-        <Route path='/sign-in' exact element={<Sign userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave} login={login} setLogin={setLogin}/>}/>
-        <Route path='/users/:id' exact element={<User userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave} login={login} setLogin={setLogin}/>}/>
+        <Route path='/' element={<Homepage setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
+        <Route path='/sign-in' element={<Sign userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave} login={login} setLogin={setLogin}/>}/>
+        <Route path='/users/:id' element={<User userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave} login={login} setLogin={setLogin}/>}/>
       </Routes>
-      <Create setPageLeave={setPageLeave} pageLeave={pageLeave}/>
+      <Create userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>
     </div>
   );
 }

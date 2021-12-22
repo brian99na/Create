@@ -1,0 +1,46 @@
+@import '../../sass/flex.scss';
+
+.homepage {
+    overflow-x: hidden;
+    width: 100%;
+
+    .tag-bar {
+        @include flexCenter(row);
+        overflow-x: scroll;
+        margin: 5vh 0 0 0;
+        height: 5vh;
+        gap: 20px;
+
+        .tag-container {
+            
+        }
+
+    }
+
+    .posts {
+        @include flexCenter(row);
+        width: 90%;
+        gap: 3%;
+
+
+        .post-container {
+            @include flexCenter(column);
+            width: 30%;
+            height: fit-content;
+            flex-wrap: wrap;
+            position: relative;
+
+            p {
+                align-self: flex-start;
+            }
+
+            .file-container {
+                width: 100%;
+
+                video, img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

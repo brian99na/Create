@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import './sign.css'
 import axios from 'axios'
@@ -38,7 +38,10 @@ function Sign(props) {
                 setError({...error, signIn: false, msg: ''});
                 props.setUserInfo(res.data.user);
                 localStore(res)
-                navigate(`/users/${res.data.user.id}`)
+                props.setPageLeave(true)
+                setTimeout(() => {
+                    navigate(`/users/${res.data.user.id}`)
+                }, 500);
             })
             .catch((err) => {
                 setError({...error, signIn: true, msg: 'sign-in failed'})
@@ -76,9 +79,13 @@ function Sign(props) {
             setError({...error, signUp: true, msg: 'passwords do not match'})
         }
     }
+
+    useEffect(() => {
+        props.setPageLeave(false)
+    }, [])
     
     return (
-        <div className='sign-page'>
+        <div className={`sign-page ${props.pageLeave ? 'sign-leave' : ''}`}>
             <div className={`sign-container ${signUpActive ? 'sign-up-page' : ''}`}>
                 <section className='sign-in'>
                     <form onSubmit={handleSignInSubmit}>

@@ -5,6 +5,9 @@
     z-index: 0;
     width: 100%;
     gap: 20px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s ease;
 
     .profile {
         @include flexCenter(row);
@@ -26,6 +29,7 @@
         width: 90%;
         
         p {
+            padding: 5vh 0 0 0;
             align-self: center;
         }
 
@@ -33,6 +37,7 @@
             @include flexCenter(row);
             flex-wrap: wrap;
             width: 100%;
+            padding: 5vh 0;
 
             .creation-container {
                 width: 45%;
@@ -55,4 +60,9 @@
         }
 
     }
+}
+
+.user-leave {
+    opacity: 0;
+    transform: translateY(-30px);
 }

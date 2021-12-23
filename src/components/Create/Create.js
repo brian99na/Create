@@ -41,7 +41,7 @@ function Create(props) {
 
     const handleFileChange = (e) => {
 
-        setFormData({...formData, file: fileRef.current.files[0]})
+        setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
     }
 
     const handleTagSubmit = (e) => {
@@ -112,6 +112,7 @@ function Create(props) {
     }, [props.userInfo])
 
     console.log(formData)
+    console.log(props.userInfo)
 
     return (
         <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>

@@ -13,6 +13,11 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .post-upper .post-container {
@@ -77,9 +82,16 @@
 .post-upper .post-container .tag-container p {
   border: 1px solid gray;
   border-radius: 15px;
-  padding: 0 15px;
+  padding: 3px 15px;
+  margin: 2px 0;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.post-leave {
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
 }
 /*# sourceMappingURL=post.css.map */

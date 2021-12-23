@@ -11,7 +11,10 @@ function User(props) {
     const imageFormats = ['png', 'jpeg']
 
     const handlePostClick = (e, user, id) => {
-        navigate(`/users/${user}/${id}`)
+        props.setPageLeave(true)
+        setTimeout(() => {
+            navigate(`/users/${user}/${id}`)
+        }, 500);
     }
 
     const getUserPosts = () => {
@@ -28,6 +31,7 @@ function User(props) {
     useEffect(() => {
         setTimeout(() => {
             getUserPosts()
+            props.setPageLeave(false)
         }, 300);
     }, [])
 
@@ -48,7 +52,7 @@ function User(props) {
     })
 
     return (
-        <div className='user-page'>
+        <div className={`user-page ${props.pageLeave ? 'user-leave' : ''}`}>
             <div className='profile'>
                 <div className='icon'></div>
                 <h1>{props.userInfo.user_name}</h1>

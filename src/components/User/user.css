@@ -15,6 +15,11 @@
   z-index: 0;
   width: 100%;
   gap: 20px;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .user-page .profile {
@@ -64,6 +69,7 @@
 }
 
 .user-page .creation-container p {
+  padding: 5vh 0 0 0;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -86,6 +92,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  padding: 5vh 0;
 }
 
 .user-page .creation-container .creations .creation-container {
@@ -104,5 +111,11 @@
 
 .user-page .creation-container .creations .creation-container .creation-file img, .user-page .creation-container .creations .creation-container .creation-file video {
   width: 100%;
+}
+
+.user-leave {
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
 }
 /*# sourceMappingURL=user.css.map */

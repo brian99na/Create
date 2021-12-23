@@ -21,14 +21,17 @@ function Header(props) {
 
     const handleDelayClick = () => {
         props.setPageLeave(true)
+        props.setPageLeave(true)
         setTimeout(() => {
             navigate('/')
+            props.setPageLeave(false)
         }, 500)
     }
 
     const handleSignOutClick = () => {
         localStorage.setItem('create-app', '[]')
         setNavActive(!navActive)
+        props.setPageLeave(true)
         setTimeout(() => {
             props.setUserInfo('')
         }, 500);

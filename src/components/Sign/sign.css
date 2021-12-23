@@ -17,6 +17,11 @@
   background-color: #fcfcfc;
   overflow: hidden;
   position: relative;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .sign-page input, .sign-page button {
@@ -132,6 +137,12 @@
 
 .sign-page .sign-up-page {
   left: -100vw;
+}
+
+.sign-leave {
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
 }
 
 @-webkit-keyframes error {

@@ -7,6 +7,9 @@
     background-color: rgb(252, 252, 252);
     overflow: hidden;
     position: relative;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s ease;
 
     input, button {
         width: 100%;
@@ -74,6 +77,11 @@
         left: -100vw;
     }
 
+}
+
+.sign-leave {
+    opacity: 0;
+    transform: translateY(-30px);
 }
 
 @keyframes error {

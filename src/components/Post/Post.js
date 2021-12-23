@@ -24,6 +24,7 @@ function Post(props) {
     useEffect(() => {
         setTimeout(() => {
             getPost()
+            props.setPageLeave(false)
         }, 300)
     }, [])
 
@@ -36,7 +37,7 @@ function Post(props) {
     console.log(postData)
 
     return (
-        <div className='post-upper'>
+        <div className={`post-upper ${props.pageLeave ? 'post-leave' : ''}`}>
             <div className='post-container'>
                 <div className='file-container'>
                     {(postData && postData.file && imageFormats.includes(postData.file.slice(-3))) ? 
@@ -44,7 +45,7 @@ function Post(props) {
                     <video playsInline autostart='true' autoPlay loop controls={false} muted src={postData.file}></video>
                     }
                 </div>
-                <h1>{postData.title.split(',').join(' ')}</h1>
+                <h1>{postData && postData.title && postData.title.split(',').join(' ')}</h1>
                 <p>{postData && postData.desc.split(',').join(' ')}</p>
                 <div className='tag-container'>
                         {postData && postData.tags && postData.tags[0].split(',').map(tag => <p className='tag'>{tag}</p>)}

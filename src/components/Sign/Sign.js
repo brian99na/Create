@@ -55,7 +55,7 @@ function Sign(props) {
         e.preventDefault();
         if (signUp.password === signUp.passwordCheck) {
             setError({...error, signUp: false, msg: ''})
-            axios.post('https://localhost:8000/sign-up/', {user: {
+            axios.post('http://localhost:8000/sign-up/', {user: {
                 email: signUp.email,
                 password: signUp.password,
                 user_name: signUp.username

@@ -172,14 +172,13 @@
   overflow: hidden;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .skeleton-load img {
-  height: 100%;
+.modal-upper .create-modal .create-form .upload-slide .skeleton-load img, .modal-upper .create-modal .create-form .upload-slide .skeleton-load video {
+  width: 100%;
 }
 
 .modal-upper .create-modal .create-form .upload-slide .skeleton-invis {
-  -webkit-animation: none;
-          animation: none;
-  border: none;
+  -webkit-animation: skeleVisible;
+          animation: skeleVisible;
   width: 90%;
 }
 
@@ -364,12 +363,14 @@
 .modal-upper .create-modal .btn-container .create-btn {
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
+  pointer-events: none;
 }
 
 .modal-upper .create-modal .btn-container .btn-active {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+  pointer-events: all;
 }
 
 .modal-upper .modal-active {
@@ -449,6 +450,18 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes skeleVisible {
+  100%, 0% {
+    opacity: 0;
+  }
+}
+
+@keyframes skeleVisible {
+  100%, 0% {
+    opacity: 0;
   }
 }
 

@@ -15,6 +15,9 @@ function Create(props) {
     const fileRef = useRef()
     const navigate = useNavigate()
 
+    const imageFormats = ['png', 'jpeg']
+
+
     const loadToken = () => {
         setTimeout(() => {
             props.userInfo && setToken(props.userInfo.token)
@@ -26,8 +29,10 @@ function Create(props) {
     }
 
     const handleCreateClick = () => {
+        if (createActive) {
+            setFormData({title: '', desc: '', file: '', tags: ['art']})
+        }
         setCreateActive(!createActive)
-
     }
 
     const handleFileUpload = () => {
@@ -35,10 +40,8 @@ function Create(props) {
     }
 
     const handleFileChange = (e) => {
-        console.log(fileRef.current.files[0])
-        console.log(e.target.files[0])
 
-        setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
+        setFormData({...formData, file: fileRef.current.files[0]})
     }
 
     const handleTagSubmit = (e) => {
@@ -68,12 +71,11 @@ function Create(props) {
     }
 
     const handleCreate = () => {
-        setSlideActive(1)
         const fd = new FormData()
-        fd.append('title', formData.title)
+        fd.append('title', formData.title.split(' ').join(','))
         fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-        fd.append('desc', formData.desc)
-        fd.append('tags', formData.tags)
+        fd.append('desc', formData.desc.split(' ').join(','))
+        fd.append('tags', [...formData.tags])
         console.log(fd)
         axios.post('http://localhost:8000/posts/', fd, {
             headers: {
@@ -82,11 +84,13 @@ function Create(props) {
             }
         })
         .then((res) => {
+            console.log(res)
             setCreateActive(false)
-            navigate(`/users/${res.user}/${res.id}`)
+            navigate(`/users/${res.data.user}/${res.data.id}`)
         })
         .then(() => {
             setFormData({file: '', title: '', desc: '', tags: []})
+            setSlideActive(1)
         })
     }
 
@@ -108,10 +112,6 @@ function Create(props) {
     }, [props.userInfo])
 
     console.log(formData)
-    console.log(formData.file)
-    console.log(token)
-    console.log(typeof formData.tags[0])
-    console.log(props.userInfo)
 
     return (
         <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>
@@ -123,8 +123,10 @@ function Create(props) {
                 </div>
                 <div className={`create-form ${slideActive === 1 ? 'form-left' : slideActive === 2 ? 'form-mid' : slideActive === 3 ? 'form-right' : ''}`}>
                     <div className='upload-slide'>
-                        <div className={`skeleton-load ${formData.file.file ? 'skeleton-invis' : ''}`}>
-                            <img src={formData.file} alt=''/>
+                        <div className={`skeleton-load ${formData.file ? 'skeleton-invis' : ''}`}>
+                            {formData.file && imageFormats.includes(formData.file.slice(-3)) ? 
+                            <img alt='' src={formData.file}/> : 
+                            <video playsInline autostart='true' autoPlay loop controls={false} muted src={formData.file}></video>}
                         </div>
                         <div className='upload-container'>
                             <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>

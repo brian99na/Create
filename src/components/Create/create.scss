@@ -92,14 +92,13 @@
                     animation: skeleton 3.5s infinite ease-in-out;
                     overflow: hidden;
     
-                    img {
-                        height: 100%;
+                    img, video {
+                        width: 100%;
                     }
                 }
     
                 .skeleton-invis {
-                    animation: none;
-                    border: none;
+                    animation: skeleVisible;
                     width: 90%;
                 }
             }
@@ -217,11 +216,13 @@
     
             .create-btn {
                 transform: translateY(-30px);
+                pointer-events: none;
             }
     
             .btn-active {
                 opacity: 1;
-                transform: translateY(0)
+                transform: translateY(0);
+                pointer-events: all;
             }
     
         }
@@ -277,6 +278,12 @@
     }
     50% {
         opacity: 1;
+    }
+}
+
+@keyframes skeleVisible {
+    100%, 0% {
+        opacity: 0;
     }
 }
 

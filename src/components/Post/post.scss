@@ -1,0 +1,43 @@
+@import '../../sass/flex.scss';
+
+.post-upper {
+    @include flexCenter(column);
+    width: 100%;
+
+    .post-container {
+        @include flexCenter(column);
+        margin: 10vh 0 0 0;
+        width: 90%;
+        gap: 15px;
+
+        .file-container {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+
+            img, video {
+                width: 100%;
+            }
+        }
+
+        h1, p {
+            width: 100%;
+            align-self: left;
+        }
+
+        .tag-container {
+            @include flexCenter(row);
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 2%;
+            width: 100%;
+
+            p {
+                border: 1px solid gray;
+                border-radius: 15px;
+                padding: 0 15px;
+                width: fit-content;
+            }
+        }
+    }
+}

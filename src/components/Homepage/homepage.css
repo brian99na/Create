@@ -1,6 +1,7 @@
 .homepage {
   overflow-x: hidden;
   width: 100%;
+  z-index: 0;
 }
 
 .homepage .tag-bar {
@@ -17,10 +18,32 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   overflow-x: scroll;
-  margin: 5vh 0 0 0;
-  height: 5vh;
+  margin: 10vh 0 0 0;
+  padding: 0 10vw;
+  height: 10vh;
   gap: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.homepage .tag-bar .tag-container h1 {
+  font-size: 20px;
+  border: 1px solid gray;
+  border-radius: 25px;
+  padding: 5px 15px;
+}
+
+.homepage .tag-bar::-webkit-scrollbar {
+  height: 8px;
+  border: 1px solid lightgray;
+}
+
+.homepage .tag-bar::-webkit-scrollbar-thumb {
+  background-color: gray;
 }
 
 .homepage .posts {
@@ -37,8 +60,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 90%;
+  width: 100%;
   gap: 3%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5vh 0 0 0;
 }
 
 .homepage .posts .post-container {
@@ -55,12 +81,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 30%;
+  width: 45%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   position: relative;
 }
 
@@ -71,9 +95,16 @@
 
 .homepage .posts .post-container .file-container {
   width: 100%;
+  aspect-ratio: 1;
+  position: relative;
 }
 
 .homepage .posts .post-container .file-container video, .homepage .posts .post-container .file-container img {
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  bottom: 0;
 }
 /*# sourceMappingURL=homepage.css.map */

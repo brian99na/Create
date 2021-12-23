@@ -1,16 +1,25 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CgRemove } from 'react-icons/cg'
 import './create.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 
 function Create(props) {
     const [createActive, setCreateActive] = useState(false)
     const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
+    const [token, setToken] = useState('')
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
+    const navigate = useNavigate()
+
+    const loadToken = () => {
+        setTimeout(() => {
+            props.userInfo && setToken(props.userInfo.token)
+        }, 300);
+    }
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -18,6 +27,7 @@ function Create(props) {
 
     const handleCreateClick = () => {
         setCreateActive(!createActive)
+
     }
 
     const handleFileUpload = () => {
@@ -58,20 +68,26 @@ function Create(props) {
     }
 
     const handleCreate = () => {
-        setCreateActive(false)
         setSlideActive(1)
-        let config = {
+        const fd = new FormData()
+        fd.append('title', formData.title)
+        fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+        fd.append('desc', formData.desc)
+        fd.append('tags', formData.tags)
+        console.log(fd)
+        axios.post('http://localhost:8000/posts/', fd, {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                'Authorization': `Token ${props.userInfo.token}`
+                'Content-Type': 'application/json',
+                Authorization: 'Token ' + token
             }
-        }
-        console.log(config)
-        axios.post('http://localhost:8000/posts/', formData, config)
-            .then(() => {
-                setFormData({file: '', title: '', desc: '', tags: []})
-            })
+        })
+        .then((res) => {
+            setCreateActive(false)
+            navigate(`/users/${res.user}/${res.id}`)
+        })
+        .then(() => {
+            setFormData({file: '', title: '', desc: '', tags: []})
+        })
     }
 
     const tagsJsx = formData.tags && formData.tags.map((tag, index) => {
@@ -83,11 +99,22 @@ function Create(props) {
         )
     })
 
+    useEffect(() => {
+        loadToken()
+    }, [])
+
+    useEffect(() => {
+        loadToken()
+    }, [props.userInfo])
+
     console.log(formData)
+    console.log(formData.file)
+    console.log(token)
+    console.log(typeof formData.tags[0])
     console.log(props.userInfo)
 
     return (
-        <div className='modal-upper'>
+        <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>
             <div className={`create-modal ${createActive ? 'modal-active' : ''}`}>
                 <div className='slide-indicators'>
                     <div className={`circle ${slideActive === 1 ? 'dot' : ''}`}></div>

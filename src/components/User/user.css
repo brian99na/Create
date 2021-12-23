@@ -1,1 +1,108 @@
-/* No CSS *//*# sourceMappingURL=user.css.map */
+.user-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 0;
+  width: 100%;
+  gap: 20px;
+}
+
+.user-page .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 10vh 0 0 0;
+  width: 90%;
+  gap: 10%;
+}
+
+.user-page .profile .icon {
+  background-color: #e2e2e2;
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.user-page .creation-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 90%;
+}
+
+.user-page .creation-container p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.user-page .creation-container .creations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.user-page .creation-container .creations .creation-container {
+  width: 45%;
+}
+
+.user-page .creation-container .creations .creation-container h1 {
+  font-size: 20px;
+}
+
+.user-page .creation-container .creations .creation-container .creation-file {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.user-page .creation-container .creations .creation-container .creation-file img, .user-page .creation-container .creations .creation-container .creation-file video {
+  width: 100%;
+}
+/*# sourceMappingURL=user.css.map */

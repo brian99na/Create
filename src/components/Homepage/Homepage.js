@@ -10,6 +10,8 @@ function Homepage() {
     const [filterBool, setFilterBool] = useState(false)
     const navigate = useNavigate()
 
+    const imageFormats = ['png', 'jpeg']
+
     const getAllPosts = () => {
         axios.get('http://localhost:8000/all/')
             .then((res) => {
@@ -27,7 +29,7 @@ function Homepage() {
     }
     
     const handlePostClick = (e) => {
-        navigate(`/users/${e.target.id}/${e.target.post_id}`)
+        navigate(`/users${e.target.id}/${e.target.post_id}`)
     }
 
     const handleTagClick = () => {
@@ -46,8 +48,7 @@ function Homepage() {
             <div className='post-container' post_id={post.id} user_id={post.user} onClick={handlePostClick}>
                 <p>{post.title}</p>
                 <div className='file-container'>
-                    <img alt='' src={post.file}/>
-                    <video playsinline autostart autoPlay loop controls={false} muted src={post.file}></video>
+                    {post.file && imageFormats.includes(post.file.slice(-3)) ? <img alt='' src={post.file}/> : <video playsInline autostart='true' autoPlay loop controls={false} muted src={post.file}></video>}
                 </div>
             </div>
 
@@ -64,7 +65,6 @@ function Homepage() {
 
     return (
         <div className='homepage'>
-            <h1>hello</h1>
             <div className='tag-bar'>
                 {tagJsx}
             </div>

@@ -1,0 +1,58 @@
+@import '../../sass/flex.scss';
+
+.user-page {
+    @include flexCenter(column);
+    z-index: 0;
+    width: 100%;
+    gap: 20px;
+
+    .profile {
+        @include flexCenter(row);
+        padding: 10vh 0 0 0;
+        width: 90%;
+        gap: 10%;
+
+        .icon {
+            background-color: rgb(226, 226, 226);
+            width: 30%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+    }
+
+    .creation-container {
+        @include flexCenter(column);
+        align-items: flex-start;
+        width: 90%;
+        
+        p {
+            align-self: center;
+        }
+
+        .creations {
+            @include flexCenter(row);
+            flex-wrap: wrap;
+            width: 100%;
+
+            .creation-container {
+                width: 45%;
+
+                h1 {
+                    font-size: 20px;
+                }
+
+                .creation-file {
+                    width: 100%;
+                    aspect-ratio: 1;
+                    overflow: hidden;
+
+                    img, video {
+                        width: 100%;
+                    }
+                }
+
+            }
+        }
+
+    }
+}

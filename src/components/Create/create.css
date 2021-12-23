@@ -1,18 +1,18 @@
-.create-modal {
-  opacity: 0;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
+.modal-upper {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  position: fixed;
+  background: transparent;
+  overflow: hidden;
 }
 
-.modal-active {
-  opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.create-modal, .modal-upper {
+.modal-upper .create-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,18 +26,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  z-index: -5;
-  overflow: hidden;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.create-modal .slide-indicators, .modal-upper .slide-indicators {
+.modal-upper .create-modal .slide-indicators {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,7 +56,7 @@
   gap: 5%;
 }
 
-.create-modal .slide-indicators .circle, .modal-upper .slide-indicators .circle {
+.modal-upper .create-modal .slide-indicators .circle {
   height: 10px;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -66,13 +65,13 @@
   transition: 0.3s ease;
 }
 
-.create-modal .slide-indicators .dot, .modal-upper .slide-indicators .dot {
+.modal-upper .create-modal .slide-indicators .dot {
   background-color: gray;
   -webkit-animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
           animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
 }
 
-.create-modal .create-form, .modal-upper .create-form {
+.modal-upper .create-modal .create-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,7 +92,7 @@
   transition: 0.3s ease;
 }
 
-.create-modal .create-form input, .create-modal .create-form textarea, .create-modal .create-form button, .modal-upper .create-form input, .modal-upper .create-form textarea, .modal-upper .create-form button {
+.modal-upper .create-modal .create-form input, .modal-upper .create-modal .create-form textarea, .modal-upper .create-modal .create-form button {
   width: 97%;
   border: none;
   outline: none;
@@ -103,13 +102,13 @@
   font-size: 20px;
 }
 
-.create-modal .create-form button, .modal-upper .create-form button {
+.modal-upper .create-modal .create-form button {
   width: 100%;
   padding: 10px 0;
   border: none;
 }
 
-.create-modal .create-form .upload-slide, .modal-upper .create-form .upload-slide {
+.modal-upper .create-modal .create-form .upload-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -128,7 +127,7 @@
   gap: 2%;
 }
 
-.create-modal .create-form .upload-slide .upload-container, .modal-upper .create-form .upload-slide .upload-container {
+.modal-upper .create-modal .create-form .upload-slide .upload-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,12 +145,12 @@
   height: 10%;
 }
 
-.create-modal .create-form .upload-slide .upload-container button, .modal-upper .create-form .upload-slide .upload-container button {
+.modal-upper .create-modal .create-form .upload-slide .upload-container button {
   padding: 0;
   height: 100%;
 }
 
-.create-modal .create-form .upload-slide .skeleton-load, .modal-upper .create-form .upload-slide .skeleton-load {
+.modal-upper .create-modal .create-form .upload-slide .skeleton-load {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -173,18 +172,18 @@
   overflow: hidden;
 }
 
-.create-modal .create-form .upload-slide .skeleton-load img, .modal-upper .create-form .upload-slide .skeleton-load img {
+.modal-upper .create-modal .create-form .upload-slide .skeleton-load img {
   height: 100%;
 }
 
-.create-modal .create-form .upload-slide .skeleton-invis, .modal-upper .create-form .upload-slide .skeleton-invis {
+.modal-upper .create-modal .create-form .upload-slide .skeleton-invis {
   -webkit-animation: none;
           animation: none;
   border: none;
   width: 90%;
 }
 
-.create-modal .create-form .title-desc-slide, .modal-upper .create-form .title-desc-slide {
+.modal-upper .create-modal .create-form .title-desc-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,7 +201,7 @@
   aspect-ratio: 1;
 }
 
-.create-modal .create-form .title-desc-slide .title-desc, .modal-upper .create-form .title-desc-slide .title-desc {
+.modal-upper .create-modal .create-form .title-desc-slide .title-desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -222,18 +221,18 @@
   gap: 2%;
 }
 
-.create-modal .create-form .title-desc-slide .title-desc input, .modal-upper .create-form .title-desc-slide .title-desc input {
+.modal-upper .create-modal .create-form .title-desc-slide .title-desc input {
   font-size: 20px;
   height: 10%;
 }
 
-.create-modal .create-form .title-desc-slide .title-desc textarea, .modal-upper .create-form .title-desc-slide .title-desc textarea {
+.modal-upper .create-modal .create-form .title-desc-slide .title-desc textarea {
   font-size: 20px;
   resize: none;
   height: 85%;
 }
 
-.create-modal .create-form .tags-slide, .modal-upper .create-form .tags-slide {
+.modal-upper .create-modal .create-form .tags-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -253,7 +252,7 @@
   aspect-ratio: 1;
 }
 
-.create-modal .create-form .tags-slide .tags-container, .modal-upper .create-form .tags-slide .tags-container {
+.modal-upper .create-modal .create-form .tags-slide .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,7 +282,7 @@
   gap: 2%;
 }
 
-.create-modal .create-form .tags-slide .tags-container .tag-container, .modal-upper .create-form .tags-slide .tags-container .tag-container {
+.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -303,48 +302,48 @@
   padding: 1% 5%;
 }
 
-.create-modal .create-form .tags-slide .tags-container .tag-container .tag, .modal-upper .create-form .tags-slide .tags-container .tag-container .tag {
+.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
   font-size: 20px;
 }
 
-.create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag, .modal-upper .create-form .tags-slide .tags-container .tag-container .remove-tag {
+.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
   font-size: 24px;
 }
 
-.create-modal .create-form .tags-slide input, .modal-upper .create-form .tags-slide input {
+.modal-upper .create-modal .create-form .tags-slide input {
   width: 85%;
 }
 
-.create-modal .create-form .tags-slide button, .modal-upper .create-form .tags-slide button {
+.modal-upper .create-modal .create-form .tags-slide button {
   padding: 0;
   height: 100%;
   width: 45%;
 }
 
-.create-modal .create-form .remove-tag, .modal-upper .create-form .remove-tag {
+.modal-upper .create-modal .create-form .remove-tag {
   cursor: pointer;
 }
 
-.create-modal .form-left, .modal-upper .form-left {
+.modal-upper .create-modal .form-left {
   left: 0;
 }
 
-.create-modal .form-mid, .modal-upper .form-mid {
+.modal-upper .create-modal .form-mid {
   left: -100vw;
 }
 
-.create-modal .form-right, .modal-upper .form-right {
+.modal-upper .create-modal .form-right {
   left: -200vw;
 }
 
-.create-modal .btn-container, .modal-upper .btn-container {
+.modal-upper .create-modal .btn-container {
   position: absolute;
   bottom: 15vh;
   width: 90%;
   height: 5vh;
 }
 
-.create-modal .btn-container .back-btn, .create-modal .btn-container .next-btn, .create-modal .btn-container .create-btn, .modal-upper .btn-container .back-btn, .modal-upper .btn-container .next-btn, .modal-upper .btn-container .create-btn {
+.modal-upper .create-modal .btn-container .back-btn, .modal-upper .create-modal .btn-container .next-btn, .modal-upper .create-modal .btn-container .create-btn {
   position: absolute;
   width: 45%;
   height: 100%;
@@ -358,19 +357,33 @@
   font-size: 20px;
 }
 
-.create-modal .btn-container .next-btn, .create-modal .btn-container .create-btn, .modal-upper .btn-container .next-btn, .modal-upper .btn-container .create-btn {
+.modal-upper .create-modal .btn-container .next-btn, .modal-upper .create-modal .btn-container .create-btn {
   right: 0;
 }
 
-.create-modal .btn-container .create-btn, .modal-upper .btn-container .create-btn {
+.modal-upper .create-modal .btn-container .create-btn {
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
 }
 
-.create-modal .btn-container .btn-active, .modal-upper .btn-container .btn-active {
+.modal-upper .create-modal .btn-container .btn-active {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.modal-upper .modal-active {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.modal-upper-active {
+  z-index: 2;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(175, 175, 175, 0.5);
+  pointer-events: all;
 }
 
 .create-icon {
@@ -392,7 +405,7 @@
   aspect-ratio: 1;
   bottom: 20px;
   right: 20px;
-  z-index: 100;
+  pointer-events: all;
 }
 
 .create-icon .create-icon-2 {
@@ -407,6 +420,7 @@
           filter: drop-shadow(2px 2px 2px #c9c9c9);
   -webkit-transition: 0.1s ease;
   transition: 0.1s ease;
+  z-index: 2;
 }
 
 .create-icon .create-icon-x {

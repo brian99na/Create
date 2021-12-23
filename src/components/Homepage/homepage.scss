@@ -3,31 +3,52 @@
 .homepage {
     overflow-x: hidden;
     width: 100%;
+    z-index: 0;
 
     .tag-bar {
         @include flexCenter(row);
+        justify-content: flex-start;
         overflow-x: scroll;
-        margin: 5vh 0 0 0;
-        height: 5vh;
+        margin: 10vh 0 0 0;
+        padding: 0 10vw;
+        height: 10vh;
         gap: 20px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
 
         .tag-container {
-            
+
+            h1 {
+                font-size: 20px;
+                border: 1px solid gray;
+                border-radius: 25px;
+                padding: 5px 15px;
+            }
         }
 
+    }
+    .tag-bar::-webkit-scrollbar {
+        height: 8px;
+        border: 1px solid rgb(211, 211, 211);
+    }
+
+    .tag-bar::-webkit-scrollbar-thumb {
+        background-color: gray;
     }
 
     .posts {
         @include flexCenter(row);
-        width: 90%;
+        width: 100%;
         gap: 3%;
+        flex-wrap: wrap;
+        margin: 5vh 0 0 0;
 
 
         .post-container {
             @include flexCenter(column);
-            width: 30%;
+            width: 45%;
             height: fit-content;
-            flex-wrap: wrap;
             position: relative;
 
             p {
@@ -36,9 +57,14 @@
 
             .file-container {
                 width: 100%;
+                aspect-ratio: 1;
+                position: relative;
 
                 video, img {
                     width: 100%;
+                    height: fit-content;
+                    position: absolute;
+                    bottom: 0;
                 }
             }
         }

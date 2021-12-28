@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CgRemove } from 'react-icons/cg'
-import './create.css'
+import './createEdit.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 
 
 function Create(props) {
-    const [createActive, setCreateActive] = useState(false)
     const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [token, setToken] = useState('')
@@ -16,7 +15,6 @@ function Create(props) {
     const navigate = useNavigate()
 
     const imageFormats = ['png', 'jpeg']
-
 
     const loadToken = () => {
         setTimeout(() => {
@@ -29,10 +27,11 @@ function Create(props) {
     }
 
     const handleCreateClick = () => {
-        if (createActive) {
+        if (props.createActive) {
             setFormData({title: '', desc: '', file: '', tags: ['art']})
         }
-        setCreateActive(!createActive)
+        props.setCreateActive(false)
+        props.setEditActive(false)
     }
 
     const handleFileUpload = () => {
@@ -72,23 +71,30 @@ function Create(props) {
     }
 
     const handleCreate = () => {
-        const fd = new FormData()
-        fd.append('title', formData.title)
-        fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-        fd.append('desc', formData.desc)
-        fd.append('tags', [...formData.tags])
-        setCreateActive(false)
-        axios.post('http://localhost:8000/posts/', fd, {
+        let fd = new FormData()
+        if (fileRef.current.files[0]) {
+            fd.append('title', formData.title)
+            fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+            fd.append('desc', formData.desc)
+            fd.append('tags', [...formData.tags])
+        } else {
+            fd = JSON.stringify({
+                title: formData.title,
+                desc: formData.desc,
+                tags: [...formData.tags]
+            })
+        }
+        axios.patch(`http://localhost:8000/post/${props.postData.id}/`, fd, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Token ' + token
             }
         })
         .then((res) => {
-            props.setPageLeave(true)
-            setTimeout(() => {
-                navigate(`/users/${props.userInfo.user_name}/${res.data.id}`)
-            }, 300);
+            console.log(res)
+            props.setCreateActive(false)
+            props.setEditActive(false)
+            window.location.reload()
         })
         .then(() => {
             setFormData({file: '', title: '', desc: '', tags: []})
@@ -113,12 +119,17 @@ function Create(props) {
         loadToken()
     }, [props.userInfo])
 
+    useEffect(() => {
+        props.postData && setFormData({...formData, title: props.postData.title,
+        desc: props.postData.desc, tags: props.postData.tags[0].split(','), file: props.postData.file })
+    }, [props.createActive])
+
     console.log(formData)
     console.log(props.userInfo)
 
     return (
-        <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>
-            <div className={`create-modal ${createActive ? 'modal-active' : ''}`}>
+        <div className={`modal-upper ${props.createActive ? 'modal-upper-active' : ''}`}>
+            <div className={`create-modal ${props.createActive ? 'modal-active' : ''}`}>
                 <div className='slide-indicators'>
                     <div className={`circle ${slideActive === 1 ? 'dot' : ''}`}></div>
                     <div className={`circle ${slideActive === 2 ? 'dot' : ''}`}></div>
@@ -133,7 +144,7 @@ function Create(props) {
                         </div>
                         <div className='upload-container'>
                             <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
-                            <button onClick={handleFileUpload}>{formData.file.file ? formData.file.title : '[upload]'}</button>
+                            <button onClick={handleFileUpload}>[upload]</button>
                         </div>
                     </div>
                     <div className='title-desc-slide'>
@@ -152,12 +163,12 @@ function Create(props) {
                 <div className='btn-container'>
                     <button name='back' onClick={handleSlide} className={`back-btn ${slideActive >= 2 ? 'btn-active' : ''}`}>[back]</button>
                     <button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>
-                    <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[create]</button>
+                    <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[update]</button>
                 </div>
             </div>
-            <div className='create-icon'>
-                <AiOutlinePlus className={`create-icon-2 ${createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>
-            </div>
+            {props.createActive ? <div className='create-icon'>
+                <AiOutlinePlus className={`create-icon-2 ${props.createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>
+            </div> : null}
         </div>
     )
 }

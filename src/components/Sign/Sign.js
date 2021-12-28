@@ -40,7 +40,7 @@ function Sign(props) {
                 localStore(res)
                 props.setPageLeave(true)
                 setTimeout(() => {
-                    navigate(`/users/${res.data.user.id}`)
+                    navigate(`/users/${res.data.user.user_name}`)
                 }, 500);
             })
             .catch((err) => {

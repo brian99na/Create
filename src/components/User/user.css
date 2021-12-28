@@ -38,12 +38,16 @@
           flex-direction: row;
   padding: 10vh 0 0 0;
   width: 90%;
-  gap: 10%;
+  gap: 5%;
+}
+
+.user-page .profile h1 {
+  text-align: left;
 }
 
 .user-page .profile .icon {
+  width: 20%;
   background-color: #e2e2e2;
-  width: 30%;
   aspect-ratio: 1;
   border-radius: 50%;
 }

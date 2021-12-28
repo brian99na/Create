@@ -13,14 +13,19 @@
         @include flexCenter(row);
         padding: 10vh 0 0 0;
         width: 90%;
-        gap: 10%;
+        gap: 5%;
+
+        h1 {
+            text-align: left;
+        }
 
         .icon {
+            width: 20%;
             background-color: rgb(226, 226, 226);
-            width: 30%;
             aspect-ratio: 1;
             border-radius: 50%;
         }
+
     }
 
     .creation-container {

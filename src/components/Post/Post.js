@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router-dom'
 import './post.css'
+import CreateEdit from '../Create/CreateEdit/CreateEdit'
 
 function Post(props) {
 
     const [postData, setPostData] = useState('')
-    const { post_id } = useParams()
+    const [user, setUser] = useState('')
+    const [createActive, setCreateActive] = useState(false)
+    const { id, post_id } = useParams()
+    const navigate = useNavigate()
 
     const imageFormats = ['png', 'jpeg']
 
+    const handleUserClick = () => {
+        props.setPageLeave(true)
+        setTimeout(() => {
+            navigate(`/users/${id}`)
+        }, 300);
+    }
+
+    const handleEditClick = () => {
+        props.setEditActive(true)
+        setCreateActive(true)
+    }
+
     const getPost = () => {
-        axios.get(`http://localhost:8000/post/${post_id}/`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Token ' + props.userInfo.token
-            }
+        axios.get(`http://localhost:8000/get-id/${id}/`)
+        .then((res) => {
+            axios.get(`http://localhost:8000/post/${res.data.id}/${post_id}/`)
+            .then((res) => {
+                setPostData(res.data)
+            })
+            .catch(err => console.log(err))
         })
-        .then(res => setPostData(res.data))
-        .catch(err => console.log(err))
     }
 
     useEffect(() => {
+        setUser(id)
+        getPost()
         setTimeout(() => {
-            getPost()
             props.setPageLeave(false)
         }, 300)
     }, [])
@@ -45,12 +62,17 @@ function Post(props) {
                     <video playsInline autostart='true' autoPlay loop controls={false} muted src={postData.file}></video>
                     }
                 </div>
-                <h1>{postData && postData.title && postData.title.split(',').join(' ')}</h1>
-                <p>{postData && postData.desc.split(',').join(' ')}</p>
-                <div className='tag-container'>
-                        {postData && postData.tags && postData.tags[0].split(',').map(tag => <p className='tag'>{tag}</p>)}
+                <div className='title-at'>
+                    <h1>{postData.title}</h1>
+                    <p onClick={handleUserClick}>[@{user}]</p>
                 </div>
+                <p>{postData.desc}</p>
+                <div className='tag-container'>
+                        {postData.tags && postData.tags[0].split(',').map(tag => <p className='tag'>{tag}</p>)}
+                </div>
+                {props.userInfo.user_name === id ? <button className='edit-btn' onClick={handleEditClick}>[edit post]</button> : null}
             </div>
+            <CreateEdit userInfo={props.userInfo} postData={postData} createActive={createActive} setCreateActive={setCreateActive} setEditActive={props.setEditActive} />
         </div>
     )
 }

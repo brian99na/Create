@@ -16,14 +16,9 @@ function Homepage(props) {
             .then((res) => {
                 setHomepagePosts(res.data)
                 console.log(res.data)
-                let tags = res.data[0].tags[0].split(',')
+                let tags = []
                 for(let i=0; i < res.data.length; i++) {
-                    if (res.data[i].tags[0].includes(',')) {
-                        let splitArr = res.data[i].tags[0].split(',')
-                        tags = [...tags, ...splitArr]
-                    } else {
-                        tags = [...tags, ...res.data[i].tags]
-                    }
+                    tags = [...tags, ...(res.data[i].tags[0].split(','))]
                 }
                 const filteredTags = tags.filter((item, index) => tags.indexOf(item) === index)
                 setTagArr(filteredTags)
@@ -33,12 +28,18 @@ function Homepage(props) {
             })
     }
     
-    const handlePostClick = (e) => {
+    const handlePostClick = (e, user, id) => {
         props.setPageLeave(true)
-        setTimeout(() => {
-            navigate(`/users${e.target.id}/${e.target.post_id}`)
-        }, 500);
+        axios.get(`http://localhost:8000/get-user/${user}/`)
+        .then((res) => {
+            setTimeout(() => {
+                navigate(`/users/${res.data.user_name}/${id}`)
+            }, 500);
+        })
+
     }
+
+    console.log(homepagePosts)
 
     const handleTagClick = (e, tag) => {
         if (filterValues.includes(tag)) {
@@ -57,8 +58,8 @@ function Homepage(props) {
         return(post.tags[0].includes(filterValues))
     }).map((post) => {
         return(
-            <div className='post-container' post_id={post.id} user_id={post.user} onClick={handlePostClick}>
-                <p>{post.title.split(',').join(' ')}</p>
+            <div className='post-container' onClick={(e) => handlePostClick(e, post.user, post.id) }>
+                <p>{post.title}</p>
                 <div className='file-container'>
                     {post.file && imageFormats.includes(post.file.slice(-3)) ? <img alt='' src={post.file}/> : <video playsInline autostart='true' autoPlay loop controls={false} muted src={post.file}></video>}
                 </div>
@@ -78,8 +79,8 @@ function Homepage(props) {
     useEffect(() => {
         getAllPosts()
         setTimeout(() => {
-            props.setPageLeave(false)
-        }, 300);        
+            props.setPageLeave(false)     
+        }, 200);
     }, [])
 
     return (
@@ -92,11 +93,6 @@ function Homepage(props) {
                     {homePostsJsx}
                 </div>
             </div>
-            {/* <div className='triangle'>
-                <div className='triangle-inner'></div>
-            </div>
-            <div className='circle'></div>
-            <div className='square'></div> */}
         </div>
     )
 }

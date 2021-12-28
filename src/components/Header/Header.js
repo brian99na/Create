@@ -1,39 +1,57 @@
 import React, { useEffect, useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './header.css'
+import axios from 'axios'
 
 function Header(props) {
 
     const navigate = useNavigate()
 
-
     const [navActive, setNavActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
+    const [username, setUsername] = useState()
 
-    const handleNavClick = () => {
-        setNavActive(!navActive)
+    const handleNavClick = (e) => {
+        if (e.target.getAttribute('name')){
+            props.setPageLeave(true)
+            setTimeout(() => {
+                setNavActive(!navActive)
+                navigate(`${e.target.getAttribute('name')}`)
+                setTimeout(() => {
+                    props.setPageLeave(false)
+                }, 300);
+            }, 300);
+        } else {
+            setNavActive(!navActive)
+        }
     }
 
     const handleSearchClick = () => {
         setSearchActive(!searchActive)
     }
 
-    const handleDelayClick = () => {
-        props.setPageLeave(true)
+    const handleHomeClick = () => {
         props.setPageLeave(true)
         setTimeout(() => {
             navigate('/')
-            props.setPageLeave(false)
+            setTimeout(() => {
+                props.setPageLeave(false)
+            }, 200);
         }, 500)
     }
 
     const handleSignOutClick = () => {
         localStorage.setItem('create-app', '[]')
-        setNavActive(!navActive)
         props.setPageLeave(true)
         setTimeout(() => {
-            props.setUserInfo('')
+            navigate('/')
+            setTimeout(() => {
+                setNavActive(!navActive)
+                setTimeout(() => {
+                    props.setUserInfo('')
+                }, 100);
+            }, 100);
         }, 500);
     }
 
@@ -41,13 +59,19 @@ function Header(props) {
         props.setPageLeave(false)
     }, [])
 
-
     console.log(props.userInfo)
+
+    const linksJsx = props.userInfo.token ? 
+    <>
+        <h1 name={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>[Profile]</h1>
+        <h1 onClick={handleSignOutClick}>[Sign Out]</h1>
+    </> : 
+        <h1 name='/sign-in' onClick={handleNavClick}>[Sign In/Up]</h1>
 
     return (
         <header>
             <nav>
-                <div className={`create-btn ${searchActive ? 'create-active' : '' }`}onClick={handleDelayClick}>
+                <div className={`create-btn ${searchActive ? 'create-active' : '' }`}onClick={handleHomeClick}>
                     <h1>create</h1>
                 </div>
                 <input className={`search-box ${searchActive ? 'search-active' : ''}`} placeholder='[search]'/>
@@ -62,20 +86,8 @@ function Header(props) {
             </nav>
             <div className={`nav-links ${navActive ? 'nav-links-active' : ''}`}>
                 <div className='nav-links-main'>
-                    {!props.userInfo ? 
-                    <Link to='/sign-in' onClick={handleNavClick}>
-                        <h1>[Sign In]</h1>
-                    </Link> :
-                    <Link to={`/users/${props.userInfo && props.userInfo.id}`} onClick={handleNavClick}>
-                        <h1>[Profile]</h1>
-                    </Link>}
-                    <Link to='/' onClick={handleNavClick}>
-                        <h1>[Home]</h1>
-                    </Link>
-                    {props.userInfo &&props.userInfo.id && 
-                    <Link to='/' onClick={handleSignOutClick}>
-                        <h1>[Sign Out]</h1>
-                    </Link>}
+                    <h1 name='/' onClick={handleNavClick}>[Home]</h1>
+                    {linksJsx}
                 </div>
             </div>
         </header>

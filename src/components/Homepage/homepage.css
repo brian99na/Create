@@ -63,6 +63,12 @@
   }
 }
 
+@media only screen and (min-width: 1024px) {
+  .homepage .tag-bar .tag-container .tag-item {
+    font-size: 20px;
+  }
+}
+
 .homepage .tag-bar::-webkit-scrollbar {
   height: 8px;
   border: 1px solid lightgray;
@@ -168,6 +174,19 @@
   }
   .homepage .posts .post-inner .post-container p {
     font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .homepage .posts .post-inner {
+    width: 55%;
+    gap: 3%;
+  }
+  .homepage .posts .post-inner .post-container {
+    width: 30%;
+  }
+  .homepage .posts .post-inner .post-container p {
+    font-size: 22px;
   }
 }
 

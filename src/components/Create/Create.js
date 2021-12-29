@@ -130,30 +130,32 @@ function Create(props) {
                     <div className={`circle ${slideActive === 2 ? 'dot' : ''}`}></div>
                     <div className={`circle ${slideActive === 3 ? 'dot' : ''}`}></div>
                 </div>
-                <div className={`create-form ${slideActive === 1 ? 'form-left' : slideActive === 2 ? 'form-mid' : slideActive === 3 ? 'form-right' : ''}`}>
-                    <div className='upload-slide'>
-                        <div className={`skeleton-load ${formData.file ? 'skeleton-invis' : ''}`}>
-                            {formData.file && imageFormats.includes(formData.file.slice(-3)) ? 
-                            <img alt='' src={formData.file}/> : 
-                            <video playsInline autostart='true' autoPlay loop controls={false} muted src={formData.file}></video>}
+                <div className='create-form-main'>
+                    <div className={`create-form ${slideActive === 1 ? 'form-left' : slideActive === 2 ? 'form-mid' : slideActive === 3 ? 'form-right' : ''}`}>
+                        <div className='upload-slide'>
+                            <div className={`skeleton-load ${formData.file ? 'skeleton-invis' : ''}`}>
+                                {formData.file && imageFormats.includes(formData.file.slice(-3)) ? 
+                                <img alt='' src={formData.file}/> : 
+                                <video playsInline autostart='true' autoPlay loop controls={false} muted src={formData.file}></video>}
+                            </div>
+                            <div className='upload-container'>
+                                <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
+                                <button onClick={handleFileUpload}>{formData.file.file ? formData.file.title : '[upload]'}</button>
+                            </div>
                         </div>
-                        <div className='upload-container'>
-                            <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
-                            <button onClick={handleFileUpload}>{formData.file.file ? formData.file.title : '[upload]'}</button>
+                        <div className='title-desc-slide'>
+                            <div className='title-desc'>
+                                <input placeholder='title' type='text' maxLength='12' name='title' value={formData.title} onChange={handleChange}/>
+                                <textarea placeholder='description' maxLength='500' name='desc' value={formData.desc} onChange={handleChange}/>
+                            </div>
                         </div>
+                        <form className='tags-slide' onSubmit={handleTagSubmit}>
+                            <div className='tags-container'>
+                                {tagsJsx}
+                            </div>
+                            <input placeholder='input tags' value={tagValue} onChange={handleTagChange}/>
+                        </form>
                     </div>
-                    <div className='title-desc-slide'>
-                        <div className='title-desc'>
-                            <input placeholder='title' type='text' maxLength='12' name='title' value={formData.title} onChange={handleChange}/>
-                            <textarea placeholder='description' maxLength='500' name='desc' value={formData.desc} onChange={handleChange}/>
-                        </div>
-                    </div>
-                    <form className='tags-slide' onSubmit={handleTagSubmit}>
-                        <div className='tags-container'>
-                            {tagsJsx}
-                        </div>
-                        <input placeholder='input tags' value={tagValue} onChange={handleTagChange}/>
-                    </form>
                 </div>
                 <div className='btn-container'>
                     <button name='back' onClick={handleSlide} className={`back-btn ${slideActive >= 2 ? 'btn-active' : ''}`}>[back]</button>

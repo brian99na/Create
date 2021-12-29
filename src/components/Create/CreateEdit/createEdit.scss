@@ -70,6 +70,7 @@
 
     .create-modal {
         @include flexCenter(column);
+        justify-content: space-evenly;
         opacity: 0;
         transition: 0.5s ease;
         position: relative;
@@ -78,9 +79,7 @@
         
         
         .slide-indicators {
-            position: absolute;
             @include flexCenter(row);
-            top: 15vh;
             width: 100%;
             gap: 5%;
     
@@ -98,194 +97,228 @@
             }
         }
     
-        .create-form {
-            @include flexCenter(row);
-            position: absolute;
-            width: 300vw;
-            height: 70vh;
-            transition: 0.3s ease;
-    
-            input, textarea, button {
-                width: 97%;
-                border: none;
-                outline: none;
-                padding: 2%;
-                background-color: rgb(235, 235, 235);
-                border-radius: 5px;
-                font-size: 20px;
-            }
-    
-            button {
-                width: 100%;
-                padding: 10px 0;
-                border: none;
-            }
-    
-            .upload-slide {
-                @include flexCenter(column);
-                width: 100vw;
-                aspect-ratio: 1;
-                gap: 2%;
-    
-                .upload-container {
+        .create-form-main {
+            position: relative;
+            width: 100%;
+            height: 50%;
+
+            .create-form {
+                @include flexCenter(row);
+                position: absolute;
+                width: 300vw;
+                height: 100%;
+                transition: 0.3s ease;
+        
+                input, textarea, button {
+                    width: 97%;
+                    border: none;
+                    outline: none;
+                    padding: 2%;
+                    background-color: rgb(235, 235, 235);
+                    border-radius: 5px;
+                    font-size: 20px;
+                }
+        
+                button {
+                    width: 100%;
+                    padding: 10px 0;
+                    border: none;
+                }
+        
+                .upload-slide {
                     @include flexCenter(column);
-                    width: 90%;
-                    height: 10%;
+                    width: 100vw;
+                    height: 100%;
+                    gap: 2%;
+        
+                    .upload-container {
+                        @include flexCenter(column);
+                        width: 90%;
+                        height: 10%;
+        
+                        button {
+                            padding: 0;
+                            height: 100%;
+                        }
+                    }
+            
+                    .skeleton-load {
+                        @include flexCenter(column);
+                        max-width: 90%;
+                        aspect-ratio: 1;
+                        border: 2px dashed rgb(184, 184, 184);
+                        animation: skeleton 3.5s infinite ease-in-out;
+                        overflow: hidden;
+        
+                        img, video {
+                            width: 100%;
+                        }
+                    }
+        
+                    .skeleton-invis {
+                        animation: skeleVisible;
+                        max-width: 90%;
+                    }
     
+                    @media only screen and (min-width: 768px) {
+                        .upload-container {
+                            width: 55%;
+                        }
+                    }
+    
+                    @media only screen and (min-width: 1024px) {
+                        .upload-container {
+                            width: 35%;
+                        }
+                    }
+                }
+        
+                .title-desc-slide {
+                    @include flexCenter(column);
+                    width: 100vw;
+                    height: 100%;
+        
+                    .title-desc {
+                        @include flexCenter(column);
+                        max-width: 90%;
+                        height: 100%;
+                        aspect-ratio: 1;
+                        gap: 2%;
+        
+                        input {
+                            font-size: 20px;
+                            height: 10%;
+                        }
+            
+                        textarea {
+                            font-size: 20px;
+                            resize: none;
+                            height: 85%;
+                        }
+                    }
+    
+                    @media only screen and (min-width: 768px) {
+                        .title-desc {
+                            font-size: 30px;
+    
+                            input {
+                                font-size: 24px;
+                            }
+    
+                            textarea{
+                                font-size: 24px;
+                            }
+                        }
+                    }
+    
+                    @media only screen and (min-width: 1024px) {
+                        .title-desc {    
+                            input {
+                                font-size: 20px;
+                            }
+    
+                            textarea{
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+        
+                .tags-slide {
+                    @include flexCenter(column);
+                    justify-content: center;
+                    gap: 1%;
+                    width: 100vw;
+                    height: 100%;
+
+                    .tags-container {
+                        @include flexCenter(row);
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        align-content: flex-start;
+                        flex-wrap: wrap;
+                        height: 100%;
+                        max-width: 90%;
+                        aspect-ratio: 1;
+                        overflow-y: scroll;
+                        gap: 2%;
+        
+                        .tag-container {
+                            @include flexCenter(row);
+                            gap: 20px;
+                            border: 1px solid gray;
+                            background-color: rgba(230, 230, 230, 0.5);
+                            border-radius: 30px;
+                            padding: 1% 5%;
+                            
+                            .tag {
+                                font-size: 20px;
+                            }
+            
+                            .remove-tag {
+                                font-size: 24px;
+                            }
+                        }
+        
+                    }
+        
+                    input {
+                        width: 85%;
+                    }
+        
                     button {
                         padding: 0;
                         height: 100%;
+                        width: 45%;
                     }
-                }
-        
-                .skeleton-load {
-                    @include flexCenter(column);
-                    width: 88%;
-                    height: 90%;
-                    border: 2px dashed rgb(184, 184, 184);
-                    animation: skeleton 3.5s infinite ease-in-out;
-                    overflow: hidden;
     
-                    img, video {
-                        width: 100%;
-                    }
-                }
+                    @media only screen and (min-width: 768px) {
     
-                .skeleton-invis {
-                    animation: skeleVisible;
-                    width: 90%;
-                }
-
-                @media only screen and (min-width: 768px) {
-                    .skeleton-load {
-                        width: 75%;
-                        height: auto;
-                        aspect-ratio: 1
-                    }
-
-                    .upload-container {
-                        width: 75%;
-                        height: 8%;
-                    }
-                }
-            }
+                        .tags-container {
+                            padding: 10px;
     
-            .title-desc-slide {
-                @include flexCenter(column);
-                width: 100vw;
-                aspect-ratio: 1;
+                            .tag-container {
+                                .tag {
+                                    font-size: 20px;
+                                }
     
-                .title-desc {
-                    @include flexCenter(column);
-                    width: 90%;
-                    height: 100%;
-                    aspect-ratio: 1;
-                    gap: 2%;
+                                .remove-tag {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
     
-                    input {
-                        font-size: 20px;
-                        height: 10%;
-                    }
-        
-                    textarea {
-                        font-size: 20px;
-                        resize: none;
-                        height: 85%;
-                    }
-                }
-
-                @media only screen and (min-width: 768px) {
-                    .title-desc {
-                        width: 75%;
-                        height: auto;
-                        aspect-ratio: 1;
-                        font-size: 30px;
-
                         input {
-                            font-size: 30px;
-                        }
-
-                        textarea{
-                            font-size: 30px;
+                            width: 55%;
+                            font-size: 20px;
+                            padding: 5px;
+                            background-color: rgb(230, 228, 228);
                         }
                     }
-                }
-            }
     
-            .tags-slide {
-                @include flexCenter(column);
-                justify-content: center;
-                gap: 1%;
-                width: 100vw;
-                aspect-ratio: 1;
+                    @media only screen and (min-width: 1024px) {
     
-                .tags-container {
-                    @include flexCenter(row);
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    align-content: flex-start;
-                    flex-wrap: wrap;
-                    width: 90%;
-                    aspect-ratio: 1;
-                    overflow-y: scroll;
-                    gap: 2%;
-    
-                    .tag-container {
-                        @include flexCenter(row);
-                        gap: 20px;
-                        border: 1px solid gray;
-                        background-color: rgba(230, 230, 230, 0.5);
-                        border-radius: 30px;
-                        padding: 1% 5%;
-                        
-                        .tag {
-                            font-size: 20px;
+                        .tags-container {
+                            .tag-container {
+                                .tag {
+                                    font-size: 20px;
+                                }
+                                .remove-tag {
+                                    font-size: 20px;
+                                }
+                            }
                         }
-        
-                        .remove-tag {
+    
+                        input {
+                            width: 30%;
                             font-size: 24px;
                         }
                     }
-    
                 }
-    
-                input {
-                    width: 85%;
+        
+                .remove-tag {
+                    cursor: pointer;
                 }
-    
-                button {
-                    padding: 0;
-                    height: 100%;
-                    width: 45%;
-                }
-
-                @media only screen and (min-width: 768px) {
-
-                    .tags-container {
-                        width: 75%;
-
-                        .tag-container {
-
-
-                            .tag {
-                                font-size: 30px;
-                            }
-
-                            .remove-tag {
-                                font-size: 30px;
-                            }
-                        }
-                    }
-
-                    input {
-                        width: 73%;
-                        font-size: 30px;
-                    }
-                }
-            }
-    
-            .remove-tag {
-                cursor: pointer;
             }
         }
     
@@ -302,10 +335,9 @@
         }
     
         .btn-container {
-            position: absolute;
-            bottom: 15vh;
+            position: relative;
             width: 90%;
-            height: 5vh;
+            height: 4vh;
     
             .back-btn, .next-btn, .create-btn {
                 position: absolute;
@@ -317,6 +349,7 @@
                 transform: translateY(30px);
                 transition: 0.3s ease;
                 font-size: 20px;
+                pointer-events: none;
             }
     
             .next-btn, .create-btn {
@@ -332,6 +365,7 @@
                 opacity: 1;
                 transform: translateY(0);
                 pointer-events: all;
+                pointer-events: all;
             }
 
             .delete {
@@ -343,9 +377,12 @@
         
         @media only screen and (min-width: 768px) {
             .btn-container {
-                bottom: 12vh;
-                width: 75%;
+                width: 55%;
+            }
+        }
 
+        @media only screen and (min-width: 1024px) {
+            .btn-container {
             }
         }
     }
@@ -395,13 +432,26 @@
 
 @media only screen and (min-width: 768px) {
     .create-icon-edit {
-        width: 80px;
+        width: 50px;
         bottom: 40px;
         right: 40px;
 
         .create-icon-2 {
-            font-size: 40px;
-            padding: 20px;
+            font-size: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .create-icon {
+        width: 50px;
+        bottom: 40px;
+        right: 40px;
+
+        .create-icon-2 {
+            font-size: 30px;
+            padding: 10px;
         }
     }
 }
@@ -429,3 +479,4 @@
         transform: translateY(-15px);
     }
 }
+

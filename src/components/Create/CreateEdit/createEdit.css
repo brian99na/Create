@@ -122,6 +122,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   opacity: 0;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
@@ -131,7 +134,6 @@
 }
 
 .modal-upper-edit .create-modal .slide-indicators {
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,7 +147,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  top: 15vh;
   width: 100%;
   gap: 5%;
 }
@@ -165,7 +166,13 @@
           animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
 }
 
-.modal-upper-edit .create-modal .create-form {
+.modal-upper-edit .create-modal .create-form-main {
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
+.modal-upper-edit .create-modal .create-form-main .create-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,12 +188,12 @@
           flex-direction: row;
   position: absolute;
   width: 300vw;
-  height: 70vh;
+  height: 100%;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
-.modal-upper-edit .create-modal .create-form input, .modal-upper-edit .create-modal .create-form textarea, .modal-upper-edit .create-modal .create-form button {
+.modal-upper-edit .create-modal .create-form-main .create-form input, .modal-upper-edit .create-modal .create-form-main .create-form textarea, .modal-upper-edit .create-modal .create-form-main .create-form button {
   width: 97%;
   border: none;
   outline: none;
@@ -196,13 +203,13 @@
   font-size: 20px;
 }
 
-.modal-upper-edit .create-modal .create-form button {
+.modal-upper-edit .create-modal .create-form-main .create-form button {
   width: 100%;
   padding: 10px 0;
   border: none;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,11 +224,11 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100vw;
-  aspect-ratio: 1;
+  height: 100%;
   gap: 2%;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide .upload-container {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .upload-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -239,12 +246,12 @@
   height: 10%;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide .upload-container button {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .upload-container button {
   padding: 0;
   height: 100%;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .skeleton-load {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -258,37 +265,37 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 88%;
-  height: 90%;
+  max-width: 90%;
+  aspect-ratio: 1;
   border: 2px dashed #b8b8b8;
   -webkit-animation: skeleton 3.5s infinite ease-in-out;
           animation: skeleton 3.5s infinite ease-in-out;
   overflow: hidden;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load img, .modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load video {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .skeleton-load img, .modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .skeleton-load video {
   width: 100%;
 }
 
-.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-invis {
+.modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .skeleton-invis {
   -webkit-animation: skeleVisible;
           animation: skeleVisible;
-  width: 90%;
+  max-width: 90%;
 }
 
 @media only screen and (min-width: 768px) {
-  .modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load {
-    width: 75%;
-    height: auto;
-    aspect-ratio: 1;
-  }
-  .modal-upper-edit .create-modal .create-form .upload-slide .upload-container {
-    width: 75%;
-    height: 8%;
+  .modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .upload-container {
+    width: 55%;
   }
 }
 
-.modal-upper-edit .create-modal .create-form .title-desc-slide {
+@media only screen and (min-width: 1024px) {
+  .modal-upper-edit .create-modal .create-form-main .create-form .upload-slide .upload-container {
+    width: 35%;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -303,10 +310,10 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100vw;
-  aspect-ratio: 1;
+  height: 100%;
 }
 
-.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc {
+.modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -320,39 +327,45 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 90%;
+  max-width: 90%;
   height: 100%;
   aspect-ratio: 1;
   gap: 2%;
 }
 
-.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc input {
+.modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc input {
   font-size: 20px;
   height: 10%;
 }
 
-.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc textarea {
+.modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea {
   font-size: 20px;
   resize: none;
   height: 85%;
 }
 
 @media only screen and (min-width: 768px) {
-  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc {
-    width: 75%;
-    height: auto;
-    aspect-ratio: 1;
+  .modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc {
     font-size: 30px;
   }
-  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc input {
-    font-size: 30px;
+  .modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc input {
+    font-size: 24px;
   }
-  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc textarea {
-    font-size: 30px;
+  .modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea {
+    font-size: 24px;
   }
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide {
+@media only screen and (min-width: 1024px) {
+  .modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc input {
+    font-size: 20px;
+  }
+  .modal-upper-edit .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea {
+    font-size: 20px;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -369,10 +382,10 @@
   justify-content: center;
   gap: 1%;
   width: 100vw;
-  aspect-ratio: 1;
+  height: 100%;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide .tags-container {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -396,13 +409,14 @@
       align-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 90%;
+  height: 100%;
+  max-width: 90%;
   aspect-ratio: 1;
   overflow-y: scroll;
   gap: 2%;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -423,41 +437,56 @@
   padding: 1% 5%;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .tag {
   font-size: 20px;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .remove-tag {
   font-size: 24px;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide input {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide input {
   width: 85%;
 }
 
-.modal-upper-edit .create-modal .create-form .tags-slide button {
+.modal-upper-edit .create-modal .create-form-main .create-form .tags-slide button {
   padding: 0;
   height: 100%;
   width: 45%;
 }
 
 @media only screen and (min-width: 768px) {
-  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container {
-    width: 75%;
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container {
+    padding: 10px;
   }
-  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
-    font-size: 30px;
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .tag {
+    font-size: 20px;
   }
-  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
-    font-size: 30px;
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .remove-tag {
+    font-size: 20px;
   }
-  .modal-upper-edit .create-modal .create-form .tags-slide input {
-    width: 73%;
-    font-size: 30px;
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide input {
+    width: 55%;
+    font-size: 20px;
+    padding: 5px;
+    background-color: #e6e4e4;
   }
 }
 
-.modal-upper-edit .create-modal .create-form .remove-tag {
+@media only screen and (min-width: 1024px) {
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .tag {
+    font-size: 20px;
+  }
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container .remove-tag {
+    font-size: 20px;
+  }
+  .modal-upper-edit .create-modal .create-form-main .create-form .tags-slide input {
+    width: 30%;
+    font-size: 24px;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form-main .create-form .remove-tag {
   cursor: pointer;
 }
 
@@ -474,10 +503,9 @@
 }
 
 .modal-upper-edit .create-modal .btn-container {
-  position: absolute;
-  bottom: 15vh;
+  position: relative;
   width: 90%;
-  height: 5vh;
+  height: 4vh;
 }
 
 .modal-upper-edit .create-modal .btn-container .back-btn, .modal-upper-edit .create-modal .btn-container .next-btn, .modal-upper-edit .create-modal .btn-container .create-btn {
@@ -492,6 +520,7 @@
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 20px;
+  pointer-events: none;
 }
 
 .modal-upper-edit .create-modal .btn-container .next-btn, .modal-upper-edit .create-modal .btn-container .create-btn {
@@ -509,6 +538,7 @@
   -webkit-transform: translateY(0);
           transform: translateY(0);
   pointer-events: all;
+  pointer-events: all;
 }
 
 .modal-upper-edit .create-modal .btn-container .delete {
@@ -518,8 +548,7 @@
 
 @media only screen and (min-width: 768px) {
   .modal-upper-edit .create-modal .btn-container {
-    bottom: 12vh;
-    width: 75%;
+    width: 55%;
   }
 }
 
@@ -587,13 +616,25 @@
 
 @media only screen and (min-width: 768px) {
   .create-icon-edit {
-    width: 80px;
+    width: 50px;
     bottom: 40px;
     right: 40px;
   }
   .create-icon-edit .create-icon-2 {
-    font-size: 40px;
-    padding: 20px;
+    font-size: 30px;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .create-icon {
+    width: 50px;
+    bottom: 40px;
+    right: 40px;
+  }
+  .create-icon .create-icon-2 {
+    font-size: 30px;
+    padding: 10px;
   }
 }
 

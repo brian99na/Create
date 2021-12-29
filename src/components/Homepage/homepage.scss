@@ -51,6 +51,16 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                 }
             }
         }
+
+        @media only screen and (min-width: 1024px) {
+
+            .tag-container {
+
+                .tag-item {
+                    font-size: 20px;
+                }
+            }
+        }
     }
     .tag-bar::-webkit-scrollbar {
         height: 8px;
@@ -115,6 +125,21 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                     
                     p {
                         font-size: 32px;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .post-inner {
+                width: 55%;
+                gap:3%;
+
+                .post-container {
+                    width: 30%;
+
+                    p {
+                        font-size: 22px;
                     }
                 }
             }

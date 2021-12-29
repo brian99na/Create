@@ -35,6 +35,11 @@
   text-align: center;
 }
 
+.sign-page button {
+  background-color: #494949;
+  color: white;
+}
+
 .sign-page .sign-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -98,13 +103,25 @@
   gap: 2%;
 }
 
-.sign-page .sign-container .sign-in form .error, .sign-page .sign-container .sign-up form .error {
-  color: red;
-  -webkit-animation: error 1s infinite ease;
-          animation: error 1s infinite ease;
+.sign-page .sign-container .sign-in form .sign-up-detour, .sign-page .sign-container .sign-up form .sign-up-detour {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  gap: 5px;
 }
 
-.sign-page .sign-container .sign-in form p, .sign-page .sign-container .sign-up form p {
+.sign-page .sign-container .sign-in form .sign-up-detour p, .sign-page .sign-container .sign-up form .sign-up-detour p {
   font-weight: 300;
   color: #4aa5f0;
   cursor: hover;
@@ -113,12 +130,18 @@
       align-self: center;
 }
 
-.sign-page .sign-container .sign-in form h3, .sign-page .sign-container .sign-up form h3 {
+.sign-page .sign-container .sign-in form .sign-up-detour h3, .sign-page .sign-container .sign-up form .sign-up-detour h3 {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 16px;
   font-weight: 300;
+}
+
+.sign-page .sign-container .sign-in form .error, .sign-page .sign-container .sign-up form .error {
+  color: red;
+  -webkit-animation: error 1s infinite ease;
+          animation: error 1s infinite ease;
 }
 
 .sign-page .sign-container .sign-up {
@@ -143,6 +166,31 @@
   opacity: 0;
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
+}
+
+@media only screen and (min-width: 768px) {
+  .sign-page .sign-container .sign-in form, .sign-page .sign-container .sign-up form {
+    height: 50%;
+    width: auto;
+    aspect-ratio: 1;
+    gap: 25px;
+    padding: 10vw;
+    background-color: rgba(238, 238, 238, 0.5);
+    border: 1px solid white;
+    border-radius: 15px;
+  }
+  .sign-page .sign-container .sign-in form h1, .sign-page .sign-container .sign-up form h1 {
+    font-size: 30px;
+  }
+  .sign-page .sign-container .sign-in form input, .sign-page .sign-container .sign-in form button, .sign-page .sign-container .sign-up form input, .sign-page .sign-container .sign-up form button {
+    font-size: 18px;
+  }
+  .sign-page .sign-container .sign-in form .sign-up-detour p, .sign-page .sign-container .sign-up form .sign-up-detour p {
+    font-size: 24px;
+  }
+  .sign-page .sign-container .sign-in form .sign-up-detour h3, .sign-page .sign-container .sign-up form .sign-up-detour h3 {
+    font-size: 24px;
+  }
 }
 
 @-webkit-keyframes error {

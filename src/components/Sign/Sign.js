@@ -93,8 +93,10 @@ function Sign(props) {
                         <input placeholder='[email]' name='email' onChange={handleInChange} value={signIn.user.email}/>
                         <input type='password' placeholder='[password]' name='password' onChange={handleInChange} value={signIn.user.password}/>
                         <button type='submit'>[sign in]</button>
-                        <h3>Don't have an account?</h3>
-                        <p onClick={handlePageChange}>sign up here</p>
+                        <div className='sign-up-detour'>
+                            <h3>Don't have an account?</h3>
+                            <p onClick={handlePageChange}>sign up here</p>
+                        </div>
                         <p className='error'>{error.signIn ? 'Error, try again' : null}</p>                    </form>
                 </section>
                 <section className={`sign-up ${signUpActive ? 'sign-up-anim' : ''}`}>
@@ -105,7 +107,9 @@ function Sign(props) {
                         <input type='password' placeholder='[repeat password]' name='passwordCheck' onChange={handleUpChange} value={signUp.passwordCheck}/>
                         <input placeholder='[create username]' name='username' onChange={handleUpChange} value={signUp.username}/>
                         <button type='submit'>[sign up]</button>
-                        <p onClick={handlePageChange}>back to sign in</p>
+                        <div className='sign-up-detour'>
+                            <p onClick={handlePageChange}>back to sign in</p>
+                        </div>
                         <p className='error'>{error.signUp ? `error: ${error.msg}` : ''}</p>
                     </form>
                 </section>

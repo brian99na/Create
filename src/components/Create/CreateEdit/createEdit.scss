@@ -1,6 +1,6 @@
 @import '../../../sass/flex.scss';
 
-.modal-upper {
+.modal-upper-edit {
     width: 100vw;
     height: 100vh;
     left: 0;
@@ -13,6 +13,60 @@
     background: transparent;
     overflow: hidden;
     transition: 0.5s ease;
+
+    .delete-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(77, 77, 77, 0.4);
+        z-index: 5;
+        transition: 0.5s ease;
+        opacity: 0;
+        pointer-events: none;
+        @include flexCenter(row);
+
+        .delete-modal {
+            width: 80%;
+            padding: 5%;
+            @include flexCenter(column);
+            background-color: rgba(53, 53, 53, 0.8);
+            border: 1px solid white;
+            border-radius: 10px;
+            backdrop-filter: blur(60px);
+            gap: 30px;
+
+            h1 {
+                color: white;
+                font-size: 24px;
+            }
+            
+            .del-btns {
+                width: 100%;
+                @include flexCenter(row);
+                justify-content: space-between;
+
+                button {
+                    width: 48%;
+                    padding: 5px 0;
+                    border: none;
+                    border-radius: 5px;
+                }
+
+                .del-btn {
+                    background-color: rgb(209, 87, 87);
+                    color: white;
+                }
+            }
+        }
+    
+        .deleteModalActive {
+            pointer-events: all;
+        }
+    }
+
+    .deleteOverlayActive {
+        opacity: 1;
+    }
 
     .create-modal {
         @include flexCenter(column);
@@ -101,6 +155,19 @@
                     animation: skeleVisible;
                     width: 90%;
                 }
+
+                @media only screen and (min-width: 768px) {
+                    .skeleton-load {
+                        width: 75%;
+                        height: auto;
+                        aspect-ratio: 1
+                    }
+
+                    .upload-container {
+                        width: 75%;
+                        height: 8%;
+                    }
+                }
             }
     
             .title-desc-slide {
@@ -124,6 +191,23 @@
                         font-size: 20px;
                         resize: none;
                         height: 85%;
+                    }
+                }
+
+                @media only screen and (min-width: 768px) {
+                    .title-desc {
+                        width: 75%;
+                        height: auto;
+                        aspect-ratio: 1;
+                        font-size: 30px;
+
+                        input {
+                            font-size: 30px;
+                        }
+
+                        textarea{
+                            font-size: 30px;
+                        }
                     }
                 }
             }
@@ -173,6 +257,30 @@
                     padding: 0;
                     height: 100%;
                     width: 45%;
+                }
+
+                @media only screen and (min-width: 768px) {
+
+                    .tags-container {
+                        width: 75%;
+
+                        .tag-container {
+
+
+                            .tag {
+                                font-size: 30px;
+                            }
+
+                            .remove-tag {
+                                font-size: 30px;
+                            }
+                        }
+                    }
+
+                    input {
+                        width: 73%;
+                        font-size: 30px;
+                    }
                 }
             }
     
@@ -225,26 +333,37 @@
                 transform: translateY(0);
                 pointer-events: all;
             }
+
+            .delete {
+                background-color: rgb(182, 83, 83);
+                color: rgb(255, 255, 255);
+            }
     
         }
-    
         
+        @media only screen and (min-width: 768px) {
+            .btn-container {
+                bottom: 12vh;
+                width: 75%;
+
+            }
+        }
     }
     .modal-active {
         opacity: 1;
         transition: 0.5s ease;
     }
+    
 }
 
 .modal-upper-active {
     z-index: 2;
-    backdrop-filter: blur(10px);
-    background-color: rgba(175, 175, 175, 0.5);
+    background-color: rgb(218, 218, 218);
     pointer-events: all;
     transition: 0.5s ease;
 }
 
-.create-icon {
+.create-icon-edit {
     @include flexCenter(row);
     position: absolute;
     width: 40px;
@@ -273,6 +392,19 @@
         border-radius: 50%;
     }
 }  
+
+@media only screen and (min-width: 768px) {
+    .create-icon-edit {
+        width: 80px;
+        bottom: 40px;
+        right: 40px;
+
+        .create-icon-2 {
+            font-size: 40px;
+            padding: 20px;
+        }
+    }
+}
 
 @keyframes skeleton {
     100%, 0% {

@@ -10,6 +10,7 @@ function Create(props) {
     const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [token, setToken] = useState('')
+    const [deleteActive, setDeleteActive] = useState(false)
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
     const navigate = useNavigate()
@@ -70,6 +71,35 @@ function Create(props) {
         }
     }
 
+    const handleDeleteSlide = (e) => {
+        setDeleteActive(true)
+    }
+
+    const handleDelModal = () => {
+        setDeleteActive(!deleteActive)
+    }
+
+    const handleDelClick = () => {
+        axios.delete(`http://localhost:8000/post/${props.postData.id}/`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Token ' + token
+            }
+        })
+        .then(() => {
+            setDeleteActive(!deleteActive)
+            props.setCreateActive(false)
+            props.setEditActive(false)
+            props.setPageLeave(true)
+            setTimeout(() => {
+                navigate('/')
+                setTimeout(() => {
+                    props.setPageLeave(false)
+                }, 100);
+            }, 300);
+        })
+    }
+
     const handleCreate = () => {
         let fd = new FormData()
         if (fileRef.current.files[0]) {
@@ -81,8 +111,9 @@ function Create(props) {
             fd = JSON.stringify({
                 title: formData.title,
                 desc: formData.desc,
-                tags: [...formData.tags]
+                tags: [formData.tags.join(',')]
             })
+            console.log(fd)
         }
         axios.patch(`http://localhost:8000/post/${props.postData.id}/`, fd, {
             headers: {
@@ -126,9 +157,19 @@ function Create(props) {
 
     console.log(formData)
     console.log(props.userInfo)
+    console.log(props.postData)
 
     return (
-        <div className={`modal-upper ${props.createActive ? 'modal-upper-active' : ''}`}>
+        <div className={`modal-upper-edit ${props.createActive ? 'modal-upper-active' : ''}`}>
+            <div onClick={handleDelModal} className={`delete-overlay ${deleteActive ? 'deleteOverlayActive' : ''}`}>
+                <div className={`delete-modal ${deleteActive ? 'deleteModalActive' : ''}`}>
+                    <h1>Are you sure you want to delete this post?</h1>
+                    <div className='del-btns'>
+                        <button onClick={handleDelModal}>Cancel</button>
+                        <button onClick={handleDelClick} className='del-btn'>Delete</button>
+                    </div>
+                </div>
+            </div>
             <div className={`create-modal ${props.createActive ? 'modal-active' : ''}`}>
                 <div className='slide-indicators'>
                     <div className={`circle ${slideActive === 1 ? 'dot' : ''}`}></div>
@@ -149,7 +190,7 @@ function Create(props) {
                     </div>
                     <div className='title-desc-slide'>
                         <div className='title-desc'>
-                            <input placeholder='title' maxLength='24' name='title' value={formData.title} onChange={handleChange}/>
+                            <input placeholder='title' maxLength='12' name='title' value={formData.title} onChange={handleChange}/>
                             <textarea placeholder='description' maxLength='500' name='desc' value={formData.desc} onChange={handleChange}/>
                         </div>
                     </div>
@@ -161,12 +202,13 @@ function Create(props) {
                     </form>
                 </div>
                 <div className='btn-container'>
+                    <button name='delete' onClick={handleDeleteSlide} className={`back-btn ${slideActive === 1 ? 'btn-active delete' : ''}`}>[delete]</button>
                     <button name='back' onClick={handleSlide} className={`back-btn ${slideActive >= 2 ? 'btn-active' : ''}`}>[back]</button>
                     <button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>
                     <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[update]</button>
                 </div>
             </div>
-            {props.createActive ? <div className='create-icon'>
+            {props.createActive ? <div className='create-icon-edit'>
                 <AiOutlinePlus className={`create-icon-2 ${props.createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>
             </div> : null}
         </div>

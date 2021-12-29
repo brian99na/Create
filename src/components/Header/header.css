@@ -22,7 +22,10 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: absolute;
+  position: fixed;
+  z-index: 2;
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
 }
 
 nav .create-btn {
@@ -47,7 +50,6 @@ nav .create-btn {
           flex-direction: row;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  z-index: 3;
 }
 
 nav .create-btn h1 {
@@ -79,7 +81,7 @@ nav .search-box {
 
 nav .search-active {
   opacity: 1;
-  z-index: 4;
+  z-index: 2;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
 }
@@ -101,7 +103,7 @@ nav .search-ham {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  gap: 10px;
+  gap: 14px;
   padding: 0 10px;
   z-index: 4;
 }
@@ -130,7 +132,6 @@ nav .search-ham .ham-main {
   width: 30px;
   aspect-ratio: 1;
   cursor: pointer;
-  z-index: 7;
 }
 
 nav .search-ham .ham-main .ham-1, nav .search-ham .ham-main .ham-2, nav .search-ham .ham-main .ham-3 {
@@ -152,7 +153,8 @@ nav .search-ham .ham-main .ham-3 {
 }
 
 nav .search-ham .ham-main .ham-active-1, nav .search-ham .ham-main .ham-active-2, nav .search-ham .ham-main .ham-active-3 {
-  background-color: #fafafa;
+  background-color: white;
+  z-index: 10;
 }
 
 nav .search-ham .ham-main .ham-active-1 {
@@ -169,6 +171,33 @@ nav .search-ham .ham-main .ham-active-2 {
 nav .search-ham .ham-main .ham-active-3 {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+@media only screen and (min-width: 768px) {
+  nav .create-btn {
+    padding: 0 40px;
+  }
+  nav .create-btn h1 {
+    font-size: 40px;
+  }
+  nav .search-box {
+    padding: 0 40px;
+    font-size: 30px;
+  }
+  nav .search-ham {
+    padding: 0 40px;
+    gap: 36px;
+  }
+  nav .search-ham .search-icon {
+    font-size: 40px;
+  }
+  nav .search-ham .ham-main {
+    width: 50px;
+    gap: 12px;
+  }
+  nav .search-ham .ham-main .ham-1, nav .search-ham .ham-main .ham-2, nav .search-ham .ham-main .ham-3 {
+    width: 42px;
+  }
 }
 
 .nav-links {
@@ -225,9 +254,15 @@ nav .search-ham .ham-main .ham-active-3 {
   color: white;
 }
 
+@media only screen and (min-width: 768px) {
+  .nav-links .nav-links-main h1 {
+    font-size: 60px;
+  }
+}
+
 .nav-links-active {
   opacity: 1;
   pointer-events: all;
-  z-index: 3;
+  z-index: 1;
 }
 /*# sourceMappingURL=header.css.map */

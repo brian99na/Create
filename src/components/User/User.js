@@ -41,7 +41,7 @@ function User(props) {
 
     const userPostJsx = userPosts.map((item) => {
         return(
-            <div className='creation-container' onClick={(e) => handlePostClick(e, item.id)}>
+            <div className='creation-main' onClick={(e) => handlePostClick(e, item.id)}>
                 <h1>{item.title}</h1>
                 <div className='creation-file'>
                     {item.file && imageFormats.includes(item.file.slice(-3)) ? 

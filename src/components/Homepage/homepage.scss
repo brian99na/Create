@@ -33,14 +33,24 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                 padding: 5px 15px;
                 cursor: pointer;
                 transition: 0.5s ease;
+                white-space: nowrap;
             }
 
             .tag-active {
-                background-color: rgb(59, 59, 92);
+                background-color: rgb(49, 49, 49);
                 color: white;
             }
         }
 
+        @media only screen and (min-width: 768px) {
+
+            .tag-container {
+
+                .tag-item {
+                    font-size: 30px;
+                }
+            }
+        }
     }
     .tag-bar::-webkit-scrollbar {
         height: 8px;
@@ -74,9 +84,12 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                 width: 45%;
                 height: fit-content;
                 position: relative;
+                overflow: hidden;
     
                 p {
                     align-self: flex-start;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
     
                 .file-container {
@@ -89,6 +102,19 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                         height: fit-content;
                         position: absolute;
                         bottom: 0;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .post-inner {
+                width: 75%;
+
+                .post-container {
+                    
+                    p {
+                        font-size: 32px;
                     }
                 }
             }

@@ -3,13 +3,16 @@
 .post-upper {
     @include flexCenter(column);
     width: 100%;
+    height: 100vh;
     opacity: 1;
     transform: translateY(0px);
     transition: 0.5s ease;
+    position: relative;
+    overflow-y: scroll;
 
     .post-container {
         @include flexCenter(column);
-        margin: 10vh 0 0 0;
+        margin: 20vh 0 10vh 0;
         width: 90%;
         gap: 15px;
 
@@ -40,6 +43,8 @@
             p {
                 text-align: right;
                 width: 50%;
+                color: rgb(51, 153, 236);
+                text-decoration: underline 1px;
             }
         }
 
@@ -67,6 +72,38 @@
             background-color: rgb(59, 59, 59);
             color: rgb(243, 243, 243);
             outline: none;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .post-container {
+            width: 65%;
+            margin: 0;
+
+            h1, p {
+                font-size: 20px;
+            }
+
+            .title-at {
+                h1 {
+                    font-size: 40px;
+                }
+
+                p {
+                    font-size: 26px;
+                }
+            }
+
+            .tag-container {
+
+                p {
+                    margin: 4px 0;
+                }
+            }
+
+            .edit-btn {
+                font-size: 24px;
+            }
         }
     }
 }

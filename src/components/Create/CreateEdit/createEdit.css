@@ -1,4 +1,4 @@
-.modal-upper {
+.modal-upper-edit {
   width: 100vw;
   height: 100vh;
   left: 0;
@@ -14,7 +14,101 @@
   transition: 0.5s ease;
 }
 
-.modal-upper .create-modal {
+.modal-upper-edit .delete-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(77, 77, 77, 0.4);
+  z-index: 5;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.modal-upper-edit .delete-overlay .delete-modal {
+  width: 80%;
+  padding: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(53, 53, 53, 0.8);
+  border: 1px solid white;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(60px);
+          backdrop-filter: blur(60px);
+  gap: 30px;
+}
+
+.modal-upper-edit .delete-overlay .delete-modal h1 {
+  color: white;
+  font-size: 24px;
+}
+
+.modal-upper-edit .delete-overlay .delete-modal .del-btns {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-upper-edit .delete-overlay .delete-modal .del-btns button {
+  width: 48%;
+  padding: 5px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-upper-edit .delete-overlay .delete-modal .del-btns .del-btn {
+  background-color: #d15757;
+  color: white;
+}
+
+.modal-upper-edit .delete-overlay .deleteModalActive {
+  pointer-events: all;
+}
+
+.modal-upper-edit .deleteOverlayActive {
+  opacity: 1;
+}
+
+.modal-upper-edit .create-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,7 +130,7 @@
   height: 100%;
 }
 
-.modal-upper .create-modal .slide-indicators {
+.modal-upper-edit .create-modal .slide-indicators {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,7 +150,7 @@
   gap: 5%;
 }
 
-.modal-upper .create-modal .slide-indicators .circle {
+.modal-upper-edit .create-modal .slide-indicators .circle {
   height: 10px;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -65,13 +159,13 @@
   transition: 0.3s ease;
 }
 
-.modal-upper .create-modal .slide-indicators .dot {
+.modal-upper-edit .create-modal .slide-indicators .dot {
   background-color: gray;
   -webkit-animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
           animation: popIndicator 0.75s cubic-bezier(0.35, 0, 0.03, 1.57);
 }
 
-.modal-upper .create-modal .create-form {
+.modal-upper-edit .create-modal .create-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,7 +186,7 @@
   transition: 0.3s ease;
 }
 
-.modal-upper .create-modal .create-form input, .modal-upper .create-modal .create-form textarea, .modal-upper .create-modal .create-form button {
+.modal-upper-edit .create-modal .create-form input, .modal-upper-edit .create-modal .create-form textarea, .modal-upper-edit .create-modal .create-form button {
   width: 97%;
   border: none;
   outline: none;
@@ -102,13 +196,13 @@
   font-size: 20px;
 }
 
-.modal-upper .create-modal .create-form button {
+.modal-upper-edit .create-modal .create-form button {
   width: 100%;
   padding: 10px 0;
   border: none;
 }
 
-.modal-upper .create-modal .create-form .upload-slide {
+.modal-upper-edit .create-modal .create-form .upload-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -127,7 +221,7 @@
   gap: 2%;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .upload-container {
+.modal-upper-edit .create-modal .create-form .upload-slide .upload-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,12 +239,12 @@
   height: 10%;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .upload-container button {
+.modal-upper-edit .create-modal .create-form .upload-slide .upload-container button {
   padding: 0;
   height: 100%;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .skeleton-load {
+.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,17 +266,29 @@
   overflow: hidden;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .skeleton-load img, .modal-upper .create-modal .create-form .upload-slide .skeleton-load video {
+.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load img, .modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load video {
   width: 100%;
 }
 
-.modal-upper .create-modal .create-form .upload-slide .skeleton-invis {
+.modal-upper-edit .create-modal .create-form .upload-slide .skeleton-invis {
   -webkit-animation: skeleVisible;
           animation: skeleVisible;
   width: 90%;
 }
 
-.modal-upper .create-modal .create-form .title-desc-slide {
+@media only screen and (min-width: 768px) {
+  .modal-upper-edit .create-modal .create-form .upload-slide .skeleton-load {
+    width: 75%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .modal-upper-edit .create-modal .create-form .upload-slide .upload-container {
+    width: 75%;
+    height: 8%;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form .title-desc-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,7 +306,7 @@
   aspect-ratio: 1;
 }
 
-.modal-upper .create-modal .create-form .title-desc-slide .title-desc {
+.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,18 +326,33 @@
   gap: 2%;
 }
 
-.modal-upper .create-modal .create-form .title-desc-slide .title-desc input {
+.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc input {
   font-size: 20px;
   height: 10%;
 }
 
-.modal-upper .create-modal .create-form .title-desc-slide .title-desc textarea {
+.modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc textarea {
   font-size: 20px;
   resize: none;
   height: 85%;
 }
 
-.modal-upper .create-modal .create-form .tags-slide {
+@media only screen and (min-width: 768px) {
+  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc {
+    width: 75%;
+    height: auto;
+    aspect-ratio: 1;
+    font-size: 30px;
+  }
+  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc input {
+    font-size: 30px;
+  }
+  .modal-upper-edit .create-modal .create-form .title-desc-slide .title-desc textarea {
+    font-size: 30px;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form .tags-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -251,7 +372,7 @@
   aspect-ratio: 1;
 }
 
-.modal-upper .create-modal .create-form .tags-slide .tags-container {
+.modal-upper-edit .create-modal .create-form .tags-slide .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -281,7 +402,7 @@
   gap: 2%;
 }
 
-.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container {
+.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,48 +423,64 @@
   padding: 1% 5%;
 }
 
-.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
+.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
   font-size: 20px;
 }
 
-.modal-upper .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
+.modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
   font-size: 24px;
 }
 
-.modal-upper .create-modal .create-form .tags-slide input {
+.modal-upper-edit .create-modal .create-form .tags-slide input {
   width: 85%;
 }
 
-.modal-upper .create-modal .create-form .tags-slide button {
+.modal-upper-edit .create-modal .create-form .tags-slide button {
   padding: 0;
   height: 100%;
   width: 45%;
 }
 
-.modal-upper .create-modal .create-form .remove-tag {
+@media only screen and (min-width: 768px) {
+  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container {
+    width: 75%;
+  }
+  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .tag {
+    font-size: 30px;
+  }
+  .modal-upper-edit .create-modal .create-form .tags-slide .tags-container .tag-container .remove-tag {
+    font-size: 30px;
+  }
+  .modal-upper-edit .create-modal .create-form .tags-slide input {
+    width: 73%;
+    font-size: 30px;
+  }
+}
+
+.modal-upper-edit .create-modal .create-form .remove-tag {
   cursor: pointer;
 }
 
-.modal-upper .create-modal .form-left {
+.modal-upper-edit .create-modal .form-left {
   left: 0;
 }
 
-.modal-upper .create-modal .form-mid {
+.modal-upper-edit .create-modal .form-mid {
   left: -100vw;
 }
 
-.modal-upper .create-modal .form-right {
+.modal-upper-edit .create-modal .form-right {
   left: -200vw;
 }
 
-.modal-upper .create-modal .btn-container {
+.modal-upper-edit .create-modal .btn-container {
   position: absolute;
   bottom: 15vh;
   width: 90%;
   height: 5vh;
 }
 
-.modal-upper .create-modal .btn-container .back-btn, .modal-upper .create-modal .btn-container .next-btn, .modal-upper .create-modal .btn-container .create-btn {
+.modal-upper-edit .create-modal .btn-container .back-btn, .modal-upper-edit .create-modal .btn-container .next-btn, .modal-upper-edit .create-modal .btn-container .create-btn {
   position: absolute;
   width: 45%;
   height: 100%;
@@ -357,24 +494,36 @@
   font-size: 20px;
 }
 
-.modal-upper .create-modal .btn-container .next-btn, .modal-upper .create-modal .btn-container .create-btn {
+.modal-upper-edit .create-modal .btn-container .next-btn, .modal-upper-edit .create-modal .btn-container .create-btn {
   right: 0;
 }
 
-.modal-upper .create-modal .btn-container .create-btn {
+.modal-upper-edit .create-modal .btn-container .create-btn {
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
   pointer-events: none;
 }
 
-.modal-upper .create-modal .btn-container .btn-active {
+.modal-upper-edit .create-modal .btn-container .btn-active {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
   pointer-events: all;
 }
 
-.modal-upper .modal-active {
+.modal-upper-edit .create-modal .btn-container .delete {
+  background-color: #b65353;
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-upper-edit .create-modal .btn-container {
+    bottom: 12vh;
+    width: 75%;
+  }
+}
+
+.modal-upper-edit .modal-active {
   opacity: 1;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
@@ -382,15 +531,13 @@
 
 .modal-upper-active {
   z-index: 2;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  background-color: rgba(175, 175, 175, 0.5);
+  background-color: #dadada;
   pointer-events: all;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
 
-.create-icon {
+.create-icon-edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -412,7 +559,7 @@
   pointer-events: all;
 }
 
-.create-icon .create-icon-2 {
+.create-icon-edit .create-icon-2 {
   font-size: 20px;
   cursor: pointer;
   padding: 10px;
@@ -427,7 +574,7 @@
   z-index: 2;
 }
 
-.create-icon .create-icon-x {
+.create-icon-edit .create-icon-x {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   background-color: #ff9090;
@@ -436,6 +583,18 @@
   -webkit-filter: drop-shadow(1px -1px 1px gray);
           filter: drop-shadow(1px -1px 1px gray);
   border-radius: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+  .create-icon-edit {
+    width: 80px;
+    bottom: 40px;
+    right: 40px;
+  }
+  .create-icon-edit .create-icon-2 {
+    font-size: 40px;
+    padding: 20px;
+  }
 }
 
 @-webkit-keyframes skeleton {

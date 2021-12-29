@@ -7,11 +7,14 @@ import User from './components/User/User'
 import Post from './components/Post/Post'
 import { useEffect, useState } from 'react';
 import Create from './components/Create/Create';
+import CreateEdit from './components/Create/CreateEdit/CreateEdit'
 
 function App() {
   const [pageLeave, setPageLeave] = useState(false)
   const [userInfo, setUserInfo] = useState('')
   const [editActive, setEditActive] = useState(false)
+  const [createActive, setCreateActive] = useState(false)
+  const [postData, setPostData] = useState('')
 
   const localStorageLoad = () => {
     if (localStorage.getItem('create-app') == null) {
@@ -36,9 +39,10 @@ function App() {
         <Route path='/' element={<Homepage key={userInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
         <Route path='/sign-in' element={<Sign key={userInfo} userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
         <Route path='/users/:id' element={<User key={userInfo} userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
-        <Route path='/users/:id/:post_id' element={<Post setEditActive={setEditActive} key={userInfo} userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
+        <Route path='/users/:id/:post_id' element={<Post setPostData={setPostData} postData={postData} setCreateActive={setCreateActive} setEditActive={setEditActive} key={userInfo} userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>}/>
       </Routes>
       {!editActive ? <Create userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/> : ''}
+      {editActive && <CreateEdit setPageLeave={setPageLeave} pageLeave={pageLeave} userInfo={userInfo} postData={postData} createActive={createActive} setCreateActive={setCreateActive} setEditActive={setEditActive} />}
     </div>
   );
 }

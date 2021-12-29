@@ -11,6 +11,7 @@ function Create(props) {
     const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [token, setToken] = useState('')
+    const [error, setError] = useState('')
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
     const navigate = useNavigate()
@@ -72,28 +73,33 @@ function Create(props) {
     }
 
     const handleCreate = () => {
-        const fd = new FormData()
-        fd.append('title', formData.title)
-        fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-        fd.append('desc', formData.desc)
-        fd.append('tags', [...formData.tags])
-        setCreateActive(false)
-        axios.post('http://localhost:8000/posts/', fd, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Token ' + token
-            }
-        })
-        .then((res) => {
-            props.setPageLeave(true)
-            setTimeout(() => {
-                navigate(`/users/${props.userInfo.user_name}/${res.data.id}`)
-            }, 300);
-        })
-        .then(() => {
-            setFormData({file: '', title: '', desc: '', tags: []})
-            setSlideActive(1)
-        })
+        if (formData.title) {
+            setError('')
+            const fd = new FormData()
+            fd.append('title', formData.title)
+            fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+            fd.append('desc', formData.desc)
+            fd.append('tags', [...formData.tags])
+            setCreateActive(false)
+            axios.post('http://localhost:8000/posts/', fd, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Token ' + token
+                }
+            })
+            .then((res) => {
+                props.setPageLeave(true)
+                setTimeout(() => {
+                    navigate(`/users/${props.userInfo.user_name}/${res.data.id}`)
+                }, 300);
+            })
+            .then(() => {
+                setFormData({file: '', title: '', desc: '', tags: []})
+                setSlideActive(1)
+            })
+        } else {
+            setError('[missing details]')
+        }
     }
 
     const tagsJsx = formData.tags && formData.tags.map((tag, index) => {
@@ -138,7 +144,7 @@ function Create(props) {
                     </div>
                     <div className='title-desc-slide'>
                         <div className='title-desc'>
-                            <input placeholder='title' maxLength='24' name='title' value={formData.title} onChange={handleChange}/>
+                            <input placeholder='title' type='text' maxLength='12' name='title' value={formData.title} onChange={handleChange}/>
                             <textarea placeholder='description' maxLength='500' name='desc' value={formData.desc} onChange={handleChange}/>
                         </div>
                     </div>
@@ -154,6 +160,7 @@ function Create(props) {
                     <button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>
                     <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[create]</button>
                 </div>
+                <p className='error'>{error}</p>
             </div>
             <div className='create-icon'>
                 <AiOutlinePlus className={`create-icon-2 ${createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>

@@ -55,7 +55,16 @@ function Homepage(props) {
     }
 
     const homePostsJsx = homepagePosts.length > 0 && homepagePosts.filter((post) => {
-        return(post.tags[0].includes(filterValues))
+        if (filterValues.length === 0) {
+            return true
+        } else {
+            for (let i=0; i < filterValues.length; i++) {
+                if (post.tags[0].includes(filterValues[i])){
+                    return true
+                }
+            }
+            return false
+        }
     }).map((post) => {
         return(
             <div className='post-container' onClick={(e) => handlePostClick(e, post.user, post.id) }>
@@ -67,6 +76,8 @@ function Homepage(props) {
 
         )
     })
+
+    console.log(filterValues)
 
     const tagJsx = tagArr.map((tag) => {
         return(

@@ -49,11 +49,18 @@
   cursor: pointer;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  white-space: nowrap;
 }
 
 .homepage .tag-bar .tag-container .tag-active {
-  background-color: #3b3b5c;
+  background-color: #313131;
   color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .homepage .tag-bar .tag-container .tag-item {
+    font-size: 30px;
+  }
 }
 
 .homepage .tag-bar::-webkit-scrollbar {
@@ -130,11 +137,14 @@
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
+  overflow: hidden;
 }
 
 .homepage .posts .post-inner .post-container p {
   -ms-flex-item-align: start;
       align-self: flex-start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .homepage .posts .post-inner .post-container .file-container {
@@ -150,6 +160,15 @@
   height: fit-content;
   position: absolute;
   bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .homepage .posts .post-inner {
+    width: 75%;
+  }
+  .homepage .posts .post-inner .post-container p {
+    font-size: 32px;
+  }
 }
 
 .homepage .triangle {

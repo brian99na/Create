@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import './header.css'
-import axios from 'axios'
 
 function Header(props) {
 
@@ -10,7 +9,6 @@ function Header(props) {
 
     const [navActive, setNavActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
-    const [username, setUsername] = useState()
 
     const handleNavClick = (e) => {
         if (e.target.getAttribute('name')){
@@ -61,7 +59,7 @@ function Header(props) {
 
     console.log(props.userInfo)
 
-    const linksJsx = props.userInfo.token ? 
+    const linksJsx = props.userInfo && props.userInfo.token ? 
     <>
         <h1 name={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>[Profile]</h1>
         <h1 onClick={handleSignOutClick}>[Sign Out]</h1>

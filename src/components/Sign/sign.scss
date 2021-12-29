@@ -22,6 +22,11 @@
         text-align: center
     }
 
+    button {
+        background-color: rgb(73, 73, 73);
+        color: white;
+    }
+
     .sign-container {
         @include flexCenter(row);
         position: absolute;
@@ -43,22 +48,28 @@
                 width: 70%;
                 gap: 2%;
 
+                .sign-up-detour {
+                    @include flexCenter(column);
+                    width: 100%;
+                    gap: 5px;
+
+                    p {
+                        font-weight: 300;
+                        color: rgb(74, 165, 240);
+                        cursor: hover;
+                        align-self: center;
+                    }
+    
+                    h3 {
+                        align-self: center;
+                        font-size: 16px;
+                        font-weight: 300
+                    }
+                }
+
                 .error {
                     color: red;
                     animation: error 1s infinite ease;
-                }
-
-                p {
-                    font-weight: 300;
-                    color: rgb(74, 165, 240);
-                    cursor: hover;
-                    align-self: center;
-                }
-
-                h3 {
-                    align-self: center;
-                    font-size: 16px;
-                    font-weight: 300
                 }
             }
         }
@@ -82,6 +93,45 @@
 .sign-leave {
     opacity: 0;
     transform: translateY(-30px);
+}
+
+@media only screen and (min-width: 768px) {
+    .sign-page {
+
+        .sign-container {
+
+            .sign-in, .sign-up {
+                
+                form {
+                    height: 50%;
+                    width: auto;
+                    aspect-ratio: 1;
+                    gap: 25px;
+                    padding: 10vw;
+                    background-color: rgba(238, 238, 238, 0.5);
+                    border: 1px solid white;
+                    border-radius: 15px;
+
+                    h1 {
+                        font-size: 30px;
+                    }
+
+                    input, button{
+                        font-size: 18px;
+                    }
+
+                    .sign-up-detour {
+                        p {
+                            font-size: 24px;
+                        }
+                        h3 {
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @keyframes error {

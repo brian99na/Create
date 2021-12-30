@@ -43,7 +43,7 @@
 }
 
 .post-upper .post-container .file-container {
-  width: 100%;
+  max-width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
 }
@@ -132,27 +132,107 @@
   background-color: #3b3b3b;
   color: #f3f3f3;
   outline: none;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
   .post-upper .post-container {
     width: 65%;
     margin: 0;
+    margin: 15vh 0 10vh 0;
   }
   .post-upper .post-container h1, .post-upper .post-container p {
-    font-size: 20px;
+    font-size: 18px;
   }
   .post-upper .post-container .title-at h1 {
-    font-size: 40px;
+    font-size: 36px;
   }
   .post-upper .post-container .title-at p {
     font-size: 26px;
+    cursor: pointer;
   }
   .post-upper .post-container .tag-container p {
     margin: 4px 0;
   }
   .post-upper .post-container .edit-btn {
     font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .post-upper .post-container {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-width: 65%;
+  }
+  .post-upper .post-container .file-container {
+    max-width: 60%;
+  }
+  .post-upper .post-container .title-at h1 {
+    font-size: 30px;
+  }
+  .post-upper .post-container .title-at p {
+    font-size: 26px;
+    cursor: pointer;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 3px;
+    border-radius: 3px;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .post-upper .post-container .title-at p:hover {
+    background-color: #e9e9e9;
+  }
+  .post-upper .post-container .tag-container p {
+    margin: 4px 0;
+  }
+  .post-upper .post-container .edit-btn {
+    font-size: 24px;
+    cursor: pointer;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .post-upper .post-container .edit-btn:hover {
+    background-color: #77aafb;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .post-upper .post-container {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    aspect-ratio: 1;
+    max-width: 35%;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    padding: 30px;
+    margin: 10vh 0 10vh 0;
+  }
+  .post-upper .post-container .title-at p {
+    text-decoration: none;
+  }
+  .post-upper .post-container h1, .post-upper .post-container p {
+    font-size: 16px;
+  }
+  .post-upper .post-container .file-container {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .post-upper .post-container {
+    max-width: 35%;
+  }
+  .post-upper .post-container h1, .post-upper .post-container p {
+    font-size: 20px;
+  }
+  .post-upper .post-container .file-container {
+    max-width: 100%;
   }
 }
 

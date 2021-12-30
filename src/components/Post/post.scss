@@ -17,7 +17,7 @@
         gap: 15px;
 
         .file-container {
-            width: 100%;
+            max-width: 100%;
             aspect-ratio: 1;
             overflow: hidden;
 
@@ -72,6 +72,7 @@
             background-color: rgb(59, 59, 59);
             color: rgb(243, 243, 243);
             outline: none;
+            cursor: pointer;
         }
     }
 
@@ -79,18 +80,21 @@
         .post-container {
             width: 65%;
             margin: 0;
+            margin: 15vh 0 10vh 0;
+
 
             h1, p {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .title-at {
                 h1 {
-                    font-size: 40px;
+                    font-size: 36px;
                 }
 
                 p {
                     font-size: 26px;
+                    cursor: pointer;
                 }
             }
 
@@ -103,6 +107,93 @@
 
             .edit-btn {
                 font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .post-container {
+            height: fit-content;
+            max-width: 65%;
+
+            .file-container {
+                max-width: 60%;
+            }
+
+            .title-at {
+                h1 {
+                    font-size: 30px;
+                }
+
+                p {
+                    font-size: 26px;
+                    cursor: pointer;
+                    width: fit-content;
+                    padding: 3px;
+                    border-radius: 3px;
+                    transition: 0.3s ease;
+                }
+
+                p:hover {
+                    background-color: rgb(233, 233, 233);
+                }
+            }
+
+            .tag-container {
+
+                p {
+                    margin: 4px 0;
+                }
+            }
+
+            .edit-btn {
+                font-size: 24px;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+
+            .edit-btn:hover{
+                background-color: rgb(119, 170, 251);
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1366px) {
+        .post-container {
+            height: fit-content;
+            aspect-ratio: 1;
+            max-width: 35%;
+            transition: 0.3s ease;
+            padding: 30px;
+            margin: 10vh 0 10vh 0;
+
+            .title-at {
+                p {
+                    text-decoration: none;
+                }
+            }
+
+            h1, p {
+                font-size: 16px;
+            }
+
+            .file-container {
+                max-width: 100%;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1920px) {
+        .post-container {
+            max-width: 35%;
+
+            h1, p {
+                font-size: 20px;
+            }
+
+            .file-container {
+                max-width: 100%;
             }
         }
     }

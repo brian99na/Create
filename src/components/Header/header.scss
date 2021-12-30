@@ -12,7 +12,7 @@ nav {
     justify-content: space-between;
     position: fixed;
     z-index: 2;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(15px);
 
     .create-btn {
         width: fit-content;
@@ -32,39 +32,12 @@ nav {
         opacity: 0;
     }
 
-    .search-box {
-        position: absolute;
-        width: 50%;
-        height: 100%;
-        opacity: 0;
-        border: none;
-        z-index: -1;
-        outline: none;
-        font-size: 20px;
-        transition: 0.3s ease;
-        transform: translateY(-20px) scaleY(0) ;
-        padding: 0 10px;
-        background: none;
-    }
-
-    .search-active {
-        opacity: 1;
-        z-index: 2;
-        transform: translateY(0px);
-    }
-
     .search-ham {
         @include flexCenter(row);
         width: fit-content;
         gap: 14px;
         padding: 0 10px;
         z-index: 4;
-
-        .search-icon {
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 4;
-        }
 
         .ham-main {
             @include flexCenter(column);
@@ -117,18 +90,9 @@ nav {
             }
         }
 
-        .search-box {
-            padding: 0 40px;
-            font-size: 30px;
-        }
-
         .search-ham {
             padding: 0 40px;
             gap: 36px;
-
-            .search-icon {
-                font-size: 40px
-            }
 
             .ham-main {
                 width: 50px;
@@ -164,9 +128,30 @@ nav {
         align-items: flex-end;
         
         h1 {
-            color: white;
+            display: flex;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            transition: 0.3s ease;
+            flex-direction: row-reverse;
+            gap: 5px;
+        }
+
+        h1:hover {
+            transform: translateY(-5px);
+            color: rgb(113, 162, 241);
+        }
+
+        h1 > * {
+
+            align-self: center;
         }
     }    
+}
+
+.nav-links-active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 1;
 }
 
 @media only screen and (min-width: 768px) {
@@ -181,9 +166,44 @@ nav {
     }
 }
 
+@media only screen and (min-width: 1366px) {
+    nav {
+        justify-content: center;
 
-.nav-links-active {
-    opacity: 1;
-    pointer-events: all;
-    z-index: 1;
+        .create-btn {
+
+        }
+
+        .search-ham{
+            display:none;   
+        }
+    }
+
+    .nav-links {
+        background-color: transparent;
+        opacity: 1;
+        z-index: 1;
+        pointer-events: none;
+        justify-content: flex-start;
+
+        .nav-links-main {
+            align-items: flex-start;
+            width: fit-content;
+            height: fit-content;
+            margin: 0 0 0 75%;
+            padding: 20px;
+            gap: 30px;
+            pointer-events: all;
+            transition: 0.3s ease;
+            border-left: 1px solid rgb(240, 240, 240);
+
+            h1 {
+                flex-direction: row;
+                font-size: 30px;
+                color: rgb(46, 46, 46);
+                border-radius: 5px;
+                padding: 3px 5px;
+            }
+        }
+    }
 }

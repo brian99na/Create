@@ -87,7 +87,63 @@
             }
         }
     }
-    
+
+    @media only screen and (min-width: 1366px) {
+        .profile {
+            width: 45%;
+        }
+
+        .creation-container {
+            padding: 30px 0 30px 0;
+            margin: 0 0 10vh 0;
+            width: 45%;
+            border-radius: 30px;
+            transition: 0.3s ease;
+
+            p {
+                font-size: 24px;
+            }
+
+            .creations {
+
+                .creation-main {
+                    cursor: pointer;
+                    transition: 0.3s ease;
+                    border-radius: 5px;
+                    padding: 5px;
+
+                    h1 {
+                        font-size: 30px;
+                    }
+                }
+
+                .creation-main:hover {
+                    background-color: rgb(231, 231, 231);
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1366px) {
+        .profile {
+            width: 35%;
+        }
+
+        .creation-container {
+            width: 45%;
+
+            .creations {
+
+                .creation-main {
+                    width: 30%;
+
+                    h1 {
+                        font-size: 26px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .user-leave {

@@ -38,6 +38,7 @@
 .sign-page button {
   background-color: #494949;
   color: white;
+  cursor: pointer;
 }
 
 .sign-page .sign-container {
@@ -124,10 +125,18 @@
 .sign-page .sign-container .sign-in form .sign-up-detour p, .sign-page .sign-container .sign-up form .sign-up-detour p {
   font-weight: 300;
   color: #4aa5f0;
-  cursor: hover;
+  cursor: pointer;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.sign-page .sign-container .sign-in form .sign-up-detour p:hover, .sign-page .sign-container .sign-up form .sign-up-detour p:hover {
+  background-color: #eeeeee;
 }
 
 .sign-page .sign-container .sign-in form .sign-up-detour h3, .sign-page .sign-container .sign-up form .sign-up-detour h3 {
@@ -142,6 +151,9 @@
   color: red;
   -webkit-animation: error 1s infinite ease;
           animation: error 1s infinite ease;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .sign-page .sign-container .sign-up {
@@ -174,10 +186,6 @@
     width: auto;
     aspect-ratio: 1;
     gap: 25px;
-    padding: 10vw;
-    background-color: rgba(238, 238, 238, 0.5);
-    border: 1px solid white;
-    border-radius: 15px;
   }
   .sign-page .sign-container .sign-in form h1, .sign-page .sign-container .sign-up form h1 {
     font-size: 30px;
@@ -190,6 +198,19 @@
   }
   .sign-page .sign-container .sign-in form .sign-up-detour h3, .sign-page .sign-container .sign-up form .sign-up-detour h3 {
     font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .sign-page .sign-container .sign-in form, .sign-page .sign-container .sign-up form {
+    width: 35%;
+    gap: 15px;
+  }
+  .sign-page .sign-container .sign-in form .sign-up-detour p, .sign-page .sign-container .sign-up form .sign-up-detour p {
+    font-size: 16px;
+  }
+  .sign-page .sign-container .sign-in form .sign-up-detour h3, .sign-page .sign-container .sign-up form .sign-up-detour h3 {
+    font-size: 18px;
   }
 }
 

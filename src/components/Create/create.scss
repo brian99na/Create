@@ -16,13 +16,13 @@
 
     .create-modal {
         @include flexCenter(column);
-        justify-content: space-evenly;
+        justify-content: center;
+        gap: 5%;
         opacity: 0;
         transition: 0.5s ease;
         position: relative;
         width: 100%;
         height: 100%;
-        
         
         .slide-indicators {
             @include flexCenter(row);
@@ -40,6 +40,12 @@
             .dot {
                 background-color: rgb(128, 128, 128);
                 animation: popIndicator 0.75s cubic-bezier(.35,0,.03,1.57);
+            }
+        }
+
+        @media only screen and (min-width: 1366px) {
+            .slide-indicators {
+                gap: 3%;
             }
         }
     
@@ -68,7 +74,7 @@
                 button {
                     width: 100%;
                     padding: 10px 0;
-                    border: none;
+                    border: 1px solid rgb(173, 173, 173);
                 }
         
                 .upload-slide {
@@ -85,6 +91,7 @@
                         button {
                             padding: 0;
                             height: 100%;
+                            cursor: pointer;
                         }
                     }
             
@@ -116,6 +123,12 @@
                     @media only screen and (min-width: 1024px) {
                         .upload-container {
                             width: 35%;
+                        }
+                    }
+
+                    @media only screen and (min-width: 1366px) {
+                        .upload-container {
+                            width: 25%;
                         }
                     }
                 }
@@ -160,6 +173,8 @@
     
                     @media only screen and (min-width: 1024px) {
                         .title-desc {    
+                            width: 35%;
+                        
                             input {
                                 font-size: 20px;
                             }
@@ -167,6 +182,13 @@
                             textarea{
                                 font-size: 20px;
                             }
+                        }
+                    }
+
+                    @media only screen and (min-width: 1366px) {
+                        .title-desc {   
+                            width: 25%;
+                            
                         }
                     }
                 }
@@ -206,7 +228,17 @@
                                 font-size: 24px;
                             }
                         }
-        
+                    }
+
+                    .tags-container::-webkit-scrollbar {
+                        width: 8px;
+                        border: 1px solid rgb(211, 211, 211);
+                        border-radius: 5px;
+                    }
+                
+                    .tags-container::-webkit-scrollbar-thumb {
+                        background-color: gray;
+                        border-radius: 5px
                     }
         
                     input {
@@ -246,19 +278,23 @@
                     @media only screen and (min-width: 1024px) {
     
                         .tags-container {
-                            .tag-container {
-                                .tag {
-                                    font-size: 20px;
-                                }
-                                .remove-tag {
-                                    font-size: 20px;
-                                }
-                            }
+                            width: 35%;
                         }
     
                         input {
-                            width: 30%;
+                            width: 35%;
                             font-size: 24px;
+                        }
+                    }
+
+                    @media only screen and (min-width: 1366px) {
+    
+                        .tags-container {
+                            width: 25%;
+                        }
+    
+                        input {
+                            width: 25%;
                         }
                     }
                 }
@@ -290,13 +326,14 @@
                 position: absolute;
                 width: 45%;
                 height: 100%;
-                border: none;
+                border: 1px solid rgb(173, 173, 173);
                 border-radius: 5px;
                 opacity: 0;
                 transform: translateY(30px);
                 transition: 0.3s ease;
                 font-size: 20px;
                 pointer-events: none;
+                cursor: pointer;
             }
     
             .next-btn, .create-btn {
@@ -306,6 +343,8 @@
             .create-btn {
                 transform: translateY(-30px);
                 pointer-events: none;
+                color: white;
+                background-color: rgb(56, 56, 56);
             }
     
             .btn-active {
@@ -337,6 +376,7 @@
 
         @media only screen and (min-width: 1024px) {
             .btn-container {
+                width: 35%;
             }
 
             .error {
@@ -344,12 +384,28 @@
                 bottom: 5vh;
             }
         }
+
+        @media only screen and (min-width: 1366px) {
+            .btn-container {
+                width: 25%;
+
+                .back-btn, .next-btn, .create-btn {
+                    width: 48%;
+                }
+            }
+        }
     }
+
+    @media only screen and (min-width: 1366px) {
+        .create-modal {
+            gap: 3%;
+        }
+    }
+
     .modal-active {
         opacity: 1;
         transition: 0.5s ease;
     }
-    
 }
 
 .modal-upper-active {
@@ -407,6 +463,19 @@
         width: 50px;
         bottom: 40px;
         right: 40px;
+
+        .create-icon-2 {
+            font-size: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .create-icon {
+        width: 50px;
+        bottom: 40px;
+        left: 75vw;
 
         .create-icon-2 {
             font-size: 30px;

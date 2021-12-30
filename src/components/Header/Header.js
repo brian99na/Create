@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { RiSearch2Line } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import './header.css'
+import { HiHome } from 'react-icons/hi'
+import { IoMdPerson } from 'react-icons/io'
+import { MdExitToApp } from 'react-icons/md'
 
 function Header(props) {
 
     const navigate = useNavigate()
 
     const [navActive, setNavActive] = useState(false)
-    const [searchActive, setSearchActive] = useState(false)
 
     const handleNavClick = (e) => {
         if (e.target.getAttribute('name')){
@@ -23,10 +24,6 @@ function Header(props) {
         } else {
             setNavActive(!navActive)
         }
-    }
-
-    const handleSearchClick = () => {
-        setSearchActive(!searchActive)
     }
 
     const handleHomeClick = () => {
@@ -61,20 +58,18 @@ function Header(props) {
 
     const linksJsx = props.userInfo && props.userInfo.token ? 
     <>
-        <h1 name={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>[Profile]</h1>
-        <h1 onClick={handleSignOutClick}>[Sign Out]</h1>
+        <h1 name={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>{<IoMdPerson />}[Profile]</h1>
+        <h1 onClick={handleSignOutClick}>{<MdExitToApp />}[Sign Out]</h1>
     </> : 
-        <h1 name='/sign-in' onClick={handleNavClick}>[Sign In/Up]</h1>
+        <h1 name='/sign-in' onClick={handleNavClick}>{<MdExitToApp style={{transform: 'rotate(180deg)'}} />}[Sign In/Up]</h1>
 
     return (
         <header>
             <nav>
-                <div className={`create-btn ${searchActive ? 'create-active' : '' }`}onClick={handleHomeClick}>
+                <div className='create-btn' onClick={handleHomeClick}>
                     <h1>create</h1>
                 </div>
-                <input className={`search-box ${searchActive ? 'search-active' : ''}`} placeholder='[search]'/>
                 <div className='search-ham'>
-                    <RiSearch2Line className='search-icon' onClick={handleSearchClick}/>
                     <div className='ham-main' onClick={handleNavClick}>
                         <div className={`ham-1 ${navActive ? 'ham-active-1' : ''}`}></div>
                         <div className={`ham-2 ${navActive ? 'ham-active-2' : ''}`}></div>
@@ -84,7 +79,7 @@ function Header(props) {
             </nav>
             <div className={`nav-links ${navActive ? 'nav-links-active' : ''}`}>
                 <div className='nav-links-main'>
-                    <h1 name='/' onClick={handleNavClick}>[Home]</h1>
+                    <h1 name='/' onClick={handleNavClick}>{<HiHome />}[Home]</h1>
                     {linksJsx}
                 </div>
             </div>

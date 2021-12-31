@@ -42,7 +42,13 @@ function Create(props) {
 
     const handleFileChange = (e) => {
         if (fileRef.current.files[0]) {
-            setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
+
+            if (fileRef.current.files[0].size < 10000000) {
+                setError('')
+                setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
+            } else {
+                setError('[file size must be less than 10mb]')
+            }
         }
     }
 
@@ -73,7 +79,7 @@ function Create(props) {
     }
 
     const handleCreate = () => {
-        if (formData.title) {
+        if (formData.title && fileRef.current.files[0].size < 10000000) {
             setError('')
             const fd = new FormData()
             fd.append('title', formData.title)
@@ -97,6 +103,8 @@ function Create(props) {
                 setFormData({file: '', title: '', desc: '', tags: []})
                 setSlideActive(1)
             })
+        } else if (fileRef.current.files[0].size > 10000000) {
+            setError('[file size must be less than 10mb]')
         } else {
             setError('[missing details]')
         }
@@ -118,9 +126,6 @@ function Create(props) {
     useEffect(() => {
         loadToken()
     }, [props.userInfo])
-
-    console.log(formData)
-    console.log(props.userInfo)
 
     return (
         <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>

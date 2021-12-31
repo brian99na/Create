@@ -50,6 +50,7 @@
                     padding: 5px 0;
                     border: none;
                     border-radius: 5px;
+                    cursor: pointer;
                 }
 
                 .del-btn {
@@ -409,16 +410,34 @@
             }
     
         }
+
+        .error {
+            position: absolute;
+            font-size: 20px;
+            color: rgb(243, 111, 111);
+            animation: error 1s infinite ease;
+            bottom: 7vh;
+        }
         
         @media only screen and (min-width: 768px) {
             .btn-container {
                 width: 55%;
+            }
+
+            .error {
+                font-size: 40px;
+                bottom: 5vh;
             }
         }
 
         @media only screen and (min-width: 1024px) {
             .btn-container {
                 width: 35%;
+            }
+
+            .error {
+                font-size: 40px;
+                bottom: 5vh;
             }
         }
 
@@ -488,6 +507,15 @@
             padding: 10px;
         }
     }
+
+    .modal-upper-edit {
+
+        .delete-overlay {
+            .delete-modal {
+                width: 50%;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -501,6 +529,15 @@
             padding: 10px;
         }
     }
+
+    .modal-upper-edit {
+
+        .delete-overlay {
+            .delete-modal {
+                width: 40%;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 1366px) {
@@ -512,6 +549,27 @@
         .create-icon-2 {
             font-size: 30px;
             padding: 10px;
+        }
+    }
+
+    .modal-upper-edit {
+
+        .delete-overlay {
+            .delete-modal {
+                width: 23%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+
+    .modal-upper-edit {
+
+        .delete-overlay {
+            .delete-modal {
+                width: 16%;
+            }
         }
     }
 }
@@ -540,3 +598,11 @@
     }
 }
 
+@keyframes error {
+    100%, 0% {
+        opacity: 0.3
+    }
+    50% {
+        opacity: 1;
+    }
+}

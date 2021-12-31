@@ -93,6 +93,7 @@
   padding: 5px 0;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal-upper-edit .delete-overlay .delete-modal .del-btns .del-btn {
@@ -582,15 +583,32 @@
   cursor: pointer;
 }
 
+.modal-upper-edit .create-modal .error {
+  position: absolute;
+  font-size: 20px;
+  color: #f36f6f;
+  -webkit-animation: error 1s infinite ease;
+          animation: error 1s infinite ease;
+  bottom: 7vh;
+}
+
 @media only screen and (min-width: 768px) {
   .modal-upper-edit .create-modal .btn-container {
     width: 55%;
+  }
+  .modal-upper-edit .create-modal .error {
+    font-size: 40px;
+    bottom: 5vh;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .modal-upper-edit .create-modal .btn-container {
     width: 35%;
+  }
+  .modal-upper-edit .create-modal .error {
+    font-size: 40px;
+    bottom: 5vh;
   }
 }
 
@@ -676,6 +694,9 @@
     font-size: 30px;
     padding: 10px;
   }
+  .modal-upper-edit .delete-overlay .delete-modal {
+    width: 50%;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -688,6 +709,9 @@
     font-size: 30px;
     padding: 10px;
   }
+  .modal-upper-edit .delete-overlay .delete-modal {
+    width: 40%;
+  }
 }
 
 @media only screen and (min-width: 1366px) {
@@ -699,6 +723,15 @@
   .create-icon-edit .create-icon-2 {
     font-size: 30px;
     padding: 10px;
+  }
+  .modal-upper-edit .delete-overlay .delete-modal {
+    width: 23%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .modal-upper-edit .delete-overlay .delete-modal {
+    width: 16%;
   }
 }
 
@@ -751,6 +784,24 @@
   50% {
     -webkit-transform: translateY(-15px);
             transform: translateY(-15px);
+  }
+}
+
+@-webkit-keyframes error {
+  100%, 0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes error {
+  100%, 0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=createEdit.css.map */

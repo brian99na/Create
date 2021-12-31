@@ -475,7 +475,6 @@
 .modal-upper .create-modal .btn-container .create-btn {
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
-  pointer-events: none;
   color: white;
   background-color: #383838;
 }

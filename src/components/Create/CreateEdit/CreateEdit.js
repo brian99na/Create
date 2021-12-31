@@ -10,6 +10,7 @@ function Create(props) {
     const [formData, setFormData] = useState({title: '', desc: '', file: '', tags: ['art']})
     const [tagValue, setTagValue] = useState('')
     const [token, setToken] = useState('')
+    const [error, setError] = useState('')
     const [deleteActive, setDeleteActive] = useState(false)
     const [slideActive, setSlideActive] = useState(1)
     const fileRef = useRef()
@@ -41,7 +42,12 @@ function Create(props) {
 
     const handleFileChange = (e) => {
         if (fileRef.current.files[0]) {
-            setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
+            if (fileRef.current.files[0].size < 10000000) {
+                setError('')
+                setFormData({...formData, file: URL.createObjectURL(fileRef.current.files[0])})
+            } else {
+                setError('[file size must be less than 10mb]')
+            }
         }
     }
 
@@ -103,10 +109,14 @@ function Create(props) {
     const handleCreate = () => {
         let fd = new FormData()
         if (fileRef.current.files[0]) {
-            fd.append('title', formData.title)
-            fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-            fd.append('desc', formData.desc)
-            fd.append('tags', [...formData.tags])
+            if (fileRef.current.files[0].size < 10000000) {
+                fd.append('title', formData.title)
+                fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+                fd.append('desc', formData.desc)
+                fd.append('tags', [...formData.tags])
+            } else {
+                setError('[file size must be less than 10mb]')
+            }
         } else {
             fd = JSON.stringify({
                 title: formData.title,
@@ -130,6 +140,9 @@ function Create(props) {
         .then(() => {
             setFormData({file: '', title: '', desc: '', tags: []})
             setSlideActive(1)
+        })
+        .catch(() => {
+            setError('[error]')
         })
     }
 
@@ -209,6 +222,7 @@ function Create(props) {
                     <button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>
                     <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[update]</button>
                 </div>
+                <p className='error'>{error}</p>
             </div>
             {props.createActive ? <div className='create-icon-edit'>
                 <AiOutlinePlus className={`create-icon-2 ${props.createActive ? 'create-icon-x' : ''}`} onClick={handleCreateClick}/>

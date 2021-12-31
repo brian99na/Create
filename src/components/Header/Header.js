@@ -54,6 +54,7 @@ function Header(props) {
     }
 
     useEffect(() => {
+        document.title = "Create"
         props.setPageLeave(false)
     }, [])
 

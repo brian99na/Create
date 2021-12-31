@@ -95,7 +95,7 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
     
             .post-container {
                 @include flexCenter(column);
-                width: 45%;
+                width: 100%;
                 height: fit-content;
                 position: relative;
                 overflow: hidden;
@@ -104,7 +104,7 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                 p {
                     align-self: flex-start;
                     white-space: nowrap;
-                    text-overflow: ellipsis;
+                    font-size: 24px;
                 }
     
                 .file-container {
@@ -127,6 +127,7 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                 width: 75%;
 
                 .post-container {
+                    width: 45%;
                     
                     p {
                         font-size: 32px;

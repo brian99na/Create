@@ -18,11 +18,49 @@ nav {
         width: fit-content;
         text-align: left;
         position: relative;
-        padding: 0 15px;
+        height: 100%;
+        width: 50%;
         @include flexCenter(row);
         transition: 0.3s ease;
+        gap: 10px;
+
+        .header-shapes {
+            max-width: 50%;
+            height: 70%;
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+            @include flexCenter(row);
+
+            .sqr {
+                height: 60%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .tri {
+                height: 60%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            .circ {
+                height: 60%;
+                position: absolute;
+                bottom: 20%;
+                right: 0;
+            }
+
+            .secret-text {
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
 
         h1 {
+            width: fit-content;
             cursor: pointer;
         }
     }
@@ -172,6 +210,27 @@ nav {
 
         .create-btn {
 
+            .header-shapes {
+                .sqr, .tri, .circ {
+                    transition: 1s cubic-bezier(0,.99,0,1);
+                }
+            }
+
+            .header-shapes:hover .sqr {
+                top: -40px;
+                left: -30px;
+                transform: rotate(40deg);
+            }
+
+            .header-shapes:hover .tri {
+                bottom: -40px;
+                left: -30px;
+                transform: rotate(-40deg);
+            }
+
+            .header-shapes:hover .circ {
+                right: -40px;
+            }
         }
 
         .search-ham{

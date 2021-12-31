@@ -332,7 +332,6 @@
                 transform: translateY(30px);
                 transition: 0.3s ease;
                 font-size: 20px;
-                pointer-events: none;
                 cursor: pointer;
             }
     
@@ -350,8 +349,6 @@
             .btn-active {
                 opacity: 1;
                 transform: translateY(0);
-                pointer-events: all;
-                pointer-events: all;
             }
         }
 

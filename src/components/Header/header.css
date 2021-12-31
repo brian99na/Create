@@ -34,7 +34,8 @@ nav .create-btn {
   width: fit-content;
   text-align: left;
   position: relative;
-  padding: 0 15px;
+  height: 100%;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,9 +51,60 @@ nav .create-btn {
           flex-direction: row;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  gap: 10px;
+}
+
+nav .create-btn .header-shapes {
+  max-width: 50%;
+  height: 70%;
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+nav .create-btn .header-shapes .sqr {
+  height: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+nav .create-btn .header-shapes .tri {
+  height: 60%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+nav .create-btn .header-shapes .circ {
+  height: 60%;
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+}
+
+nav .create-btn .header-shapes .secret-text {
+  padding: 5px;
+  border-radius: 5px;
 }
 
 nav .create-btn h1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   cursor: pointer;
 }
 
@@ -257,6 +309,25 @@ nav .search-ham .ham-main .ham-active-3 {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+  nav .create-btn .header-shapes .sqr, nav .create-btn .header-shapes .tri, nav .create-btn .header-shapes .circ {
+    -webkit-transition: 1s cubic-bezier(0, 0.99, 0, 1);
+    transition: 1s cubic-bezier(0, 0.99, 0, 1);
+  }
+  nav .create-btn .header-shapes:hover .sqr {
+    top: -40px;
+    left: -30px;
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+  nav .create-btn .header-shapes:hover .tri {
+    bottom: -40px;
+    left: -30px;
+    -webkit-transform: rotate(-40deg);
+            transform: rotate(-40deg);
+  }
+  nav .create-btn .header-shapes:hover .circ {
+    right: -40px;
   }
   nav .search-ham {
     display: none;

@@ -465,7 +465,6 @@
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 20px;
-  pointer-events: none;
   cursor: pointer;
 }
 
@@ -485,8 +484,6 @@
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
-  pointer-events: all;
-  pointer-events: all;
 }
 
 .modal-upper .create-modal .error {

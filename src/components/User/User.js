@@ -2,20 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import './user.css'
+import Avatar from 'boring-avatars'
 
 function User(props) {
 
     const [userPosts, setUserPosts] = useState([])
+    const [avatar, setAvatar] = useState({style: '', colors: []})
     const navigate = useNavigate()
     const { id } = useParams()
 
     const imageFormats = ['png', 'jpeg']
+    const avatarTypes = ['marble', 'beam', 'pixel', 'sunset', 'ring', 'bauhaus']
+    const avatarColors = ["#92A1C6", "#146A7C", "#F0AB3D", "#C20D90", "264653", "2a9d8f", "e9c46a", "f4a261", "e76f51"]
 
     const handlePostClick = (e, post_id) => {
         props.setPageLeave(true)
         setTimeout(() => {
             navigate(`/users/${id}/${post_id}`)
         }, 500);
+    }
+
+    const setAvatarStyle = () => {
+        let type = avatarTypes[Math.floor(Math.random() * avatarTypes.length)]
+        let colors = []
+        for (let i = 0; i < 5; i++) {
+            colors.push(avatarColors[Math.floor(Math.random() * avatarColors.length)])
+        }
+        setAvatar({style: type, colors: colors})
     }
 
     const getUserPosts = () => {
@@ -30,14 +43,12 @@ function User(props) {
     }
 
     useEffect(() => {
+        setAvatarStyle()
         getUserPosts()
         setTimeout(() => {
             props.setPageLeave(false)
         }, 200);
     }, [])
-
-    console.log(userPosts)
-    console.log(props.userInfo.token)
 
     const userPostJsx = userPosts.map((item) => {
         return(
@@ -52,10 +63,15 @@ function User(props) {
         )
     })
 
+    
+    console.log(userPosts)
+    console.log(props.userInfo.token)
+    console.log(avatar)
+
     return (
         <div className={`user-page ${props.pageLeave ? 'user-leave' : ''}`}>
             <div className='profile'>
-                <div className='icon'></div>
+                <Avatar className='boring-avatar' size={80} variant={avatar.style} colors={avatar.colors}/>
                 <h1>[@{id}]</h1>
             </div>
             <div className='creation-container'>

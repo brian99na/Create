@@ -18,14 +18,6 @@
         h1 {
             text-align: left;
         }
-
-        .icon {
-            width: 20%;
-            background-color: rgb(226, 226, 226);
-            aspect-ratio: 1;
-            border-radius: 50%;
-        }
-
     }
 
     .creation-container {
@@ -33,6 +25,7 @@
         align-items: flex-start;
         width: 90%;
         gap: 5vh;
+        margin: 0 0 5vh 0;
         
         p {
             align-self: center;
@@ -44,10 +37,10 @@
             width: 100%;
 
             .creation-main {
-                width: 45%;
+                width: 100%;
 
                 h1 {
-                    font-size: 20px;
+                    font-size: 24px;
                 }
 
                 .creation-file {
@@ -79,6 +72,7 @@
             .creations {
 
                 .creation-main {
+                    width: 45%;
 
                     h1 {
                         font-size: 30px;

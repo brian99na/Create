@@ -4,6 +4,9 @@ import './header.css'
 import { HiHome } from 'react-icons/hi'
 import { IoMdPerson } from 'react-icons/io'
 import { MdExitToApp } from 'react-icons/md'
+import square from '../../images/Rectangle 1.svg'
+import triangle from '../../images/Polygon 1.svg'
+import circle from '../../images/Ellipse 1.svg'
 
 function Header(props) {
 
@@ -67,6 +70,12 @@ function Header(props) {
         <header>
             <nav>
                 <div className='create-btn' onClick={handleHomeClick}>
+                    <div className='header-shapes' onClick={handleHomeClick} >
+                        <img className='sqr' src={square}/>
+                        <img className='tri' src={triangle}/>
+                        <img className='circ' src={circle}/>
+                        <p className='secret-text'>hi :)</p>
+                    </div>
                     <h1>create</h1>
                 </div>
                 <div className='search-ham'>

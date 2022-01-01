@@ -2,7 +2,7 @@
 
 ![create](https://github.com/brian99na/create/blob/main/src/images/android-chrome-512x512.png?raw=true)
 
-#[CREATE]
+# [CREATE]
 
 ## Project Links
 
@@ -14,6 +14,7 @@
 
 
 ## Project Description
+
 
 This project is a social media website that allows users to upload short snippets that features their work in the form of a short video or image.
 

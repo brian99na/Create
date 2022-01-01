@@ -25,6 +25,7 @@ This project is a social media website that allows users to upload short snippet
 - Full CRUD functionality
 - User authentication w/ rest framework tokens
 - Public and authenticated views for posts
+- Fully responsive design w/ a mobile first approach.
 
 - #### Working on...
     - AWS S3 Bucket file upload working locally, currently only supports image/video __links__ for post submission.
@@ -45,7 +46,7 @@ and users and user authenticated views for posting/editing
     - Sign in/up page
     - Create post modal
     - User and post pages
-- CSS Styling
+- CSS Styling and Responsiveness
 
 #### PostMVP
 

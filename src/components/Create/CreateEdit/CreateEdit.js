@@ -37,7 +37,8 @@ function Create(props) {
     }
 
     const handleFileUpload = () => {
-        fileRef.current.click()
+        // fileRef.current.click()
+        setError('[feature coming soon]')
     }
 
     const handleFileChange = (e) => {
@@ -50,6 +51,10 @@ function Create(props) {
             }
         }
     }
+    
+    const handleFileLink = (e) => {
+        setFormData({...formData, file: e.target.value})
+    } 
 
     const handleTagSubmit = (e) => {
         e.preventDefault();
@@ -86,7 +91,7 @@ function Create(props) {
     }
 
     const handleDelClick = () => {
-        axios.delete(`http://localhost:8000/post/${props.postData.id}/`, {
+        axios.delete(`https://create-art.herokuapp.com/post/${props.postData.id}/`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Token ' + token
@@ -106,26 +111,53 @@ function Create(props) {
         })
     }
 
+    // const handleCreate = () => {
+    //     let fd = new FormData()
+    //     if (fileRef.current.files[0]) {
+    //         if (fileRef.current.files[0].size < 10000000) {
+    //             fd.append('title', formData.title)
+    //             fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+    //             fd.append('desc', formData.desc)
+    //             fd.append('tags', [...formData.tags])
+    //         } else {
+    //             setError('[file size must be less than 10mb]')
+    //         }
+    //     } else {
+    //         fd = JSON.stringify({
+    //             title: formData.title,
+    //             desc: formData.desc,
+    //             tags: [formData.tags.join(',')]
+    //         })
+    //         console.log(fd)
+    //     }
+    //     axios.patch(`https://create-art.herokuapp.com/post/${props.postData.id}/`, fd, {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             Authorization: 'Token ' + token
+    //         }
+    //     })
+    //     .then((res) => {
+    //         console.log(res)
+    //         props.setCreateActive(false)
+    //         props.setEditActive(false)
+    //         window.location.reload()
+    //     })
+    //     .then(() => {
+    //         setFormData({file: '', title: '', desc: '', tags: []})
+    //         setSlideActive(1)
+    //     })
+    //     .catch(() => {
+    //         setError('[error]')
+    //     })
+    // }
+
     const handleCreate = () => {
-        let fd = new FormData()
-        if (fileRef.current.files[0]) {
-            if (fileRef.current.files[0].size < 10000000) {
-                fd.append('title', formData.title)
-                fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-                fd.append('desc', formData.desc)
-                fd.append('tags', [...formData.tags])
-            } else {
-                setError('[file size must be less than 10mb]')
-            }
-        } else {
-            fd = JSON.stringify({
-                title: formData.title,
-                desc: formData.desc,
-                tags: [formData.tags.join(',')]
-            })
-            console.log(fd)
-        }
-        axios.patch(`http://localhost:8000/post/${props.postData.id}/`, fd, {
+        let fd = JSON.stringify({
+            title: formData.title,
+            desc: formData.desc,
+            tags: [formData.tags.join(',')]
+        })
+        axios.patch(`https://create-art.herokuapp.com/post/${props.postData.id}/`, fd, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Token ' + token
@@ -200,6 +232,7 @@ function Create(props) {
                             <div className='upload-container'>
                                 <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
                                 <button onClick={handleFileUpload}>[upload]</button>
+                                <input className='link-upload' onChange={handleFileLink} value={formData.file} placeholder='enter file link here'/>
                             </div>
                         </div>
                         <div className='title-desc-slide'>

@@ -37,8 +37,13 @@ function Create(props) {
     }
 
     const handleFileUpload = () => {
-        fileRef.current.click()
+        // fileRef.current.click()
+        setError('[feature coming soon]')
     }
+
+    const handleFileLink = (e) => {
+        setFormData({...formData, file: e.target.value})
+    } 
 
     const handleFileChange = (e) => {
         if (fileRef.current.files[0]) {
@@ -78,16 +83,49 @@ function Create(props) {
         }
     }
 
+    // const handleCreate = () => {
+    //     if (formData.title && fileRef.current.files[0].size < 10000000) {
+    //         setError('')
+    //         const fd = new FormData()
+    //         fd.append('title', formData.title)
+    //         fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
+    //         fd.append('desc', formData.desc)
+    //         fd.append('tags', [...formData.tags])
+    //         axios.post('https://create-art.herokuapp.com/posts/', fd, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: 'Token ' + token
+    //             }
+    //         })
+    //         .then((res) => {
+    //             props.setPageLeave(true)
+    //             setCreateActive(false)
+    //             setTimeout(() => {
+    //                 navigate(`/users/${props.userInfo.user_name}/${res.data.id}`)
+    //             }, 300);
+    //         })
+    //         .then(() => {
+    //             setFormData({file: '', title: '', desc: '', tags: []})
+    //             setSlideActive(1)
+    //         })
+    //         .catch(() => setError('[error]'))
+    //     } else if (fileRef.current.files[0].size > 10000000) {
+    //         setError('[file size must be less than 10mb]')
+    //     } else {
+    //         setError('[missing details]')
+    //     }
+    // }
+
     const handleCreate = () => {
-        if (formData.title && fileRef.current.files[0].size < 10000000) {
+        if (formData.title && formData.desc && formData.file && formData.tags[0]) {
             setError('')
-            const fd = new FormData()
-            fd.append('title', formData.title)
-            fd.append('file', fileRef.current.files[0], fileRef.current.files[0].name)
-            fd.append('desc', formData.desc)
-            fd.append('tags', [...formData.tags])
-            setCreateActive(false)
-            axios.post('http://localhost:8000/posts/', fd, {
+            const fd = JSON.stringify({
+                title: formData.title,
+                desc: formData.desc,
+                file: formData.file,
+                tags: [formData.tags.join(',')]
+            })
+            axios.post('https://create-art.herokuapp.com/posts/', fd, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Token ' + token
@@ -95,6 +133,7 @@ function Create(props) {
             })
             .then((res) => {
                 props.setPageLeave(true)
+                setCreateActive(false)
                 setTimeout(() => {
                     navigate(`/users/${props.userInfo.user_name}/${res.data.id}`)
                 }, 300);
@@ -103,8 +142,7 @@ function Create(props) {
                 setFormData({file: '', title: '', desc: '', tags: []})
                 setSlideActive(1)
             })
-        } else if (fileRef.current.files[0].size > 10000000) {
-            setError('[file size must be less than 10mb]')
+            .catch(() => setError('[error]'))
         } else {
             setError('[missing details]')
         }
@@ -127,6 +165,8 @@ function Create(props) {
         loadToken()
     }, [props.userInfo])
 
+    console.log(formData)
+
     return (
         <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>
             <div className={`create-modal ${createActive ? 'modal-active' : ''}`}>
@@ -146,6 +186,7 @@ function Create(props) {
                             <div className='upload-container'>
                                 <input ref={fileRef} onChange={handleFileChange} type='file' hidden/>
                                 <button onClick={handleFileUpload}>{formData.file.file ? formData.file.title : '[upload]'}</button>
+                                <input className='link-upload' onChange={handleFileLink} value={formData.file} placeholder='enter file link here'/>
                             </div>
                         </div>
                         <div className='title-desc-slide'>

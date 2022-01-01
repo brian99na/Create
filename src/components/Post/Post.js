@@ -24,9 +24,9 @@ function Post(props) {
     }
 
     const getPost = () => {
-        axios.get(`http://localhost:8000/get-id/${id}/`)
+        axios.get(`https://create-art.herokuapp.com/get-id/${id}/`)
         .then((res) => {
-            axios.get(`http://localhost:8000/post/${res.data.id}/${post_id}/`)
+            axios.get(`https://create-art.herokuapp.com/post/${res.data.id}/${post_id}/`)
             .then((res) => {
                 props.setPostData(res.data)
             })

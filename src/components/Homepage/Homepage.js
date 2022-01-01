@@ -12,7 +12,7 @@ function Homepage(props) {
     const imageFormats = ['png', 'jpeg']
 
     const getAllPosts = () => {
-        axios.get('http://localhost:8000/all/')
+        axios.get('https://create-art.herokuapp.com/all/')
             .then((res) => {
                 setHomepagePosts(res.data)
                 console.log(res.data)
@@ -30,7 +30,7 @@ function Homepage(props) {
     
     const handlePostClick = (e, user, id) => {
         props.setPageLeave(true)
-        axios.get(`http://localhost:8000/get-user/${user}/`)
+        axios.get(`https://create-art.herokuapp.com/get-user/${user}/`)
         .then((res) => {
             setTimeout(() => {
                 navigate(`/users/${res.data.user_name}/${id}`)

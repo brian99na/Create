@@ -23,6 +23,7 @@ nav {
         @include flexCenter(row);
         transition: 0.3s ease;
         gap: 10px;
+        z-index: 0;
 
         .header-shapes {
             max-width: 50%;
@@ -37,6 +38,7 @@ nav {
                 position: absolute;
                 top: 0;
                 left: 0;
+                transition: 1s cubic-bezier(0,.96,.12,.99);
             }
 
             .tri {
@@ -44,6 +46,7 @@ nav {
                 position: absolute;
                 bottom: 0;
                 left: 0;
+                transition: 1s cubic-bezier(0,.96,.12,.99);
             }
 
             .circ {
@@ -51,12 +54,34 @@ nav {
                 position: absolute;
                 bottom: 20%;
                 right: 0;
+                transition: 1s cubic-bezier(0,.96,.12,.99);
             }
 
             .secret-text {
                 padding: 5px;
                 border-radius: 5px;
             }
+
+            .sqr-active {
+                top: 100%;
+                left: 100%;
+                transform: rotate(135deg);
+            }
+
+            .tri-active {
+                bottom: -100%;
+                left: 10%;
+                transform: rotate(150deg);
+            }
+
+            .circ-active {
+                right: -100%;
+                transform: rotate(150deg);
+                z-index: 31;
+            }
+        }
+
+        .header-active {
         }
 
         h1 {
@@ -213,6 +238,30 @@ nav {
             .header-shapes {
                 .sqr, .tri, .circ {
                     transition: 1s cubic-bezier(0,.99,0,1);
+                }
+
+                .sqr-active {
+                    height: 60%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform: rotate(0);
+                }
+    
+                .tri-active {
+                    height: 60%;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    transform: rotate(0);
+                }
+    
+                .circ-active {
+                    height: 60%;
+                    position: absolute;
+                    bottom: 20%;
+                    right: 0;
+                    transform: rotate(0);
                 }
             }
 

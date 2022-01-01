@@ -32,10 +32,10 @@ function User(props) {
     }
 
     const getUserPosts = () => {
-        axios.get(`http://localhost:8000/get-id/${id}/`)
+        axios.get(`https://create-art.herokuapp.com/get-id/${id}/`)
         .then((res) => {
             console.log(res)
-            axios.get(`http://localhost:8000/user-posts/${res.data.id}/`)
+            axios.get(`https://create-art.herokuapp.com/user-posts/${res.data.id}/`)
             .then(res => setUserPosts(res.data))
             .catch(err => console.log(err))
         })

@@ -30,6 +30,7 @@ function Header(props) {
     }
 
     const handleHomeClick = () => {
+        setNavActive(false)
         props.setPageLeave(true)
         setTimeout(() => {
             navigate('/')
@@ -71,10 +72,10 @@ function Header(props) {
         <header>
             <nav>
                 <div className='create-btn' onClick={handleHomeClick}>
-                    <div className='header-shapes' onClick={handleHomeClick} >
-                        <img className='sqr' src={square}/>
-                        <img className='tri' src={triangle}/>
-                        <img className='circ' src={circle}/>
+                    <div className={`header-shapes ${navActive ? 'header-active': ''}`} onClick={handleHomeClick} >
+                        <img className={`sqr ${navActive ? 'sqr-active' : ''}`} src={square} alt=''/>
+                        <img className={`tri ${navActive ? 'tri-active' : ''}`} src={triangle} alt=''/>
+                        <img className={`circ ${navActive ? 'circ-active' : ''}`} src={circle} alt=''/>
                         <p className='secret-text'>hi :)</p>
                     </div>
                     <h1>create</h1>

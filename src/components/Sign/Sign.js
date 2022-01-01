@@ -33,15 +33,13 @@ function Sign(props) {
     }
 
     const signInFunction = (details) => {
-        axios.post('http://localhost:8000/sign-in/', details)
+        props.setPageLeave(true)
+        axios.post('https://create-art.herokuapp.com/sign-in/', details)
             .then((res) => {
                 setError({...error, signIn: false, msg: ''});
                 props.setUserInfo(res.data.user);
                 localStore(res)
-                props.setPageLeave(true)
-                setTimeout(() => {
-                    navigate(`/users/${res.data.user.user_name}`)
-                }, 500);
+                navigate(`/users/${res.data.user.user_name}`)
             })
             .catch((err) => {
                 setError({...error, signIn: true, msg: 'sign-in failed'})
@@ -58,7 +56,7 @@ function Sign(props) {
         e.preventDefault();
         if (signUp.password === signUp.passwordCheck) {
             setError({...error, signUp: false, msg: ''})
-            axios.post('http://localhost:8000/sign-up/', {user: {
+            axios.post('https://create-art.herokuapp.com/sign-up/', {user: {
                 email: signUp.email,
                 password: signUp.password,
                 user_name: signUp.username
@@ -81,7 +79,9 @@ function Sign(props) {
     }
 
     useEffect(() => {
-        props.setPageLeave(false)
+        setTimeout(() =>{
+            props.setPageLeave(false)
+        }, 300)
     }, [])
     
     return (

@@ -1,15 +1,35 @@
 # Project Overview
 
+![create](https://github.com/brian99na/create/blob/main/src/images/android-chrome-512x512.png?raw=true)
+
+#[CREATE]
+
 ## Project Links
 
 - [Frontend Repo](https://github.com/brian99na/project-2)
 - [Backend Repo](https://github.com/brian99na/create-django-backend)
 
+- [Deployed Frontend](https://brian99na.github.io/create/)
+- [Deployed Backend](http://create-art.herokuapp.com/all/)
+
+
 ## Project Description
 
 This project is a social media website that allows users to upload short snippets that features their work in the form of a short video or image.
-It will be built using React for the frontend and Django on the backend.
-For file storage, I will be using AWS.
+
+###Tech Stack
+- React, HTML, SASS, JavaScript
+- Django, Python, Postgresql
+
+###Currently V1
+- Full CRUD functionality
+- User authentication w/ rest framework tokens
+- Public and authenticated views for posts
+
+- #### Working on...
+    - AWS S3 Bucket file upload working locally, currently only supports image/video __links__ for post submission.
+    - Adding more fields to user/post models for likes, bookmarks, bio, etc.
+
 
 ## Wire-frames
 
@@ -18,48 +38,47 @@ For file storage, I will be using AWS.
 ### MVP/PostMVP
 
 #### MVP
-- Build out the backend with user and post models and test sign-up/in/out and create/edit/delete posts
-- Build essential components for frontend (homepage, user profile, tag page, post page,sign-in/up page)
+- Build out the backend with user and post models with both public views for viewing posts 
+and users and user authenticated views for posting/editing
+- Build essential components
+    - Homepage for viewing all posts
+    - Sign in/up page
+    - Create post modal
+    - User and post pages
 - CSS Styling
 
 #### PostMVP
 
+- Working upload button to AWS S3 bucket
 - Add an option to turn off or on autoplay on all videos
-- Add a way to compress uploaded files before storing in aws
+- Add a way to compress uploaded files when storing in aws
+- User optimization w/ file resizing
 
 ## Components
 
 | Component | Description | 
 | --- | :---: |  
-| App | Sets up app with React Router | 
-| Header | Nav burger, Homepage Icon | 
-| Main | Contains Switch/Routes for profiles, homepage, tag pages |
-| Homepage | Contains your homepage for randomized images/videos | 
-| Tag Page | Sorts images/videos based on tags |
-| Profile Page | Individual Page |
-| Create Post Page | Modal or individual page |
-| SignIn/SignUp Page | Individual Page |
+| Index | Sets up app with Router | 
+| Header | Nav burger, Site Text, Site Icon | 
+| App | Contains Routes for components |
+| Homepage | Contains images/videos from users, loads localstorage token, loads tags | 
+| Post page | Contains all information from a single post |
+| Profile Page | Individual User Page |
+| Create Post Page | Modal for creating new post |
+| SignIn/SignUp Page | Individual Page for signing in/up |
 
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| Component | Priority | Estimated Time | Time Invested |
 | --- | :---: |  :---: | :---: | :---: |
-| Create React app and files for all components | H | 0.5hrs |
-| Basic Navbar | H | 1hr |
-| Create 'Homepage' (fetch data, display images randomized) | H | 4hrs |
-| Create 'Tag' Pages with Homepage Template (display images filtered w/ tags)| H | 1hrs |
-| Create 'Profile' Page Template | H | 4hrs |
-| Create 'Post' Page Template | H | 4hrs |
-| Create 'Create' Page Template | H | 4hrs |
-| Create 'Sign Up/Sign In' Page Template | H | 2hrs |
-| Styling | H | 3hrs |
-| Total | H | 23.5hrs |
+| Create React app and files for all components | H | 1hr | 1hrs |
+| Navbar | H | 1hr | 4hrs |
+| Create 'Homepage' (fetch data, display images randomized) | H | 4hrs | 15hrs |
+| Create 'Profile' Page Template | H | 3hrs | 5hrs |
+| Create 'Post' Page Template | H | 3hrs | 6hrs |
+| Create 'Create' modal | H | 4hrs | 8hrs |
+| Create 'Sign Up/Sign In' Page Template | H | 3hrs | 5hrs |
+| Styling | H | 4hrs | 12hrs |
+| Backend models/views/serializers | H | 1hr | 5hrs |
+| Backend Deployment | H | 1hr | 10hrs |
+| Frontend Deployment | H | 1hr | 1hr |
+| Total | H | 23.5hrs | 72hrs |
 
-## Additional Libraries
-
-
-## Code Snippet
-
-Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  Code snippet should not be greater than 10 lines of code.
-
-```
-
-```

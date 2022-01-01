@@ -82,5 +82,5 @@ and users and user authenticated views for posting/editing
 | Backend models/views/serializers | H | 1hr | 5hrs |
 | Backend Deployment | H | 1hr | 10hrs |
 | Frontend Deployment | H | 1hr | 1hr |
-| Total | H | 23.5hrs | 72hrs |
+| Total | H | 26hrs | 72hrs |
 

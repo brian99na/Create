@@ -18,11 +18,11 @@
 
 This project is a social media website that allows users to upload short snippets that features their work in the form of a short video or image.
 
-###Tech Stack
+### Tech Stack
 - React, HTML, SASS, JavaScript
 - Django, Python, Postgresql
 
-###Currently V1
+### Currently V1
 - Full CRUD functionality
 - User authentication w/ rest framework tokens
 - Public and authenticated views for posts
@@ -70,7 +70,7 @@ and users and user authenticated views for posting/editing
 | SignIn/SignUp Page | Individual Page for signing in/up |
 
 | Component | Priority | Estimated Time | Time Invested |
-| --- | :---: |  :---: | :---: | :---: |
+| --- | :---: |  :---: | :---: |
 | Create React app and files for all components | H | 1hr | 1hrs |
 | Navbar | H | 1hr | 4hrs |
 | Create 'Homepage' (fetch data, display images randomized) | H | 4hrs | 15hrs |

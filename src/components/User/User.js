@@ -8,9 +8,11 @@ function User(props) {
 
     const [userPosts, setUserPosts] = useState([])
     const [avatar, setAvatar] = useState({style: '', colors: []})
+    const [loaded, setLoaded] = useState(false)
     const navigate = useNavigate()
     const { id } = useParams()
 
+    const skeleArr = [1, 1, 1, 1, 1, 1, 1, 1, 1]
     const imageFormats = ['png', 'jpeg']
     const avatarTypes = ['marble', 'beam', 'pixel', 'sunset', 'ring', 'bauhaus']
     const avatarColors = ["#92A1C6", "#146A7C", "#F0AB3D", "#C20D90", "264653", "2a9d8f", "e9c46a", "f4a261", "e76f51"]
@@ -37,6 +39,7 @@ function User(props) {
             console.log(res)
             axios.get(`https://create-art.herokuapp.com/user-posts/${res.data.id}/`)
             .then(res => setUserPosts(res.data))
+            .then(() => setLoaded(true))
             .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
@@ -63,10 +66,8 @@ function User(props) {
         )
     })
 
-    
-    console.log(userPosts)
-    console.log(props.userInfo.token)
-    console.log(avatar)
+    const homeSkeletonJsx = skeleArr.map((item) => <div className='home-post-skele'></div>)
+
 
     return (
         <div className={`user-page ${props.pageLeave ? 'user-leave' : ''}`}>
@@ -77,7 +78,7 @@ function User(props) {
             <div className='creation-container'>
                 <p>[creations]</p>
                 <div className='creations'>
-                    {userPostJsx}
+                    {loaded ? userPostJsx : homeSkeletonJsx}
                 </div>
             </div>
         </div>

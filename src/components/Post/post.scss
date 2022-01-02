@@ -17,6 +17,13 @@
         width: 90%;
         gap: 15px;
 
+        .post-skele {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: rgb(226, 226, 226);
+            animation: 2s skeleLoad infinite ease;
+        }
+
         .file-container {
             max-width: 100%;
             aspect-ratio: 1;
@@ -122,6 +129,10 @@
                 max-width: 60%;
             }
 
+            .post-skele {
+                max-width: 60%;
+            }
+
             .title-at {
                 h1 {
                     font-size: 30px;
@@ -186,6 +197,10 @@
             .file-container {
                 max-width: 100%;
             }
+
+            .post-skele {
+                max-width: 100%;
+            }
         }
     }
 }
@@ -198,10 +213,6 @@
             h1, p {
                 font-size: 20px;
             }
-    
-            .file-container {
-                max-width: 100%;
-            }
         }
     }
 }
@@ -209,4 +220,13 @@
 .post-leave {
     opacity: 0;
     transform: translateY(-30px);
+}
+
+@keyframes skeleLoad {
+    100%, 0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1;
+    }
 }

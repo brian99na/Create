@@ -7,9 +7,11 @@ function Homepage(props) {
     const [homepagePosts, setHomepagePosts] = useState([])
     const [tagArr, setTagArr] = useState([])
     const [filterValues, setFilterValues] = useState([])
+    const [loaded, setLoaded] = useState(false)
     const navigate = useNavigate()
 
     const imageFormats = ['png', 'jpeg']
+    const skeleArr = [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
     const getAllPosts = () => {
         axios.get('https://create-art.herokuapp.com/all/')
@@ -23,6 +25,7 @@ function Homepage(props) {
                 const filteredTags = tags.filter((item, index) => tags.indexOf(item) === index)
                 setTagArr(filteredTags)
             })
+            .then(() => setLoaded(true))
             .catch((err) => {
                 console.log(err)
             })
@@ -38,8 +41,6 @@ function Homepage(props) {
         })
 
     }
-
-    console.log(homepagePosts)
 
     const handleTagClick = (e, tag) => {
         if (filterValues.includes(tag)) {
@@ -77,7 +78,8 @@ function Homepage(props) {
         )
     })
 
-    console.log(filterValues)
+    const homeSkeletonJsx = skeleArr.map((item) => <div className='home-post-skele'></div>)
+
 
     const tagJsx = tagArr.map((tag) => {
         return(
@@ -86,7 +88,7 @@ function Homepage(props) {
             </div>
         )
     })
-
+    
     useEffect(() => {
         getAllPosts()
         setTimeout(() => {
@@ -101,7 +103,7 @@ function Homepage(props) {
             </div>
             <div className='posts'>
                 <div className='post-inner'>
-                    {homePostsJsx}
+                    {loaded ? homePostsJsx : homeSkeletonJsx}
                 </div>
             </div>
         </div>

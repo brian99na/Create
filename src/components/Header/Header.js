@@ -59,8 +59,6 @@ function Header(props) {
         props.setPageLeave(false)
     }, [])
 
-    console.log(props.userInfo)
-
     const linksJsx = props.userInfo && props.userInfo.token ? 
     <>
         <h1 name={`/users/${props.userInfo.user_name}`} onClick={handleNavClick}>{<IoMdPerson />}[Profile]</h1>

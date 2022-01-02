@@ -165,8 +165,6 @@ function Create(props) {
         loadToken()
     }, [props.userInfo])
 
-    console.log(formData)
-
     return (
         <div className={`modal-upper ${createActive ? 'modal-upper-active' : ''}`}>
             <div className={`create-modal ${createActive ? 'modal-active' : ''}`}>

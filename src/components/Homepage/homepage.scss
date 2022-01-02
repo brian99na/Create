@@ -92,6 +92,13 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
             padding: 15px;
             backdrop-filter: blur(5px);
 
+            .home-post-skele {
+                width: 100%;
+                aspect-ratio: 1;
+                margin: 10px 0;
+                background-color: rgb(226, 226, 226);
+                animation: 2s skeleLoad infinite ease;
+            }
     
             .post-container {
                 @include flexCenter(column);
@@ -133,6 +140,11 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                         font-size: 32px;
                     }
                 }
+
+                .home-post-skele {
+                    width: 45%;
+                    margin: 5px;
+                }
             }
         }
 
@@ -147,6 +159,10 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                     p {
                         font-size: 22px;
                     }
+                }
+
+                .home-post-skele {
+                    width: 30%;
                 }
             }
         }
@@ -190,10 +206,23 @@ $real-bg: url('../../images/overlay.png'), linear-gradient(45deg, rgb(236, 236, 
                     border-radius: 5px;
                 }
 
+                .home-post-skele {
+                    width: 29%;
+                }
+
                 .post-container:hover {
                     background-color: rgb(231, 231, 231);
                 }
             }
         }
+    }
+}
+
+@keyframes skeleLoad {
+    100%, 0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1;
     }
 }

@@ -124,6 +124,15 @@
           backdrop-filter: blur(5px);
 }
 
+.homepage .posts .post-inner .home-post-skele {
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 10px 0;
+  background-color: #e2e2e2;
+  -webkit-animation: 2s skeleLoad infinite ease;
+          animation: 2s skeleLoad infinite ease;
+}
+
 .homepage .posts .post-inner .post-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -179,6 +188,10 @@
   .homepage .posts .post-inner .post-container p {
     font-size: 32px;
   }
+  .homepage .posts .post-inner .home-post-skele {
+    width: 45%;
+    margin: 5px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -191,6 +204,9 @@
   }
   .homepage .posts .post-inner .post-container p {
     font-size: 22px;
+  }
+  .homepage .posts .post-inner .home-post-skele {
+    width: 30%;
   }
 }
 
@@ -243,8 +259,29 @@
     padding: 5px;
     border-radius: 5px;
   }
+  .homepage .posts .post-inner .home-post-skele {
+    width: 29%;
+  }
   .homepage .posts .post-inner .post-container:hover {
     background-color: #e7e7e7;
+  }
+}
+
+@-webkit-keyframes skeleLoad {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleLoad {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=homepage.css.map */

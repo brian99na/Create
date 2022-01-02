@@ -45,6 +45,14 @@
   gap: 15px;
 }
 
+.post-upper .post-container .post-skele {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #e2e2e2;
+  -webkit-animation: 2s skeleLoad infinite ease;
+          animation: 2s skeleLoad infinite ease;
+}
+
 .post-upper .post-container .file-container {
   max-width: 100%;
   aspect-ratio: 1;
@@ -173,6 +181,9 @@
   .post-upper .post-container .file-container {
     max-width: 60%;
   }
+  .post-upper .post-container .post-skele {
+    max-width: 60%;
+  }
   .post-upper .post-container .title-at h1 {
     font-size: 30px;
   }
@@ -230,6 +241,9 @@
   .post-upper .post-container .file-container {
     max-width: 100%;
   }
+  .post-upper .post-container .post-skele {
+    max-width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -239,14 +253,29 @@
   .post-upper .post-container h1, .post-upper .post-container p {
     font-size: 20px;
   }
-  .post-upper .post-container .file-container {
-    max-width: 100%;
-  }
 }
 
 .post-leave {
   opacity: 0;
   -webkit-transform: translateY(-30px);
           transform: translateY(-30px);
+}
+
+@-webkit-keyframes skeleLoad {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleLoad {
+  100%, 0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=post.css.map */

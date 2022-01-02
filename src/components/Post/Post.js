@@ -7,6 +7,7 @@ function Post(props) {
 
     const [user, setUser] = useState('')
     const { id, post_id } = useParams()
+    const [loaded, setLoaded] = useState(false)
     const navigate = useNavigate()
 
     const imageFormats = ['png', 'jpeg']
@@ -30,6 +31,7 @@ function Post(props) {
             .then((res) => {
                 props.setPostData(res.data)
             })
+            .then(() => setLoaded(true))
             .catch(err => console.log(err))
         })
     }
@@ -48,17 +50,18 @@ function Post(props) {
         }, 300)
     }, [post_id])
 
-    console.log(props.postData)
+    const skeleJsx = <div className='post-skele'></div>
 
     return (
         <div className={`post-upper ${props.pageLeave ? 'post-leave' : ''}`}>
             <div className='post-container'>
-                <div className='file-container'>
+                {loaded ? <div className='file-container'>
                     {(props.postData && props.postData.file && imageFormats.includes(props.postData.file.slice(-3))) ? 
                     <img alt='' src={props.postData.file}/> : 
                     <video playsInline autostart='true' autoPlay loop controls={false} muted src={props.postData.file}></video>
                     }
-                </div>
+                </div> :
+                skeleJsx}
                 <div className='title-at'>
                     <h1>{props.postData.title}</h1>
                     <p onClick={handleUserClick}>[@{user}]</p>
@@ -67,7 +70,7 @@ function Post(props) {
                 <div className='tag-container'>
                         {props.postData.tags && props.postData.tags[0].split(',').map(tag => <p className='tag'>{tag}</p>)}
                 </div>
-                {props.userInfo.user_name === id ? <button className='edit-btn' onClick={handleEditClick}>[edit post]</button> : null}
+                {props.userInfo && props.userInfo.user_name === id ? <button className='edit-btn' onClick={handleEditClick}>[edit post]</button> : null}
             </div>
         </div>
     )

@@ -86,19 +86,24 @@
                     .upload-container {
                         @include flexCenter(column);
                         width: 90%;
-                        height: 10%;
+                        height: fit-content;
                         font-size: 20px;
                         gap: 5px;
         
                         button {
-                            padding: 0;
-                            height: 100%;
+                            padding: 5px;
+                            height: 50%;
+                            width: 100%;
                             cursor: pointer;
+                            box-sizing: border-box;
                         }
 
                         .link-upload {
+                            padding: 5px;
                             height: 50%;
                             font-size: 16px; 
+                            width: 100%;
+                            box-sizing: border-box;
                         }
                     }
             
@@ -107,7 +112,7 @@
                         max-width: 90%;
                         height: 100%;
                         aspect-ratio: 1;
-                        border: 2px dashed rgb(184, 184, 184);
+                        border: 2px solid rgb(184, 184, 184);
                         animation: skeleton 3.5s infinite ease-in-out;
                         overflow: hidden;
         
@@ -340,6 +345,7 @@
                 transition: 0.3s ease;
                 font-size: 20px;
                 cursor: pointer;
+                pointer-events: none;
             }
     
             .next-btn, .create-btn {
@@ -355,6 +361,7 @@
             .btn-active {
                 opacity: 1;
                 transform: translateY(0);
+                pointer-events: all;
             }
         }
 
@@ -408,14 +415,15 @@
     .modal-active {
         opacity: 1;
         transition: 0.5s ease;
+        background-color: rgba(29, 29, 29, 0.9);
     }
 }
 
 .modal-upper-active {
     z-index: 2;
-    background-color: rgb(218, 218, 218);
     pointer-events: all;
     transition: 0.5s ease;
+    background: transparent
 }
 
 .create-icon {
@@ -449,7 +457,7 @@
 }  
 
 @media only screen and (min-width: 768px) {
-    .create-icon-edit {
+    .create-icon {
         width: 50px;
         bottom: 40px;
         right: 40px;
@@ -475,6 +483,103 @@
 }
 
 @media only screen and (min-width: 1366px) {
+    .modal-upper {
+        background: transparent;
+        .create-modal {
+            width: 50%;
+            height: 70%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .create-modal {
+            overflow: hidden;
+            border-radius: 15px;
+            filter: drop-shadow(0px 0px 15px rgb(56, 56, 56));
+            padding: 15px;
+
+            .create-form-main {
+
+                .create-form {
+                    width: 150vw;
+
+                    .upload-slide {
+                        flex-direction: row;
+                        width: 50%;
+
+                        .upload-container {
+                            flex-direction: column-reverse;
+                            width: 55%;
+
+                            button {
+                                background-color: rgb(212, 212, 212);
+                            }
+                        }
+                    }
+
+                    .title-desc-slide {
+                        width: 50%;
+
+                        .title-desc {
+                            width: 90%;
+
+                            input, textarea {
+                                background-color: rgb(59, 59, 59);
+                            }
+
+                            input::placeholder, textarea::placeholder {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .tags-slide {
+                        width: 50%;
+
+                        .tags-container {
+                            width: 90%;
+                        }
+
+                        input {
+                            width: 90%;
+                            background-color: rgb(68, 68, 68);
+                        }
+
+                        input::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .btn-container {
+                width: 90%;
+
+                .back-btn {
+                    background-color: transparent;
+                    color: white;
+                }
+            }
+
+            .form-left {
+                left: 0;
+            }
+        
+            .form-mid {
+                left: -100%;
+            }
+        
+            .form-right {
+                left: -200%;
+            }
+        }
+    }
+
+    .modal-upper-active {
+        background-color: rgba(41, 41, 41, 0.5)
+    }
+
     .create-icon {
         width: 50px;
         bottom: 40px;

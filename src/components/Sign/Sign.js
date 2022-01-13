@@ -33,9 +33,9 @@ function Sign(props) {
     }
 
     const signInFunction = (details) => {
-        props.setPageLeave(true)
         axios.post('https://create-art.herokuapp.com/sign-in/', details)
             .then((res) => {
+                props.setPageLeave(true)
                 setError({...error, signIn: false, msg: ''});
                 props.setUserInfo(res.data.user);
                 localStore(res)

@@ -225,7 +225,10 @@ nav .search-ham .ham-main .ham-active-3 {
 
 @media only screen and (min-width: 768px) {
   nav .create-btn {
-    padding: 0 40px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0 0 0 20px;
   }
   nav .create-btn h1 {
     font-size: 40px;

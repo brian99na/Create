@@ -30,10 +30,20 @@ function Create(props) {
     }
 
     const handleCreateClick = () => {
-        if (createActive) {
-            setFormData({title: '', desc: '', file: '', tags: ['art']})
+        if (token) {
+            if (createActive) {
+                setFormData({title: '', desc: '', file: '', tags: ['art']})
+            }
+            setCreateActive(!createActive)
+        } else {
+            props.setPageLeave(true)
+            setTimeout(() => {
+                navigate('/sign-in')
+                setTimeout(() => {
+                    props.setPageLeave(false)
+                }, 300);
+            }, 300);
         }
-        setCreateActive(!createActive)
     }
 
     const handleFileUpload = () => {
@@ -202,9 +212,9 @@ function Create(props) {
                     </div>
                 </div>
                 <div className='btn-container'>
-                    <button name='back' onClick={handleSlide} className={`back-btn ${slideActive >= 2 ? 'btn-active' : ''}`}>[back]</button>
-                    <button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>
-                    <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[create]</button>
+                    {createActive && <button name='back' onClick={handleSlide} className={`back-btn ${slideActive >= 2 ? 'btn-active' : ''}`}>[back]</button>}
+                    {createActive &&<button name='next' onClick={handleSlide} className={`next-btn ${slideActive <= 2 ? 'btn-active' : ''}`}>[next]</button>}
+                    {createActive && <button onClick={handleCreate} className={`create-btn ${slideActive === 3 ? 'btn-active' : ''}`}>[create]</button>}
                 </div>
                 <p className='error'>{error}</p>
             </div>

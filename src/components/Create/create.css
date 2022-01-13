@@ -154,20 +154,29 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 90%;
-  height: 10%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   font-size: 20px;
   gap: 5px;
 }
 
 .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container button {
-  padding: 0;
-  height: 100%;
+  padding: 5px;
+  height: 50%;
+  width: 100%;
   cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container .link-upload {
+  padding: 5px;
   height: 50%;
   font-size: 16px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .modal-upper .create-modal .create-form-main .create-form .upload-slide .skeleton-load {
@@ -187,7 +196,7 @@
   max-width: 90%;
   height: 100%;
   aspect-ratio: 1;
-  border: 2px dashed #b8b8b8;
+  border: 2px solid #b8b8b8;
   -webkit-animation: skeleton 3.5s infinite ease-in-out;
           animation: skeleton 3.5s infinite ease-in-out;
   overflow: hidden;
@@ -473,6 +482,7 @@
   transition: 0.3s ease;
   font-size: 20px;
   cursor: pointer;
+  pointer-events: none;
 }
 
 .modal-upper .create-modal .btn-container .next-btn, .modal-upper .create-modal .btn-container .create-btn {
@@ -490,6 +500,7 @@
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+  pointer-events: all;
 }
 
 .modal-upper .create-modal .error {
@@ -540,14 +551,15 @@
   opacity: 1;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  background-color: rgba(29, 29, 29, 0.9);
 }
 
 .modal-upper-active {
   z-index: 2;
-  background-color: #dadada;
   pointer-events: all;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  background: transparent;
 }
 
 .create-icon {
@@ -599,12 +611,12 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .create-icon-edit {
+  .create-icon {
     width: 50px;
     bottom: 40px;
     right: 40px;
   }
-  .create-icon-edit .create-icon-2 {
+  .create-icon .create-icon-2 {
     font-size: 30px;
     padding: 10px;
   }
@@ -623,6 +635,106 @@
 }
 
 @media only screen and (min-width: 1366px) {
+  .modal-upper {
+    background: transparent;
+  }
+  .modal-upper .create-modal {
+    width: 50%;
+    height: 70%;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .modal-upper .create-modal {
+    overflow: hidden;
+    border-radius: 15px;
+    -webkit-filter: drop-shadow(0px 0px 15px #383838);
+            filter: drop-shadow(0px 0px 15px #383838);
+    padding: 15px;
+  }
+  .modal-upper .create-modal .create-form-main .create-form {
+    width: 150vw;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .upload-slide {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 50%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    width: 55%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container button {
+    background-color: #d4d4d4;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide {
+    width: 50%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc {
+    width: 90%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc input, .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea {
+    background-color: #3b3b3b;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc input::-webkit-input-placeholder, .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea::-webkit-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc input:-ms-input-placeholder, .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea:-ms-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc input::-ms-input-placeholder, .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea::-ms-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc input::placeholder, .modal-upper .create-modal .create-form-main .create-form .title-desc-slide .title-desc textarea::placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide {
+    width: 50%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide .tags-container {
+    width: 90%;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide input {
+    width: 90%;
+    background-color: #444444;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide input::-webkit-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide input:-ms-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide input::-ms-input-placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide input::placeholder {
+    color: white;
+  }
+  .modal-upper .create-modal .btn-container {
+    width: 90%;
+  }
+  .modal-upper .create-modal .btn-container .back-btn {
+    background-color: transparent;
+    color: white;
+  }
+  .modal-upper .create-modal .form-left {
+    left: 0;
+  }
+  .modal-upper .create-modal .form-mid {
+    left: -100%;
+  }
+  .modal-upper .create-modal .form-right {
+    left: -200%;
+  }
+  .modal-upper-active {
+    background-color: rgba(41, 41, 41, 0.5);
+  }
   .create-icon {
     width: 50px;
     bottom: 40px;

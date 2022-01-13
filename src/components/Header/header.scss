@@ -146,7 +146,8 @@ nav {
 
     @media only screen and (min-width: 768px) {
         .create-btn {
-            padding: 0 40px;
+            width: fit-content;
+            padding: 0 0 0 20px;
 
             h1 {
                 font-size: 40px

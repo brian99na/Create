@@ -30,6 +30,8 @@ function App() {
     localStorageLoad()
   }, [])
 
+  console.log(userInfo)
+
   return (
     <div className="App">
       <Header userInfo={userInfo} setUserInfo={setUserInfo} setPageLeave={setPageLeave} pageLeave={pageLeave}/>

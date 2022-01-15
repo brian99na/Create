@@ -497,7 +497,6 @@
             overflow: hidden;
             border-radius: 15px;
             filter: drop-shadow(0px 0px 15px rgb(56, 56, 56));
-            padding: 15px;
 
             .create-form-main {
 
@@ -510,10 +509,20 @@
 
                         .upload-container {
                             flex-direction: column-reverse;
-                            width: 55%;
+                            width: auto;
+                            height: 100%;
+                            aspect-ratio: 1;
+
+                            button, .link-upload {
+                            }
 
                             button {
-                                background-color: rgb(212, 212, 212);
+                                height: fit-content;
+                            }
+
+                            .link-upload {
+                                height: fit-content;
+                                color: rgb(36, 36, 36);
                             }
                         }
                     }
@@ -539,6 +548,10 @@
 
                         .tags-container {
                             width: 90%;
+
+                            .tag-container {
+                                background-color: rgb(248, 248, 248);
+                            }
                         }
 
                         input {
@@ -555,11 +568,6 @@
 
             .btn-container {
                 width: 90%;
-
-                .back-btn {
-                    background-color: transparent;
-                    color: white;
-                }
             }
 
             .form-left {

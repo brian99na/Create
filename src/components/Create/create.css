@@ -651,7 +651,6 @@
     border-radius: 15px;
     -webkit-filter: drop-shadow(0px 0px 15px #383838);
             filter: drop-shadow(0px 0px 15px #383838);
-    padding: 15px;
   }
   .modal-upper .create-modal .create-form-main .create-form {
     width: 150vw;
@@ -668,10 +667,20 @@
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    width: 55%;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 1;
   }
   .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container button {
-    background-color: #d4d4d4;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .modal-upper .create-modal .create-form-main .create-form .upload-slide .upload-container .link-upload {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    color: #242424;
   }
   .modal-upper .create-modal .create-form-main .create-form .title-desc-slide {
     width: 50%;
@@ -700,6 +709,9 @@
   .modal-upper .create-modal .create-form-main .create-form .tags-slide .tags-container {
     width: 90%;
   }
+  .modal-upper .create-modal .create-form-main .create-form .tags-slide .tags-container .tag-container {
+    background-color: #f8f8f8;
+  }
   .modal-upper .create-modal .create-form-main .create-form .tags-slide input {
     width: 90%;
     background-color: #444444;
@@ -718,10 +730,6 @@
   }
   .modal-upper .create-modal .btn-container {
     width: 90%;
-  }
-  .modal-upper .create-modal .btn-container .back-btn {
-    background-color: transparent;
-    color: white;
   }
   .modal-upper .create-modal .form-left {
     left: 0;

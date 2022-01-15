@@ -509,12 +509,10 @@
 
                         .upload-container {
                             flex-direction: column-reverse;
+                            gap: 10px;
                             width: auto;
                             height: 100%;
                             aspect-ratio: 1;
-
-                            button, .link-upload {
-                            }
 
                             button {
                                 height: fit-content;
